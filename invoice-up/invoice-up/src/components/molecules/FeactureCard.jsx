@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledCard = styled.article`
-  width: 355px;
+  width: 320px;
   padding: 80px 20px;
   border: 1px solid ${(props) => props.theme.color.light_primary};
   border-radius: 5px;
@@ -37,4 +38,15 @@ export const FeactureCard = (props) => {
       <p> {props.text}</p>
     </StyledCard>
   );
+};
+
+FeactureCard.propTypes = {
+  image: PropTypes.string,
+  alt: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+};
+
+FeactureCard.defaultProps = {
+  title: "Título",
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { FeactureCard } from "../molecules/FeactureCard";
 import iconSpeed from "../../assets/speed-blue.png";
@@ -20,7 +19,7 @@ const FeaturesWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 4rem;
+  gap: 1.5rem;
   padding: 80px 0;
 `;
 
@@ -47,7 +46,7 @@ export const Features = () => {
         image={iconBrush}
         title="Plantillas personalizables"
         text="No necesitas conocimientos de diseño ni experiencia previa. La interfaz intuitiva de InvoiceUp te permite crear facturas personalizadas en cuestión de minutos."
-      ></FeactureCard>
+      ></FeactureCard>{" "}
     </FeaturesWrapper>
   );
 };

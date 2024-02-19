@@ -1,4 +1,3 @@
-import React from "react";
 import { Hero } from "../components/layout/Hero";
 import image from "../assets/404.png";
 import { DiagonalSparator } from "../components/atoms/DiagonalSeparator";

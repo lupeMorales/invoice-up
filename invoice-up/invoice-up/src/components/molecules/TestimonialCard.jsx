@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import img from "../../assets/photo1.jpg";
 
@@ -6,6 +5,7 @@ const StyledTestimonialCard = styled.article`
   position: relative;
   max-width: 320px;
   padding: 80px 30px;
+  margin: 0 10px;
   aspect-ratio: 1/1;
   border-radius: 5px;
   overflow: hidden;

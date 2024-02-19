@@ -12,6 +12,8 @@ import imageNoErrors from "../assets/no-errors.png";
 import { CTA } from "../components/layout/CTA";
 import { TestimonialCard } from "../components/molecules/TestimonialCard";
 import { TestimonialSection } from "../components/layout/TestimonialSection";
+import { Button } from "../components/atoms/Button";
+import { Heading } from "../components/molecules/Heading";
 
 export const Home = () => {
   return (
@@ -24,20 +26,6 @@ export const Home = () => {
       />
       <DiagonalSparator />
       <FeaturesSection></FeaturesSection>
-      <InfoSection
-        action="Facturar ahora"
-        title="Crea facturas profesionales"
-        subtitle="Mejora tu imagen profesional."
-        image={imageInfo}
-        alt="files picture"
-        text="Impulsa tu negocio utilizando InvoiceUp para dar una imagen más profesional.
-
-Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un registro claro de la venta y le dará un toque profesional a la transacción."
-      ></InfoSection>
-      <CTA
-        title="Crea tu primera factura gratis AHORA."
-        subtitle="Dile adiós al papeleo. Envía facturas profesionales hoy mismo, GRATIS"
-      ></CTA>
       <InfoSection
         action="Facturar ahora"
         title="InvoiceUp trabaja por tí"
@@ -58,7 +46,21 @@ Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un re
 
         Hemos preparado un intuitivo proceso paso a paso que reduce el riesgo de cometer errores u olvidarse de información importante. Con InvoiceUp tienes la tranquilidad de que tus facturas son correctas."
       ></InfoSection>
-      <TestimonialCard></TestimonialCard>
+      <InfoSection
+        action="Facturar ahora"
+        title="Crea facturas profesionales"
+        subtitle="Mejora tu imagen profesional."
+        image={imageInfo}
+        alt="files picture"
+        text="Impulsa tu negocio utilizando InvoiceUp para dar una imagen más profesional.
+
+Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un registro claro de la venta y le dará un toque profesional a la transacción."
+      ></InfoSection>
+
+      <CTA
+        title="Calcula tu beneficio neto AHORA."
+        subtitle="Olvídate de los cálculos complicados. Usa nuestra calculadora de autónomos GRATIS."
+      ></CTA>
       <TestimonialSection
         title="Nuestros clientes opinan"
         subtitle="Las opiniones de nuestros clientes son nuestra mejor recompensa."

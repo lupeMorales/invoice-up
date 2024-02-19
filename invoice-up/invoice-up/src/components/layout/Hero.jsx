@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import { Button } from "../atoms/Button";
@@ -19,6 +19,9 @@ export const StyledSection = styled.section`
 
   div {
     max-width: 500px;
+    animation:scale-up-center 1.4s; 
+     @keyframes scale-up-center{ 0%{transform:scale(.5)} 100%{transform:scale(1)} }
+
   }
 
   h1 {
@@ -38,7 +41,6 @@ export const StyledSection = styled.section`
     width: 100%;
     max-width: 550px;
     object-fit: fill;
-  }
 `;
 
 export const Hero = (props) => {
@@ -55,4 +57,15 @@ export const Hero = (props) => {
       ></img>
     </StyledSection>
   );
+};
+
+Hero.propTypes = {
+  image: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+};
+
+Hero.defaultProps = {
+  title: "Aqui va un título",
+  subtitle: "Aqui va un subtítulo",
 };

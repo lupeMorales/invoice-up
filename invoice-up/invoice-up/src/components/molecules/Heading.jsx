@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const HeadingWrapper = styled.div`
@@ -37,10 +37,21 @@ const HeadingWrapper = styled.div`
 
 export const Heading = (props) => {
   return (
-    <HeadingWrapper>
+    <HeadingWrapper align={props.align}>
       <h2> {props.title} </h2>
       <p> {props.subtitle} </p>
       <hr />
     </HeadingWrapper>
   );
+};
+
+Heading.propTypes = {
+  align: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+};
+
+Heading.defaultProps = {
+  title: "Aqui va un título",
+  subtitle: "Aqui va un subtítulo",
 };

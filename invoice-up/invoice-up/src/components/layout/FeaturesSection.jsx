@@ -1,4 +1,3 @@
-import React from "react";
 import { Heading } from "../molecules/Heading";
 import { Features } from "./Features";
 
