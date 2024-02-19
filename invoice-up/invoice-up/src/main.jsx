@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Theme from "./Theme";
 import { Home } from "./pages/Home";
+import { Page404 } from "./pages/Page404";
 
 /* const theme = {
   color: {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "about",
     element: <div>About</div>,
+  },
+  {
+    path: "*",
+    element: <Page404 />,
   },
 ]);
 

@@ -10,6 +10,8 @@ import imageInfo from "../assets/files.png";
 import imageRelax from "../assets/stay-at-home.png";
 import imageNoErrors from "../assets/no-errors.png";
 import { CTA } from "../components/layout/CTA";
+import { TestimonialCard } from "../components/molecules/TestimonialCard";
+import { TestimonialSection } from "../components/layout/TestimonialSection";
 
 export const Home = () => {
   return (
@@ -23,6 +25,7 @@ export const Home = () => {
       <DiagonalSparator />
       <FeaturesSection></FeaturesSection>
       <InfoSection
+        action="Facturar ahora"
         title="Crea facturas profesionales"
         subtitle="Mejora tu imagen profesional."
         image={imageInfo}
@@ -36,6 +39,7 @@ Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un re
         subtitle="Dile adiós al papeleo. Envía facturas profesionales hoy mismo, GRATIS"
       ></CTA>
       <InfoSection
+        action="Facturar ahora"
         title="InvoiceUp trabaja por tí"
         subtitle="Facturación inteligente"
         image={imageRelax}
@@ -44,6 +48,7 @@ Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un re
         No necesitas asignar números de factura o calcular precios e Iva, InvoiceUp lo hace por tí."
       ></InfoSection>
       <InfoSection
+        action="Facturar ahora"
         direction="reverse"
         title="Libre de errores"
         subtitle="Facturas perfectas y sin errores, siempre."
@@ -53,6 +58,11 @@ Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un re
 
         Hemos preparado un intuitivo proceso paso a paso que reduce el riesgo de cometer errores u olvidarse de información importante. Con InvoiceUp tienes la tranquilidad de que tus facturas son correctas."
       ></InfoSection>
+      <TestimonialCard></TestimonialCard>
+      <TestimonialSection
+        title="Nuestros clientes opinan"
+        subtitle="Las opiniones de nuestros clientes son nuestra mejor recompensa."
+      ></TestimonialSection>
     </div>
   );
 };

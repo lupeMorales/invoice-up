@@ -41,7 +41,7 @@ export const Header = () => {
         <li>Calculadora</li>
         <li>About</li>
       </ul>
-      <Button>Empezar a facturar</Button>
+      <Button action="Empezar a facturar"></Button>
     </StyledHeader>
   );
 };

@@ -33,8 +33,8 @@ export const CTA = (props) => {
         <DiagonalSparatorUp></DiagonalSparatorUp>
         <Heading title={props.title} subtitle={props.subtitle}></Heading>
         <div>
-          <Button>Comienza a facturar</Button>
-          <Button variant="outline">Comienza a facturar</Button>
+          <Button action="Comienza a facturar"></Button>
+          <Button variant="outline" action="Comienza a facturar"></Button>
         </div>
 
         <DiagonalSparator></DiagonalSparator>

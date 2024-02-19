@@ -36,7 +36,7 @@ export const InfoSection = (props) => {
       <div>
         <Heading title={props.title} subtitle={props.subtitle}></Heading>
         <p> {props.text} </p>
-        <Button> Comenzar ahora </Button>
+        <Button action={props.action}></Button>
       </div>
     </InfoWrapper>
   );

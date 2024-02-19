@@ -4,7 +4,6 @@ const StyledCard = styled.article`
   width: 355px;
   padding: 80px 20px;
   border: 1px solid ${(props) => props.theme.color.light_primary};
-
   border-radius: 5px;
   background-color: #fafafa;
 

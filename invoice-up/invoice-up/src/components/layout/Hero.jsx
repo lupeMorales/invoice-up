@@ -47,7 +47,7 @@ export const Hero = (props) => {
       <div>
         <h1>{props.title}</h1>
         <h3>{props.subtitle}</h3>
-        <Button>Empieza a facturar ahora</Button>
+        <Button action="Volver a casa"></Button>
       </div>
       <img
         src={props.image}

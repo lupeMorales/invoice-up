@@ -16,6 +16,7 @@ const theme = {
     large: "clamp(1.8rem, 1.5391rem + 1.3913vw, 2.8rem);",
     normal: "clamp(2rem, 1.9478rem + 0.2783vw, 2.2rem);",
     small: "1.8rem",
+    xsmall: "1.6rem",
   },
   fonts: {
     titleFont: "Comfortaa",
