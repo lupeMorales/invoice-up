@@ -6,28 +6,31 @@ const HeadingWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-items: ${(props) => (props.align === "start" ? `start` : `center`)};
 
   padding: 100px 0 20px 0;
 
   h2 {
-    width: 360px;
+    max-width: 800px;
     text-align: center;
+    text-align: ${(props) => (props.align === "start" ? "start" : "center")};
     padding-bottom: 20px;
     font-family: ${(props) => props.theme.fonts.titleFont};
-    font-size: ${(props) => props.theme.fontSizes.large};
+    font-size: ${(props) => props.theme.fontSizes.xlarge};
     color: ${(props) => props.theme.color.darl_text};
   }
 
   p {
     width: 500px;
     text-align: center;
+    text-align: ${(props) => (props.align === "start" ? "start" : "center")};
     padding-bottom: 40px;
-    font-size: ${(props) => props.theme.fontSizes.small};
+    font-size: ${(props) => props.theme.fontSizes.normal};
     color: ${(props) => props.theme.color.darl_text};
   }
   hr {
     width: 80px;
-    border: 3px solid ${(props) => props.theme.color.accent};
+    border: 3px solid ${(props) => props.theme.color.primary};
     border-radius: 5px;
   }
 `;

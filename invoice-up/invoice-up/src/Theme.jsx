@@ -2,8 +2,10 @@ import { ThemeProvider } from "styled-components";
 
 const theme = {
   color: {
+    light_primary: "#a5a1ea",
     primary: "#6c63ff",
     secondary: "#4f49cc",
+    light_accent: "#f2c4a2",
     accent: "#F78B38",
     dark_accent: "#F2791D",
     light_text: "#fff",

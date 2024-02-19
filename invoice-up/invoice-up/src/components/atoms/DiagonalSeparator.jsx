@@ -7,3 +7,9 @@ export const DiagonalSparator = styled.div`
   border-bottom: 13.95vw solid #fff;
   margin-top: -13.9vw;
 `;
+
+export const DiagonalSparatorUp = styled(DiagonalSparator)`
+  border-left: 100vw solid #fff;
+  border-bottom: 13.95vw solid transparent;
+  margin-top: 0;
+`;
