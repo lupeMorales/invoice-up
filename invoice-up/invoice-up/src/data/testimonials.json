@@ -27,18 +27,12 @@
     "id": 4,
     "comment": "Me encanta la función de plantillas de InvoiceUp. Me permite crear facturas personalizadas para mis clientes, con un aspecto profesional y consistente."
   },
-  {
-    "img": "",
-    "name": "Isabel Rodriguez",
-    "job": "Consultora WPO",
-    "id": 5,
-    "comment": "El servicio de atención al cliente de InvoiceUp es excelente. Siempre están dispuestos a ayudar y responder a cualquier pregunta que tenga."
-  },
+
   {
     "img": "photo6.png",
     "name": "David Fernández",
     "job": "Emprendedor",
-    "id": 6,
+    "id": 5,
     "comment": "Recomiendo encarecidamente InvoiceUp a cualquier persona que necesite crear facturas profesionales y precisas. Es una herramienta indispensable para cualquier negocio."
   }
 ]

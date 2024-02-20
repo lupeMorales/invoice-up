@@ -3,7 +3,8 @@ import dataTestimonial from "../../data/testimonials.json";
 import styled from "styled-components";
 import img from "../../assets/photo1.jpg";
 
-const StyledTestimonialCard = styled.article`
+const StyledTestimonialCard = styled.div`
+  display: inline-block;
   position: relative;
   width: 320px;
   padding: 80px 30px;
