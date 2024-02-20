@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Heading } from "../molecules/Heading";
 import { Button } from "../atoms/buttons/Button";
