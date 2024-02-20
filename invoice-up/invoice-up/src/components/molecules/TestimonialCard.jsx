@@ -1,9 +1,11 @@
+import { useState } from "react";
+import dataTestimonial from "../../data/testimonials.json";
 import styled from "styled-components";
 import img from "../../assets/photo1.jpg";
 
 const StyledTestimonialCard = styled.article`
   position: relative;
-  max-width: 320px;
+  width: 320px;
   padding: 80px 30px;
   margin: 0 10px;
   aspect-ratio: 1/1;
@@ -60,37 +62,40 @@ const StyledTestimonialCard = styled.article`
   }
 `;
 export const TestimonialCard = () => {
+  const [testimonialList, setTestimonialList] = useState(dataTestimonial);
   return (
-    <StyledTestimonialCard>
-      <div></div>
-      <svg
-        fill="#fff"
-        viewBox="0 0 32 32"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="#fff"
-        stroke-width="0.00032"
-      >
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g
-          id="SVGRepo_tracerCarrier"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        ></g>
-        <g id="SVGRepo_iconCarrier">
-          {" "}
-          <path d="M6.67,26.06c.09,0,8.77-.14,8.77-11.89A7.22,7.22,0,1,0,5.67,20.9v4.16A1,1,0,0,0,6.67,26.06ZM3,14.17a5.22,5.22,0,1,1,10.44,0c0,7.5-3.88,9.31-5.77,9.75V20.17a1,1,0,0,0-.75-1A5.21,5.21,0,0,1,3,14.17Z"></path>{" "}
-          <path d="M22.22,26.06c.09,0,8.78-.14,8.78-11.89a7.22,7.22,0,1,0-9.78,6.73v4.16A1,1,0,0,0,22.22,26.06ZM18.56,14.17a5.22,5.22,0,1,1,10.44,0c0,7.5-3.89,9.31-5.78,9.75V20.17a1,1,0,0,0-.75-1A5.21,5.21,0,0,1,18.56,14.17Z"></path>{" "}
-        </g>
-      </svg>
+    <div>
+      {testimonialList.map((testimonial) => {
+        return (
+          <StyledTestimonialCard key={testimonial.id}>
+            <div></div>
+            <svg
+              fill="#fff"
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#fff"
+              stroke-width="0.00032"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {" "}
+                <path d="M6.67,26.06c.09,0,8.77-.14,8.77-11.89A7.22,7.22,0,1,0,5.67,20.9v4.16A1,1,0,0,0,6.67,26.06ZM3,14.17a5.22,5.22,0,1,1,10.44,0c0,7.5-3.88,9.31-5.77,9.75V20.17a1,1,0,0,0-.75-1A5.21,5.21,0,0,1,3,14.17Z"></path>{" "}
+                <path d="M22.22,26.06c.09,0,8.78-.14,8.78-11.89a7.22,7.22,0,1,0-9.78,6.73v4.16A1,1,0,0,0,22.22,26.06ZM18.56,14.17a5.22,5.22,0,1,1,10.44,0c0,7.5-3.89,9.31-5.78,9.75V20.17a1,1,0,0,0-.75-1A5.21,5.21,0,0,1,18.56,14.17Z"></path>{" "}
+              </g>
+            </svg>
 
-      <h3>Name</h3>
-      <h5>Job</h5>
-      <p>
-        Comment Me encanta la función de plantillas de InvoiceUp. Me permite
-        crear facturas personalizadas para mis clientes, con un aspecto
-        profesional y consistente.
-      </p>
-      <img src={img} alt="" />
-    </StyledTestimonialCard>
+            <h3>{testimonial.name}</h3>
+            <h5>{testimonial.job} </h5>
+            <p>{testimonial.comment}</p>
+            <img src={img} alt={testimonial.name} />
+          </StyledTestimonialCard>
+        );
+      })}
+    </div>
   );
 };

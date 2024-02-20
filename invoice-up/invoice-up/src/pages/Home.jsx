@@ -1,7 +1,6 @@
 import React from "react";
 import { Header } from "../components/layout/Header";
 import { Hero } from "../components/layout/Hero";
-
 import { DiagonalSparator } from "../components/atoms/DiagonalSeparator";
 import { FeaturesSection } from "../components/layout/FeaturesSection";
 import { InfoSection } from "../components/layout/InfoSection";
@@ -10,10 +9,8 @@ import imageInfo from "../assets/files.png";
 import imageRelax from "../assets/stay-at-home.png";
 import imageNoErrors from "../assets/no-errors.png";
 import { CTA } from "../components/layout/CTA";
-import { TestimonialCard } from "../components/molecules/TestimonialCard";
 import { TestimonialSection } from "../components/layout/TestimonialSection";
-import { Button } from "../components/atoms/Button";
-import { Heading } from "../components/molecules/Heading";
+import { Testimonial } from "../Testimonial";
 
 export const Home = () => {
   return (
