@@ -41,6 +41,7 @@ export const FooterStyled = styled.footer`
     font-family: ${(props) => props.theme.fonts.titleFont};
     font-size: 1.4rem;
     color: ${(props) => props.theme.color.light_text};
+    line-height: 1.5;
   }
   li {
     list-style: none;

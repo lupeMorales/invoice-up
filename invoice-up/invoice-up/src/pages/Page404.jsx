@@ -1,4 +1,4 @@
-import { Hero, HeroBounce } from "../components/layout/hero/Hero";
+import { HeroBounce } from "../components/layout/hero/Hero";
 import image from "../assets/404.png";
 import { DiagonalSparator } from "../components/atoms/DiagonalSeparator";
 
