@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Heading } from "../molecules/Heading";
-import { Button } from "../atoms/Button";
+import { Button } from "../atoms/buttons/Button";
 
 const InfoWrapper = styled.section`
   display: flex;

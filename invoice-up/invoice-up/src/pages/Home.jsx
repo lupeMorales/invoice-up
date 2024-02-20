@@ -1,4 +1,3 @@
-import React from "react";
 import { Header } from "../components/layout/Header";
 import { Hero } from "../components/layout/Hero";
 import { DiagonalSparator } from "../components/atoms/DiagonalSeparator";
@@ -9,8 +8,8 @@ import imageInfo from "../assets/files.png";
 import imageRelax from "../assets/stay-at-home.png";
 import imageNoErrors from "../assets/no-errors.png";
 import { CTA } from "../components/layout/CTA";
-import { TestimonialSection } from "../components/layout/TestimonialSection";
-import { Testimonial } from "../Testimonial";
+
+import { TestimonialCard } from "../components/molecules/TestimonialCard";
 
 export const Home = () => {
   return (
@@ -58,10 +57,7 @@ Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un re
         title="Calcula tu beneficio neto AHORA."
         subtitle="Olvídate de los cálculos complicados. Usa nuestra calculadora de autónomos GRATIS."
       ></CTA>
-      <TestimonialSection
-        title="Nuestros clientes opinan"
-        subtitle="Las opiniones de nuestros clientes son nuestra mejor recompensa."
-      ></TestimonialSection>
+      <TestimonialCard></TestimonialCard>
     </div>
   );
 };

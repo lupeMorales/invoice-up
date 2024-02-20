@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { Button } from "../atoms/Button";
+import { Button } from "../atoms/buttons/Button";
 
 export const StyledSection = styled.section`
   display: flex;
