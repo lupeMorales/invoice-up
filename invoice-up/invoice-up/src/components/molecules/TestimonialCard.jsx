@@ -1,7 +1,8 @@
 import { useState } from "react";
 import dataTestimonial from "../../data/testimonials.json";
 import styled from "styled-components";
-import img from "../../assets/photo1.jpg";
+/* import img from "../../assets/photo1.jpg";
+import images from ``../../assets"; */
 
 const StyledTestimonialCard = styled.div`
   display: inline-block;
@@ -67,6 +68,7 @@ export const TestimonialCard = () => {
   return (
     <div>
       {testimonialList.map((testimonial) => {
+        const image = `../../assets/${testimonial.img}`;
         return (
           <StyledTestimonialCard key={testimonial.id}>
             <div></div>
@@ -93,7 +95,7 @@ export const TestimonialCard = () => {
             <h3>{testimonial.name}</h3>
             <h5>{testimonial.job} </h5>
             <p>{testimonial.comment}</p>
-            <img src={img} alt={testimonial.name} />
+            <img src={image} alt={testimonial.name} />
           </StyledTestimonialCard>
         );
       })}

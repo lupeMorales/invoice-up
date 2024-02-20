@@ -1,7 +1,7 @@
 import { FooterStyled } from "./FooterStyled";
 import { DiagonalSparatorUp } from "../../atoms/DiagonalSeparator";
-import { Heading } from "../../molecules/Heading";
-import { Copyright } from "../../atoms/Copyright";
+
+import { Copyright } from "../../atoms/copyright/Copyright";
 
 export const Footer = () => {
   return (

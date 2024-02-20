@@ -1,15 +1,16 @@
-import { Hero } from "../components/layout/Hero";
+import { Hero, HeroBounce } from "../components/layout/hero/Hero";
 import image from "../assets/404.png";
 import { DiagonalSparator } from "../components/atoms/DiagonalSeparator";
 
 export const Page404 = () => {
   return (
     <>
-      <Hero
+      <HeroBounce
         title="Oh no, algo salió mal"
         subtitle="No te preocupes, te llavamos a casa"
         image={image}
-      ></Hero>
+        entrance="bounce"
+      ></HeroBounce>
       <DiagonalSparator></DiagonalSparator>
     </>
   );

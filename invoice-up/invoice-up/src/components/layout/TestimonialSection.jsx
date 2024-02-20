@@ -13,7 +13,10 @@ const Wrapper = styled.div`
 export const TestimonialSection = () => {
   return (
     <Wrapper>
-      <Heading></Heading>
+      <Heading
+        title="Nuestros cliente opinan"
+        subtitle="Las opiniones de nuestros clientes son nuestras mejor recompensa."
+      ></Heading>
       <ul>
         <TestimonialCard></TestimonialCard>
       </ul>

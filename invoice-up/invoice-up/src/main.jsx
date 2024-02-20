@@ -5,6 +5,7 @@ import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Theme from "./Theme";
 import { Home } from "./pages/Home";
 import { Page404 } from "./pages/Page404";
+import { Login } from "./pages/login/Login";
 
 /* const theme = {
   color: {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "about",
     element: <div>About</div>,
+  },
+  {
+    path: "login",
+    element: <Login />,
   },
   {
     path: "*",

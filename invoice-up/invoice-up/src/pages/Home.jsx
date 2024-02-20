@@ -1,5 +1,5 @@
 import { Header } from "../components/layout/Header";
-import { Hero } from "../components/layout/Hero";
+import { Hero } from "../components/layout/hero/Hero";
 import { DiagonalSparator } from "../components/atoms/DiagonalSeparator";
 import { FeaturesSection } from "../components/layout/FeaturesSection";
 import { InfoSection } from "../components/layout/InfoSection";
@@ -10,18 +10,20 @@ import imageNoErrors from "../assets/no-errors.png";
 import { CTA } from "../components/layout/CTA";
 import { TestimonialSection } from "../components/layout/TestimonialSection";
 import { Footer } from "../components/layout/footer/Footer";
+import { FormularioBasico } from "../components/pruebas/FormularioBasico";
 
 export const Home = () => {
   return (
     <div>
       <Header />
+
       <Hero
         title="Crea facturas profesionales en minutos"
         subtitle="InvoiceUp te permite crear facturas de forma fácil y rápida, con diferentes plantillas de facturas personalizables."
         image={image}
       />
       <DiagonalSparator />
-      <FeaturesSection></FeaturesSection>
+      <FeaturesSection />
       <InfoSection
         action="Facturar ahora"
         title="InvoiceUp trabaja por tí"
@@ -57,8 +59,9 @@ Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un re
         title="Calcula tu beneficio neto AHORA."
         subtitle="Olvídate de los cálculos complicados. Usa nuestra calculadora de autónomos GRATIS."
       ></CTA>
-      <TestimonialSection></TestimonialSection>
-      <Footer></Footer>
+      <TestimonialSection />
+      <FormularioBasico />
+      <Footer />
     </div>
   );
 };
