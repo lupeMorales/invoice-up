@@ -14,20 +14,25 @@ export const LoginStyled = styled.main`
   div {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
-    background-color: #fff;
     border: none;
     margin: 0 auto;
     border-radius: 20px;
-    background: #fff;
     overflow: hidden;
+    background-color: ${(props) => props.theme.color.secondary};
   }
   img {
     width: 100%;
-    max-width: 350px;
+    max-width: 380px;
     object-fit: contain;
+    display: block;
+    margin: auto;
+    background-color: #fff;
+    object-fit: fill;
+    padding: 20px;
   }
   form {
+    display: block;
+    margin: auto;
     width: 380px;
     background-color: ${(props) => props.theme.color.secondary};
     padding: 4rem;

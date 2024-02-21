@@ -23,8 +23,8 @@ export const Login = () => {
             Contraseña
             <input type="password" id="password" name="password"></input>
           </label>
-          <Button action="iniciar sesión"></Button>
-          <Button action="crear cuenta" variant="outline"></Button>
+          <Button action="Iniciar sesión"></Button>
+          <Button action="Crear cuenta" variant="outline"></Button>
         </form>
       </div>
     </LoginStyled>
