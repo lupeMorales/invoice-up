@@ -67,6 +67,7 @@ export const LoginStyled = styled.main`
       padding: 0.75rem 1rem;
       color: rgba(243, 244, 246, 1);
       font-size: ${(props) => props.theme.fontSizes.xsmall};
+      margin: 5px 0 10px;
     }
     input:focus {
       border-color: ${(props) => props.theme.color.accent};

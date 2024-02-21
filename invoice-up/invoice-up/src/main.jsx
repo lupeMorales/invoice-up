@@ -7,6 +7,7 @@ import { Home } from "./pages/Home";
 import { Page404 } from "./pages/Page404";
 import { Login } from "./pages/login/Login";
 import { Register } from "./pages/register/Register";
+import { CalculatorPage } from "./pages/CalculatorPage";
 
 /* const theme = {
   color: {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <Register />,
+  },
+  {
+    path: "calculadora-de-autonomos",
+    element: <CalculatorPage />,
   },
   {
     path: "*",

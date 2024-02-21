@@ -21,6 +21,7 @@ export const Home = () => {
         title="Crea facturas profesionales en minutos"
         subtitle="InvoiceUp te permite crear facturas de forma fácil y rápida, con diferentes plantillas de facturas personalizables."
         image={image}
+        action="Facturar ahora"
       />
       <DiagonalSparator />
       <FeaturesSection />

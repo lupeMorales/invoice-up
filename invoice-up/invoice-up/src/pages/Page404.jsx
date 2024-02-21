@@ -10,6 +10,7 @@ export const Page404 = () => {
         subtitle="No te preocupes, te llavamos a casa"
         image={image}
         entrance="bounce"
+        action="Volver a casa"
       ></HeroBounce>
       <DiagonalSparator></DiagonalSparator>
     </>
