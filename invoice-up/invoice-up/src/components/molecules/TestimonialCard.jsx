@@ -1,8 +1,6 @@
 import { useState } from "react";
 import dataTestimonial from "../../data/testimonials.json";
 import styled from "styled-components";
-/* import img from "../../assets/photo1.jpg";
-import images from ``../../assets"; */
 
 const StyledTestimonialCard = styled.div`
   display: inline-block;
@@ -68,7 +66,10 @@ export const TestimonialCard = () => {
   return (
     <div>
       {testimonialList.map((testimonial) => {
-        const image = `../../assets/${testimonial.img}`;
+        /*       la línea está construyendo una URL completa para la imagen, teniendo en cuenta tanto la ruta relativa de la imagen como la ubicación del componente actual. */
+
+        const imgURL = new URL(`../../${testimonial.img}`, import.meta.url);
+        console.log("imgURL:", imgURL);
         return (
           <StyledTestimonialCard key={testimonial.id}>
             <div></div>
@@ -95,7 +96,7 @@ export const TestimonialCard = () => {
             <h3>{testimonial.name}</h3>
             <h5>{testimonial.job} </h5>
             <p>{testimonial.comment}</p>
-            <img src={image} alt={testimonial.name} />
+            <img src={imgURL} alt={testimonial.name} />
           </StyledTestimonialCard>
         );
       })}

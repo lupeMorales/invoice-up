@@ -10,6 +10,7 @@ const theme = {
     dark_accent: "#F2791D",
     light_text: "#fff",
     dark_text: "#000",
+    grey: "#F4F4F4",
   },
   fontSizes: {
     xlarge: "clamp(2.5rem, 1.9783rem + 2.7826vw, 4.5rem);",

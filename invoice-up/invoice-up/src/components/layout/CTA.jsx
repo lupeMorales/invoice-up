@@ -12,18 +12,17 @@ const StyledCTA = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 100%
+  width: 100%;
   height: auto;
- background-image: linear-gradient(to bottom, #fff, ${(props) =>
-   props.theme.color.light_accent} 100%);
+  background-image: linear-gradient(
+    to bottom,
+    #fff,
+    ${(props) => props.theme.color.light_accent} 100%
+  );
 
-  
   Button {
     margin: 40px 10px 250px 10px;
- 
   }
-
- 
 `;
 export const CTA = (props) => {
   return (
