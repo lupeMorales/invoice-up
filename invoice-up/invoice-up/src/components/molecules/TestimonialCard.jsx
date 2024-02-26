@@ -1,66 +1,7 @@
 import { useState } from "react";
 import dataTestimonial from "../../data/testimonials.json";
-import styled from "styled-components";
+import { TestimonialCardStyled } from "./testimonial/TestimonialCardStyled.js";
 
-const StyledTestimonialCard = styled.div`
-  display: inline-block;
-  position: relative;
-  width: 320px;
-  padding: 80px 30px;
-  margin: 0 10px;
-  aspect-ratio: 1/1;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: #ebeaff;
-  box-shadow: -1px 2px 29px -1px rgba(79, 73, 204, 0.75);
-  -webkit-box-shadow: -1px 2px 29px -1px rgba(79, 73, 204, 0.75);
-  -moz-box-shadow: -1px 2px 29px -1px rgba(79, 73, 204, 0.75);
-
-  div {
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 200px;
-    height: 200px;
-    background-color: ${(props) => props.theme.color.primary};
-    border-radius: 50%;
-  }
-  svg {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background-color: ${(props) => props.theme.color.primary};
-    border-radius: 50%;
-  }
-
-  h3 {
-    font-family: ${(props) => props.theme.fonts.titleFont};
-    font-size: ${(props) => props.theme.fontSizes.normal};
-  }
-  h5 {
-    font-size: ${(props) => props.theme.fontSizes.small};
-    font-weight: 100;
-  }
-
-  p {
-    padding: 20px 0;
-    font-size: ${(props) => props.theme.fontSizes.xsmall};
-    font-weight: 300;
-  }
-
-  img {
-    display: block;
-    margin: auto;
-    width: 100%;
-    aspect-ratio: 1/1;
-    max-width: 50px;
-    border-radius: 50%;
-    object-fit: fill;
-    margin-bottom: 20px;
-  }
-`;
 export const TestimonialCard = () => {
   const [testimonialList, setTestimonialList] = useState(dataTestimonial);
   return (
@@ -71,7 +12,7 @@ export const TestimonialCard = () => {
         const imgURL = new URL(`../../${testimonial.img}`, import.meta.url);
         console.log("imgURL:", imgURL);
         return (
-          <StyledTestimonialCard key={testimonial.id}>
+          <TestimonialCardStyled key={testimonial.id}>
             <div></div>
             <svg
               fill="#fff"
@@ -97,7 +38,7 @@ export const TestimonialCard = () => {
             <h5>{testimonial.job} </h5>
             <p>{testimonial.comment}</p>
             <img src={imgURL} alt={testimonial.name} />
-          </StyledTestimonialCard>
+          </TestimonialCardStyled>
         );
       })}
     </div>

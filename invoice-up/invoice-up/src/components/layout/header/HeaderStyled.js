@@ -1,8 +1,5 @@
-import { Button } from "../atoms/buttons/Button";
-
 import styled from "styled-components";
-
-const StyledHeader = styled.header`
+export const HeaderStyled = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,18 +26,7 @@ const StyledHeader = styled.header`
   li:hover {
     color: ${(props) => props.theme.color.accent};
   }
+  Button {
+    margin: 0 5px;
+  }
 `;
-
-export const Header = () => {
-  return (
-    <StyledHeader>
-      <h2>InvoiceUp</h2>
-      <ul>
-        <li>Inicios</li>
-        <li>Calculadora</li>
-        <li>About</li>
-      </ul>
-      <Button action="Empezar a facturar"></Button>
-    </StyledHeader>
-  );
-};

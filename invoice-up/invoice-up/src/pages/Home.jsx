@@ -1,4 +1,4 @@
-import { Header } from "../components/layout/Header";
+import { Header } from "../components/layout/header/Header";
 import { Hero } from "../components/layout/hero/Hero";
 import { DiagonalSparator } from "../components/atoms/DiagonalSeparator";
 import { FeaturesSection } from "../components/layout/FeaturesSection";

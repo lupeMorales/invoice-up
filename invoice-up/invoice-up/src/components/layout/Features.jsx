@@ -1,19 +1,11 @@
 import styled from "styled-components";
-import { FeactureCard } from "../molecules/FeactureCard";
+import { FeactureCard } from "../molecules/testimonial/FeactureCard";
 import iconSpeed from "../../assets/speed-blue.png";
 import iconPig from "../../assets/piggy-bank.png";
 import iconPlane from "../../assets/plane.png";
 import iconBrush from "../../assets/brush.png";
 
 const FeaturesWrapper = styled.div`
-  /*  
-  display: grid;
-  gap: 1rem;
-  grid-auto-rows: 50rem;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  align-items: center;
-  margin: auto; */
-
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

@@ -8,26 +8,8 @@ import { Page404 } from "./pages/Page404";
 import { Login } from "./pages/login/Login";
 import { Register } from "./pages/register/Register";
 import { CalculatorPage } from "./pages/CalculatorPage";
-
-/* const theme = {
-  color: {
-    primary: "#6c63ff",
-    secondary: "#4f49cc",
-    accent: "#F78B38",
-    light_text: "#fff",
-    dack_text: "#000",
-  },
-  fontSize: {
-    xlarge: "32px",
-    large: "28px",
-    normal: "22px",
-    small: "18px",
-  },
-  fonts: {
-    titleFont: "Comfortaa, sans-serif",
-    textFont: "Lato, sans-serif",
-  },
-}; */
+import { Dashboard } from "./pages/dashboard/Dashboard";
+import { ProtectedRoute } from "./utils/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +36,17 @@ const router = createBrowserRouter([
     path: "calculadora-de-autonomos",
     element: <CalculatorPage />,
   },
+  {
+    path: "/",
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+    ],
+  },
+
   {
     path: "*",
     element: <Page404 />,
