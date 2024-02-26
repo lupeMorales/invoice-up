@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import dataTestimonial from "../../data/testimonials.json";
-import { TestimonialCardStyled } from "./testimonial/TestimonialCardStyled.js";
+import dataTestimonial from "../../../data/testimonials.json";
+import { TestimonialCardStyled } from "./TestimonialCardStyled.js";
 
 function useAssets(asset) {
   const assets = import.meta.glob("../../assets", { eager: true });

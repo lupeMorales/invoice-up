@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FeactureCard } from "../molecules/testimonial/FeactureCard";
+import { FeactureCard } from "../molecules/FeactureCard";
 import iconSpeed from "../../assets/speed-blue.png";
 import iconPig from "../../assets/piggy-bank.png";
 import iconPlane from "../../assets/plane.png";

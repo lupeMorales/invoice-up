@@ -36,9 +36,9 @@ export const Footer = () => {
         <div>
           <h3>Contacto</h3>
           <ul>
-            <li>direccion</li>
-            <li>mail</li>
-            <li>telefono</li>
+            <li>C/ Factura fácil 5, 41013 Sevilla </li>
+            <li>info@invoiceup.es</li>
+            <li>789 79 82 17 - 789 45 42 07</li>
           </ul>
         </div>
       </section>

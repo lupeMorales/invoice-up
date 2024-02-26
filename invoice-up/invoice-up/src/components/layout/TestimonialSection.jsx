@@ -1,5 +1,5 @@
 import { Heading } from "../molecules/Heading";
-import { TestimonialCard } from "../molecules/TestimonialCard";
+import { TestimonialCard } from "../molecules/testimonial/TestimonialCard";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
