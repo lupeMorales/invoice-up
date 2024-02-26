@@ -10,7 +10,6 @@ import imageNoErrors from "../assets/no-errors.png";
 import { CTA } from "../components/layout/CTA";
 import { TestimonialSection } from "../components/layout/TestimonialSection";
 import { Footer } from "../components/layout/footer/Footer";
-import { FormularioBasico } from "../components/pruebas/FormularioBasico";
 
 export const Home = () => {
   return (
