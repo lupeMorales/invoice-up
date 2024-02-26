@@ -2,10 +2,12 @@ import { Hero } from "../components/layout/hero/Hero";
 import image from "../assets/calculator.png";
 import { DiagonalSparator } from "../components/atoms/DiagonalSeparator";
 import { Heading } from "../components/molecules/Heading";
+import { Header } from "../components/layout/header/Header";
 
 export const CalculatorPage = () => {
   return (
     <div>
+      <Header />
       <Hero
         title="Calculadora de los Autónomos"
         subtitle="Calcula tu IVA, IRPF y beneficio neto en segundos."

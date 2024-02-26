@@ -11,7 +11,11 @@ export const ButtonStyled = styled.button`
   font-family: ${(props) => props.theme.fonts.titleFont};
 
   &:hover {
-    background-color: ${(props) => props.theme.color.dark_accent};
+    background-color: ${(props) =>
+      props.variant === "outline"
+        ? `${props.theme.color.primary}`
+        : `${props.theme.color.dark_accent}`};
     border: 2px solid ${(props) => props.theme.color.dark_accent};
+    color: ${(props) => props.theme.color.light_text};
   }
 `;
