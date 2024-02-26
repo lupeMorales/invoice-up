@@ -1,16 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dataTestimonial from "../../data/testimonials.json";
 import { TestimonialCardStyled } from "./testimonial/TestimonialCardStyled.js";
 
+function useAssets(asset) {
+  const assets = import.meta.glob("../../assets", { eager: true });
+
+  if (assets[asset]) {
+    return assets[asset].default;
+  }
+  return null;
+}
+
 export const TestimonialCard = () => {
-  const [testimonialList, setTestimonialList] = useState(dataTestimonial);
+  const [infoTestimonial, setInfoTestimonial] = useState([]);
+  useEffect(() => {
+    const get = async () => {
+      const result = [];
+
+      for (let index = 0; index < dataTestimonial.length; index++) {
+        const element = dataTestimonial[index];
+        const image = useAssets("../../assets" + element.img);
+
+        result.push({
+          ...element,
+          image,
+        });
+      }
+
+      setInfoTestimonial(result);
+    };
+
+    get();
+  }, []);
+
+  // const [testimonialList, setTestimonialList] = useState(dataTestimonial);
   return (
     <div>
-      {testimonialList.map((testimonial) => {
+      {infoTestimonial.map((testimonial) => {
         /*       la línea está construyendo una URL completa para la imagen, teniendo en cuenta tanto la ruta relativa de la imagen como la ubicación del componente actual. */
 
-        const imgURL = new URL(`../../${testimonial.img}`, import.meta.url);
-        console.log("imgURL:", imgURL);
+        /*    const imgURL = new URL(`../../${testimonial.img}`, import.meta.url);
+        console.log("imgURL:", imgURL); */
         return (
           <TestimonialCardStyled key={testimonial.id}>
             <div></div>
@@ -37,7 +67,7 @@ export const TestimonialCard = () => {
             <h3>{testimonial.name}</h3>
             <h5>{testimonial.job} </h5>
             <p>{testimonial.comment}</p>
-            <img src={imgURL} alt={testimonial.name} />
+            <img src={testimonial.img} alt={testimonial.name} />
           </TestimonialCardStyled>
         );
       })}
