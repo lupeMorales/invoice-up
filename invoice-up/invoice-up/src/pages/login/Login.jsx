@@ -5,23 +5,37 @@ import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
+  const [formIsSend, setFormIsSend] = useState(false);
+  const [form, setForm] = useState({
+    mail: "",
+    password: "",
+  });
 
-  const handleForm = (ev) => {
+  const handleInputChange = (ev) => {
+    const { name, value } = ev.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const handleSubmit = (ev) => {
     ev.preventDefault();
+    setFormIsSend(true);
     console.log("Formulario de logueo enviado");
-    console.log("mail", mail);
-    console.log("password", password);
+    console.log("data", form);
+    //reset form
+    setForm({
+      mail: "",
+      password: "",
+    });
+
+    //navigate to dashboard
     navigate("/dashboard");
   };
   return (
     <LoginStyled>
       <div>
         <img src={image} alt="peopele conected" />
-        <form onSubmit={handleForm}>
+        <form onSubmit={handleSubmit}>
           {" "}
           <h1>Hola de nuevo</h1>
           <h3>Nos alegra verte otra vez</h3>
@@ -32,8 +46,8 @@ export const Login = () => {
               id="mail"
               name="mail"
               placeholder="email@email.com"
-              value={mail}
-              onChange={(ev) => setMail(ev.target.value)}
+              value={form.mail}
+              onChange={handleInputChange}
               required
             ></input>
           </label>
@@ -43,8 +57,8 @@ export const Login = () => {
               type="password"
               id="password"
               name="password"
-              value={password}
-              onChange={(ev) => setPassword(ev.target.value)}
+              value={form.password}
+              onChange={handleInputChange}
               required
             ></input>
           </label>

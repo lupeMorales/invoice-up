@@ -2,12 +2,10 @@ import { Button } from "../../components/atoms/buttons/Button";
 import { RegisterStyled } from "./RegisterStyled";
 import image from "../../assets/welcome.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export const Register = () => {
-  /*   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState(""); */
+  const navigate = useNavigate();
   const [formIsSend, setFormIsSend] = useState(false);
   const [form, setForm] = useState({
     username: "",
@@ -28,11 +26,13 @@ export const Register = () => {
     setFormIsSend(true);
     console.log("Genial, tu cuenta ha sido creada");
     console.log("Data:", form);
+    //reset form
     setForm({
       username: "",
       email: "",
       password: "",
     });
+    navigate("/login");
   };
 
   return (
