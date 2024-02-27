@@ -28,6 +28,11 @@ export const Register = () => {
     setFormIsSend(true);
     console.log("Genial, tu cuenta ha sido creada");
     console.log("Data:", form);
+    setForm({
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (

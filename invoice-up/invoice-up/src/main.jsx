@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobalStyle from "./GlobalStyle";
 import ReactDOM from "react-dom/client";
-import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Form,
+  Link,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import Theme from "./Theme";
 import { Home } from "./pages/Home";
 import { Page404 } from "./pages/Page404";
@@ -10,6 +15,18 @@ import { Register } from "./pages/register/Register";
 import { CalculatorPage } from "./pages/CalculatorPage";
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import { ProtectedRoute } from "./utils/ProtectedRoute";
+
+/* export const main = () => {
+  const [user, setUser] = useState([]);
+  const handleFormSubmit = (ev) => {
+    setUser([...user, ev]);
+  };
+  return (
+    <>
+      <Form onSubmit={handleFormSubmit} />
+    </>
+  );
+}; */
 
 const router = createBrowserRouter([
   {
