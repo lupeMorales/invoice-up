@@ -5,16 +5,29 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Register = () => {
-  const [username, setUsername] = useState("");
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
+  /*   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState(""); */
+  const [formIsSend, setFormIsSend] = useState(false);
+  const [form, setForm] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (ev) => {
+    const { name, value } = ev.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
+    setFormIsSend(true);
     console.log("Genial, tu cuenta ha sido creada");
-    console.log("User:", username);
-    console.log("mail:", mail);
-    console.log("password:", password);
+    console.log("Data:", form);
   };
 
   return (
@@ -31,8 +44,8 @@ export const Register = () => {
               type="text"
               id="username"
               name="username"
-              value={username}
-              onChange={(ev) => setUsername(ev.target.value)}
+              value={form.username}
+              onChange={handleInputChange}
               required
             ></input>
           </label>
@@ -43,8 +56,8 @@ export const Register = () => {
               id="email"
               name="email"
               placeholder="email@email.com"
-              value={mail}
-              onChange={(ev) => setMail(ev.target.value)}
+              value={form.email}
+              onChange={handleInputChange}
               required
             ></input>
           </label>
@@ -54,8 +67,8 @@ export const Register = () => {
               type="password"
               id="password"
               name="password"
-              value={password}
-              onChange={(ev) => setPassword(ev.target.value)}
+              value={form.password}
+              onChange={handleInputChange}
               required
             ></input>
           </label>
