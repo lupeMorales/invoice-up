@@ -1,8 +1,9 @@
-import { Hero } from "../components/layout/hero/Hero";
-import image from "../assets/calculator.png";
-import { DiagonalSparator } from "../components/atoms/DiagonalSeparator";
-import { Heading } from "../components/molecules/Heading";
-import { Header } from "../components/layout/header/Header";
+import image from "../../assets/calculator.png";
+import { DiagonalSparator } from "../../components/atoms/DiagonalSeparator";
+import { Heading } from "../../components/molecules/Heading";
+import { Header } from "../../components/layout/header/Header";
+import { Hero } from "../../components/layout/hero/Hero";
+import { Calculator } from "./Calculator";
 
 export const CalculatorPage = () => {
   return (
@@ -22,6 +23,7 @@ export const CalculatorPage = () => {
         podrás saber facilmente cuánto vas a ganar y cuanto tendrás que pagar o
         exigir de IVA e IRPF."
       />
+      <Calculator></Calculator>
     </div>
   );
 };

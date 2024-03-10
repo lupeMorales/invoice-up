@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 // con esto validamos si el usuario esta o no autenticado
 export const ProtectedRoute = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
   return isAuth ? <Outlet /> : <Navigate to="/register" replace />;
 };
 

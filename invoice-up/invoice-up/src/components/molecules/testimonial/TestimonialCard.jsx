@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import dataTestimonial from "../../../data/testimonials.json";
-import { TestimonialCardStyled } from "./TestimonialCardStyled.js";
+import { TestimonialCardStyled } from "./TestimonialCardStyled";
 
 function useAssets(asset) {
-  const assets = import.meta.glob("../../assets", { eager: true });
+  const assets = import.meta.glob("../../../assets/*", { eager: true });
+
+  console.warn({ assets });
 
   if (assets[asset]) {
     return assets[asset].default;
@@ -19,7 +21,7 @@ export const TestimonialCard = () => {
 
       for (let index = 0; index < dataTestimonial.length; index++) {
         const element = dataTestimonial[index];
-        const image = useAssets("../../assets" + element.img);
+        const image = useAssets("../../../assets" + element.img);
 
         result.push({
           ...element,
@@ -28,6 +30,7 @@ export const TestimonialCard = () => {
       }
 
       setInfoTestimonial(result);
+      console.log(infoTestimonial);
     };
 
     get();
@@ -63,7 +66,6 @@ export const TestimonialCard = () => {
                 <path d="M22.22,26.06c.09,0,8.78-.14,8.78-11.89a7.22,7.22,0,1,0-9.78,6.73v4.16A1,1,0,0,0,22.22,26.06ZM18.56,14.17a5.22,5.22,0,1,1,10.44,0c0,7.5-3.89,9.31-5.78,9.75V20.17a1,1,0,0,0-.75-1A5.21,5.21,0,0,1,18.56,14.17Z"></path>{" "}
               </g>
             </svg>
-
             <h3>{testimonial.name}</h3>
             <h5>{testimonial.job} </h5>
             <p>{testimonial.comment}</p>

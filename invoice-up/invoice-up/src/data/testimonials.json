@@ -1,27 +1,27 @@
 [
   {
-    "img": "photo1.png",
+    "img": "photo1.jpg",
     "name": "Ana García",
     "job": "empresaria",
     "id": 1,
     "comment": "Antes de usar InvoiceUp, crear facturas era tedioso. Ahora, puedo crear facturas perfectas en cuestión de minutos, con la tranquilidad de saber que son legalmente válidas."
   },
   {
-    "img": "photo2.png",
+    "img": "photo2.jpg",
     "name": "Juan Pérez",
     "job": "freelancer ",
     "id": 2,
     "comment": "InvoiceUp me ha ahorrado mucho tiempo y dinero. Ya no tengo que pagar a un contador para que revise mis facturas, y puedo estar seguro de que siempre cumplo con la ley."
   },
   {
-    "img": "photo3.png",
+    "img": "photo3.jpg",
     "name": "María López",
     "job": "Propietaría de un pequeño negocio",
     "id": 3,
     "comment": "InvoiceUp es una herramienta fácil de usar y muy intuitiva. Incluso si no eres un experto en tecnología, puedes crear facturas profesionales con facilidad."
   },
   {
-    "img": "photo4.png",
+    "img": "photo4.jpg",
     "name": "Pedro Martinez",
     "job": "consultor independiente",
     "id": 4,
@@ -29,7 +29,7 @@
   },
 
   {
-    "img": "photo6.png",
+    "img": "photo6.jpg",
     "name": "David Fernández",
     "job": "Emprendedor",
     "id": 5,

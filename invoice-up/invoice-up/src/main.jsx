@@ -12,7 +12,7 @@ import { Home } from "./pages/Home";
 import { Page404 } from "./pages/Page404";
 import { Login } from "./pages/login/Login";
 import { Register } from "./pages/register/Register";
-import { CalculatorPage } from "./pages/CalculatorPage";
+import { CalculatorPage } from "./pages/calculator/CalculatorPage";
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import { ProtectedRoute } from "./utils/ProtectedRoute";
 
