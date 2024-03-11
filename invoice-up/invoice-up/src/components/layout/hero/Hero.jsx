@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Button } from "../../atoms/buttons/Button";
 import { HeroStyled, HeroStyledBounce } from "./HeroStyled";
+import { Link } from "react-router-dom";
 
 export const Hero = (props) => {
   return (
@@ -8,7 +9,9 @@ export const Hero = (props) => {
       <div>
         <h1>{props.title}</h1>
         <h3>{props.subtitle}</h3>
-        <Button action={props.action}></Button>
+        <Link to={props.path}>
+          <Button action={props.action} onClick={props.onClick}></Button>
+        </Link>
       </div>
       <img
         src={props.image}
@@ -35,7 +38,9 @@ export const HeroBounce = (props) => {
       <div>
         <h1>{props.title}</h1>
         <h3>{props.subtitle}</h3>
-        <Button action={props.action}></Button>
+        <Link to={props.path}>
+          <Button action={props.action} onClick={props.onClick}></Button>
+        </Link>
       </div>
       <img
         src={props.image}
@@ -49,9 +54,13 @@ HeroStyledBounce.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  action: PropTypes.string.isRequired,
+  onClick: PropTypes.function,
+  path: PropTypes.string,
 };
 
 HeroStyledBounce.defaultProps = {
   title: "Aqui va un título",
   subtitle: "Aqui va un subtítulo",
+  action: "click me!",
 };
