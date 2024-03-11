@@ -4,9 +4,9 @@ export const Calculator = () => {
   return (
     <>
       {" "}
-      <h2>Rellena los datos y obtén el importe final de tu factura</h2>
       <CalculatorStyled>
         <form>
+          <h2>Rellena los datos y obtén el importe final de tu factura</h2>
           <fieldset>
             <label>Base imponible (€)</label>
             <input type="text" id="tax-base" />

@@ -21,8 +21,10 @@ export const CalculatorPage = () => {
         subtitle="Si eres autónomo y quieres tener las cuetas claras, ahora puedes
         aprovechar las ventajas de nuestra calculadora para autónomos. Con ella
         podrás saber facilmente cuánto vas a ganar y cuanto tendrás que pagar o
-        exigir de IVA e IRPF."
+        exigir de IVA e IRPF.
+        "
       />
+
       <Calculator></Calculator>
     </div>
   );

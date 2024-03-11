@@ -7,6 +7,12 @@ export const CalculatorStyled = styled.main`
   justify-content: space-evenly;
   align-items: center;
 
+  h2 {
+    font-size: ${(props) => props.theme.fontSizes.small};
+    color: ${(props) => props.theme.color.dark_text};
+    padding: 20px 0;
+  }
+
   form {
     display: flex;
     flex-direction: column;
