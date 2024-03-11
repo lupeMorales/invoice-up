@@ -8,12 +8,12 @@ export const Calculator = () => {
       <CalculatorStyled>
         <form>
           <fieldset>
-            <legend>Base imponible (€)</legend>
+            <label>Base imponible (€)</label>
             <input type="text" id="tax-base" />
           </fieldset>
 
           <fieldset>
-            <legend>Impuestos</legend>
+            <label>Impuestos</label>
             <div>
               <input type="radio" id="iva" checked="checked" />
               <label htmlFor="iva">
@@ -67,6 +67,7 @@ export const Calculator = () => {
           <div>
             <p>Precio con IVA:</p>
             <p>0,00 €</p>
+
             <p>IMPORTE TOTAL FACTURA:</p>
             <p>0,00 €</p>
           </div>

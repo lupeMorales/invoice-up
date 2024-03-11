@@ -8,7 +8,13 @@ export const CalculatorStyled = styled.main`
   align-items: center;
 
   form {
-    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+    width: 500px;
+    min-width: 360px;
+    padding: 80px 30px;
     border-radius: 20px;
     box-shadow: 5px 10px 20px ${(props) => props.theme.color.grey};
   }
@@ -20,7 +26,7 @@ export const CalculatorStyled = styled.main`
   fieldset div {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: start;
     align-items: baseline;
   }
 
@@ -28,14 +34,26 @@ export const CalculatorStyled = styled.main`
     border: 1px solid ${(props) => props.theme.color.dark_text};
   }
   legend {
-    font-size: ${(props) => props.theme.fontSizes.xsmall};
+    font-size: ${(props) => props.theme.fontSizes.small};
     color: ${(props) => props.theme.color.dark_text};
+    padding: 20px;
   }
   label {
     font-size: ${(props) => props.theme.fontSizes.small};
     color: ${(props) => props.theme.color.dark_text};
   }
+  input {
+    font-size: ${(props) => props.theme.fontSizes.small};
+    border: 1px solid ${(props) => props.theme.color.dark_text};
+    border-radius: 5px;
+    padding: 5px;
+    text-align: end;
+    margin: 8px 15px 25px 45px;
+  }
   section div:nth-child(1) {
+    width: 500px;
+    min-width: 360px;
+    margin-bottom: 30px;
     padding: 30px;
     background-color: ${(props) => props.theme.color.primary};
     border-radius: 20px;
