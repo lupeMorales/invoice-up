@@ -3,16 +3,12 @@ import { CalculatorStyled } from "./CalculatorStyled";
 
 export const Calculator = () => {
   const [formData, setFormData] = useState({
-    taxBase: "",
+    taxBase: "€",
     iva: "",
     irpf: "",
   });
 
-  const [formIsSend, setFormIsSend] = useState(false);
-
-  const [iva, setIva] = useState(0);
-  const [irpf, setIrpf] = useState(0);
-  const [taxBase, setTaxBase] = useState(0);
+  // const [formIsSend, setFormIsSend] = useState(false);
 
   const [price, setPrice] = useState(0);
   const [totalInvoice, setTotalInvoice] = useState(0);
@@ -24,7 +20,7 @@ export const Calculator = () => {
       ...formData,
       [name]: value,
     });
-    console.log("no misiela");
+
     calculateResult();
   };
 
@@ -38,18 +34,21 @@ export const Calculator = () => {
     percentage * (parseInt(formData.taxBase) / 100);
 
   const calculateResult = () => {
-    setIva(calculate(parseInt(formData.iva)));
-    setIrpf(calculate(parseInt(formData.irpf)));
-    setTaxBase(parseInt(formData.taxBase));
+    const ivaAmount = calculate(parseInt(formData.iva));
+    const irpfAmount = calculate(parseInt(formData.irpf));
+    const baseAmount = parseInt(formData.taxBase);
 
-    setPrice((taxBase + iva).toFixed(2));
-    setTotalInvoice((taxBase + iva - irpf).toFixed(2));
-    setTotalToReceive((taxBase - irpf).toFixed(2));
+    setPrice((baseAmount + ivaAmount).toFixed(2));
+    setTotalInvoice((baseAmount + ivaAmount - irpfAmount).toFixed(2));
+    setTotalToReceive((baseAmount - irpfAmount).toFixed(2));
 
     console.log("calculate");
-    console.log("irpf", irpf);
-    console.log("iva", iva);
-    console.log("taxBase", taxBase);
+    console.log("irpfAmount", irpfAmount);
+    console.log("formData irpf", formData.irpf);
+    console.log("ivaAmount", ivaAmount);
+    console.log("formData iva", formData.iva);
+    console.log("baseAmount", baseAmount);
+    console.log("form taxbase", formData.taxBase);
   };
 
   return (
@@ -91,7 +90,6 @@ export const Calculator = () => {
                 id="iva"
                 name="iva"
                 value={formData.iva}
-                //  placeholder="21"
                 max={21}
                 min={0}
                 title="Indica el IVA"
@@ -117,7 +115,6 @@ export const Calculator = () => {
                 type="number"
                 id="irpf"
                 name="irpf"
-                //  placeholder="15"
                 value={formData.irpf}
                 max={15}
                 min={0}
@@ -126,6 +123,8 @@ export const Calculator = () => {
               />
               <p>{calculate(formData.irpf)}€</p>
             </div>
+
+            <input type="text" onChange={handleChange} />
           </fieldset>
         </form>
 
@@ -134,12 +133,12 @@ export const Calculator = () => {
             <p>Precio con IVA:</p>
             <p>{price}€</p>
 
-            <p>IMPORTE TOTAL FACTURA:</p>
+            <p>TOTAL FACTURA:</p>
             <p>{totalInvoice}€</p>
           </div>
 
           <div>
-            <p>Lo que me llevo:</p>
+            <p>Neto sin IVA:</p>
             <p>{totalToReceive}€</p>
           </div>
         </section>
