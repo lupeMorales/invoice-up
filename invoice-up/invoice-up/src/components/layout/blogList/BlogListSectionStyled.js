@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 export const BlogListSectionStyled = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 0 0 20px 0;
+  gap: 1.5rem;
+  padding: 80px 0;
 `;

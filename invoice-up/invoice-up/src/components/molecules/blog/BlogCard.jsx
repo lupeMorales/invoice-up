@@ -10,9 +10,10 @@ export const BlogCard = () => {
       setNews(response.data);
     });
   }, []);
+
   return (
     <>
-      {news.map((newsItem) => {
+      {news.slice(Math.max(news.length - 3, 0)).map((newsItem) => {
         return (
           <BlogCardStyled key={newsItem.id}>
             <img src={newsItem.image} alt={newsItem.title} />
