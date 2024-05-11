@@ -10,6 +10,8 @@ import imageNoErrors from "../assets/no-errors.png";
 import { CTA } from "../components/layout/CTA";
 import { TestimonialSection } from "../components/layout/TestimonialSection";
 import { Footer } from "../components/layout/footer/Footer";
+//import { BlogCard } from "../components/molecules/blog/BlogCard";
+import { BlogListSection } from "../components/layout/blogList/BlogListSection";
 
 export const Home = () => {
   return (
@@ -60,6 +62,7 @@ Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un re
         subtitle="Olvídate de los cálculos complicados. Usa nuestra calculadora de autónomos GRATIS."
       ></CTA>
       <TestimonialSection />
+      <BlogListSection />
       <Footer />
     </div>
   );

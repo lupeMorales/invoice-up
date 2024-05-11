@@ -7,6 +7,12 @@ const StyledCard = styled.article`
   border: 1px solid ${(props) => props.theme.color.light_primary};
   border-radius: 5px;
   background-color: #fafafa;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(0.9);
+    background-color: ${(props) => props.theme.color.light_text};
+    border: 2px solid ${(props) => props.theme.color.primary};
+  }
 
   h3,
   p {

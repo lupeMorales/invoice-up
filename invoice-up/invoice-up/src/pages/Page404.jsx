@@ -1,7 +1,6 @@
 import { HeroBounce } from "../components/layout/hero/Hero";
 import image from "../assets/404.png";
 import { DiagonalSparator } from "../components/atoms/DiagonalSeparator";
-import { Navigate, useNavigate } from "react-router-dom";
 
 export const Page404 = () => {
   return (
