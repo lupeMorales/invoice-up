@@ -1,15 +1,67 @@
+import { useState } from "react";
 import { CalculatorStyled } from "./CalculatorStyled";
 
 export const Calculator = () => {
+  const [formData, setFormData] = useState({
+    taxBase: "",
+    iva: "",
+    irpf: "",
+  });
+
+  const [price, setPrice] = useState(0);
+  const [totalInvoice, setTotalInvoice] = useState(0);
+  const [totalToReceive, setTotalToReceive] = useState(0);
+
+  const handleChange = (ev) => {
+    const { name, value } = ev.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    console.log("no misiela");
+    console.log(formData);
+  };
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    calculateResult();
+  };
+
+  const onlyNumberAllow = (ev) => {
+    if (isNaN(ev.key) && ev.key !== "Backspace" && ev.key !== "Enter") {
+      ev.preventDefault();
+    }
+  };
+
+  const calculate = (percentage) =>
+    percentage * (parseInt(formData.taxBase) / 100).toFixed(2);
+
+  const calculateResult = () => {
+    const ivaAmount = calculate(parseInt(formData.iva));
+    const irpfAmount = calculate(parseInt(formData.irpf));
+    const baseAmount = parseInt(formData.taxBase);
+
+    setPrice(baseAmount + ivaAmount).toFixed(2);
+    setTotalInvoice(baseAmount + ivaAmount - irpfAmount).toFixed(2);
+    setTotalToReceive(baseAmount - irpfAmount).toFixed(2);
+  };
+
   return (
     <>
       {" "}
       <CalculatorStyled>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h2>Rellena los datos y obtén el importe final de tu factura</h2>
           <fieldset>
             <label>Base imponible (€)</label>
-            <input type="text" id="tax-base" />
+            <input
+              type="text"
+              id="taxBase"
+              name="taxBase"
+              value={formData.taxBase}
+              onChange={handleChange}
+              onKeyDown={onlyNumberAllow}
+            />
           </fieldset>
 
           <fieldset>
@@ -30,15 +82,24 @@ export const Calculator = () => {
               </label>
               <input
                 type="number"
-                value="21"
-                max="21"
-                min="0"
+                id="iva"
+                name="iva"
+                value={formData.iva}
+                //  placeholder="21"
+                max={21}
+                min={0}
                 title="Indica el IVA"
+                onChange={handleChange}
               />
-              <p>0,00 €</p>
+              <p>{calculate(formData.iva)}€</p>
             </div>
             <div>
-              <input type="radio" id="irpf" checked="checked" class="radio" />
+              <input
+                type="radio"
+                id="irpf"
+                checked="checked"
+                className="radio"
+              />
               <label htmlFor="irpf">
                 IRPF (%)
                 {/*        <span>
@@ -53,12 +114,16 @@ export const Calculator = () => {
               </label>
               <input
                 type="number"
-                value="15"
+                id="irpf"
+                name="irpf"
+                //  placeholder="15"
+                value={formData.irpf}
                 max="15"
                 min="0"
                 title="Indica el IRPF"
+                onChange={handleChange}
               />
-              <p>0,00 €</p>
+              <p>{calculate(formData.irpf)}€</p>
             </div>
           </fieldset>
         </form>
@@ -66,15 +131,15 @@ export const Calculator = () => {
         <section>
           <div>
             <p>Precio con IVA:</p>
-            <p>0,00 €</p>
+            <p>{price}€</p>
 
             <p>IMPORTE TOTAL FACTURA:</p>
-            <p>0,00 €</p>
+            <p>{totalInvoice}€</p>
           </div>
 
           <div>
             <p>Lo que me llevo:</p>
-            <p>0,00 €</p>
+            <p>{totalToReceive}€</p>
           </div>
         </section>
       </CalculatorStyled>

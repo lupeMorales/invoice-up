@@ -41,7 +41,7 @@ export const Form = ({ onSubmit }) => {
           type="text"
           name="name"
           id="name"
-          placeholder="nombre de  emisor"
+          placeholder="nombre de emisor"
           value={form.name}
           onChange={handleChange}
         />
