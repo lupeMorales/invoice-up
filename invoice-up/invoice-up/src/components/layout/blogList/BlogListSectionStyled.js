@@ -7,5 +7,5 @@ export const BlogListSectionStyled = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  padding: 80px 0;
+  padding: 200px 0 0 0;
 `;

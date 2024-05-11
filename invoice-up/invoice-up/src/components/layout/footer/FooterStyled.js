@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FooterStyled = styled.footer`
-  margin-top: 300px;
+  margin-top: 0px;
   height: 70vh;
   background-image: linear-gradient(
     to bottom,
