@@ -13,6 +13,7 @@ export const BlogCard = () => {
 
   return (
     <>
+      {/* slice get only the 3 latest news */}
       {news.slice(Math.max(news.length - 3, 0)).map((newsItem) => {
         return (
           <BlogCardStyled key={newsItem.id}>

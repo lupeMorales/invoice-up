@@ -38,7 +38,7 @@ export const TestimonialCard = () => {
 
   // const [testimonialList, setTestimonialList] = useState(dataTestimonial);
   return (
-    <div>
+    <>
       {infoTestimonial.map((testimonial) => {
         /*       la línea está construyendo una URL completa para la imagen, teniendo en cuenta tanto la ruta relativa de la imagen como la ubicación del componente actual. */
 
@@ -73,6 +73,6 @@ export const TestimonialCard = () => {
           </TestimonialCardStyled>
         );
       })}
-    </div>
+    </>
   );
 };

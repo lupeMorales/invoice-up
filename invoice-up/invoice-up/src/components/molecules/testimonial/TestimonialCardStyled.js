@@ -4,8 +4,9 @@ export const TestimonialCardStyled = styled.div`
   display: inline-block;
   position: relative;
   width: 320px;
+  min-width: 320px;
   padding: 80px 30px;
-  margin: 0 10px;
+  margin: 50px 20px;
   aspect-ratio: 1/1;
   border-radius: 5px;
   overflow: hidden;
