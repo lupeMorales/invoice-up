@@ -57,7 +57,7 @@ export const TestimonialSection = () => {
   return (
     <Wrapper>
       <Heading
-        title="Nuestros cliente opinan"
+        title="Nuestros clientes opinan"
         subtitle="Las opiniones de nuestros clientes son nuestras mejor recompensa."
       ></Heading>
       <ul>
