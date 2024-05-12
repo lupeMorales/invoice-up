@@ -16,5 +16,5 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  actior: "facturar",
+  action: "facturar",
 };

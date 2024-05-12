@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CalculatorStyled } from "./CalculatorStyled";
+import { Button } from "../../components/atoms/buttons/Button";
 
 export const Calculator = () => {
   const [formData, setFormData] = useState({
@@ -85,6 +86,7 @@ export const Calculator = () => {
                   </a>{" "}
                 </span> */}
               </label>
+              <Button action="+"></Button>
               <input
                 type="number"
                 id="iva"
