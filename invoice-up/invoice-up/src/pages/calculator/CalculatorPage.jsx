@@ -3,6 +3,7 @@ import { DiagonalSparator } from "../../components/atoms/DiagonalSeparator";
 import { Heading } from "../../components/molecules/Heading";
 import { Header } from "../../components/layout/header/Header";
 import { Hero } from "../../components/layout/hero/Hero";
+import { Footer } from "../../components/layout/footer/Footer";
 import { Calculator } from "./Calculator";
 
 export const CalculatorPage = () => {
@@ -26,6 +27,7 @@ export const CalculatorPage = () => {
       />
 
       <Calculator></Calculator>
+      <Footer></Footer>
     </div>
   );
 };
