@@ -22,11 +22,14 @@ export const HeaderStyled = styled.header`
     font-family: ${(props) => props.theme.fonts.titleFont};
     font-size: ${(props) => props.theme.fontSizes.small};
     color: ${(props) => props.theme.color.light_text};
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: ${(props) => props.theme.color.accent};
+      padding: 8px;
+      border-radius: 50px;
+    }
   }
 
-  li:hover {
-    color: ${(props) => props.theme.color.accent};
-  }
   Button {
     margin: 0 5px;
   }
