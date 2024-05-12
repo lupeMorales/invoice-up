@@ -2,7 +2,7 @@ import { ButtonInfoStyled } from "./ButtonInfoStyled";
 import PropTypes from "prop-types";
 
 export const ButtonInfo = (props) => {
-  return <ButtonInfoStyled>{props.action}</ButtonInfoStyled>;
+  return <ButtonInfoStyled {...props}>{props.action}</ButtonInfoStyled>;
 };
 
 ButtonInfo.propTypes = {

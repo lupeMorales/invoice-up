@@ -1,8 +1,19 @@
 import { useState } from "react";
 import { CalculatorStyled } from "./CalculatorStyled";
 import { ButtonInfo } from "../../components/atoms/buttons/ButtonInfo";
-
+import { ModalInfo } from "../../components/atoms/modal/ModalInfo.jsx";
+import { Button } from "../../components/atoms/buttons/Button";
 export const Calculator = () => {
+  //modal logic
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = (ev) => {
+    ev.preventDefault();
+    console.log("hello!");
+    setShowModal((prev) => !prev);
+  };
+
   const [formData, setFormData] = useState({
     taxBase: "€",
     iva: "",
@@ -98,22 +109,15 @@ export const Calculator = () => {
                 onChange={handleChange}
               />
               <p>{calculate(formData.iva)}€</p>
-              <ButtonInfo></ButtonInfo>
+              <ButtonInfo onClick={openModal}></ButtonInfo>
+              <ModalInfo
+                showModal={showModal}
+                setShowModal={setShowModal}
+              ></ModalInfo>
             </div>
             <div>
               <input type="radio" id="irpf" checked="checked" />
-              <label htmlFor="irpf">
-                IRPF (%)
-                {/*        <span>
-                  <a
-                    href="https://www.infoautonomos.com/fiscalidad/irpf-autonomo/"
-                    target="_blank"
-                    title="info"
-                  >
-                    <img src="./assets/images/vectorInfo.png" alt="info icon" />
-                  </a>{" "}
-                </span> */}
-              </label>
+              <label htmlFor="irpf">IRPF (%)</label>
               <input
                 type="number"
                 id="irpf"
@@ -125,7 +129,6 @@ export const Calculator = () => {
                 onChange={handleChange}
               />
               <p>{calculate(formData.irpf)}€</p>
-              <ButtonInfo></ButtonInfo>
             </div>
 
             <input type="text" onChange={handleChange} />
