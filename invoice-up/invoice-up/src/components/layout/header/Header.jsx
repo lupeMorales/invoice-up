@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Button } from "../../atoms/buttons/Button";
-
 import { HeaderStyled } from "./HeaderStyled";
 
 //ojo cuidao! funciona pero no me gusta ** refactorizar **
@@ -13,7 +12,11 @@ const linkStyle = {
 export const Header = () => {
   return (
     <HeaderStyled>
-      <h2>InvoiceUp</h2>
+      <h2>
+        <Link to="/" style={linkStyle}>
+          InvoiceUp
+        </Link>
+      </h2>
       <ul>
         <li>
           <Link to="/" style={linkStyle}>
