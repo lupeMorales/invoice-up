@@ -44,7 +44,22 @@ export const FooterStyled = styled.footer`
     line-height: 1.5;
   }
   li {
+    position: relative;
     list-style: none;
     cursor: pointer;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      bottom: 8px;
+      left: 0;
+      background-color: ${(props) => props.theme.color.accent};
+      transform: scaleX(0);
+      transition: all 0.2s ease-in-out;
+    }
+    &:hover::after {
+      transform: scaleX(1);
+    }
   }
 `;
