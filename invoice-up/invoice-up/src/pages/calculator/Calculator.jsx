@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CalculatorStyled } from "./CalculatorStyled";
-import { Button } from "../../components/atoms/buttons/Button";
+import { ButtonInfo } from "../../components/atoms/buttons/ButtonInfo";
 
 export const Calculator = () => {
   const [formData, setFormData] = useState({
@@ -86,7 +86,7 @@ export const Calculator = () => {
                   </a>{" "}
                 </span> */}
               </label>
-              <Button action="+"></Button>
+
               <input
                 type="number"
                 id="iva"
@@ -98,6 +98,7 @@ export const Calculator = () => {
                 onChange={handleChange}
               />
               <p>{calculate(formData.iva)}€</p>
+              <ButtonInfo></ButtonInfo>
             </div>
             <div>
               <input type="radio" id="irpf" checked="checked" />
@@ -124,6 +125,7 @@ export const Calculator = () => {
                 onChange={handleChange}
               />
               <p>{calculate(formData.irpf)}€</p>
+              <ButtonInfo></ButtonInfo>
             </div>
 
             <input type="text" onChange={handleChange} />

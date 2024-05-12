@@ -1,8 +1,8 @@
 import { ButtonInfoStyled } from "./ButtonInfoStyled";
 import PropTypes from "prop-types";
 
-export const ButtonInfo = () => {
-  return <ButtonInfoStyled>ButtonInfo</ButtonInfoStyled>;
+export const ButtonInfo = (props) => {
+  return <ButtonInfoStyled>{props.action}</ButtonInfoStyled>;
 };
 
 ButtonInfo.propTypes = {
@@ -11,5 +11,5 @@ ButtonInfo.propTypes = {
 };
 
 ButtonInfo.defaultProps = {
-  action: "i",
+  action: "+ info",
 };
