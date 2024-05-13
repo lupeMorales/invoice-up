@@ -5,6 +5,7 @@ import { Header } from "../../components/layout/header/Header";
 import { Hero } from "../../components/layout/hero/Hero";
 import { Footer } from "../../components/layout/footer/Footer";
 import { Calculator } from "./Calculator";
+import { TableIva } from "../../components/tables/tableIVA/TableIva";
 
 export const CalculatorPage = () => {
   return (
@@ -27,6 +28,7 @@ export const CalculatorPage = () => {
       />
 
       <Calculator></Calculator>
+      <TableIva></TableIva>
       <Footer></Footer>
     </div>
   );
