@@ -6,4 +6,5 @@ export const ModalInfo = ({ showModal, setShowModal }) => {
 
 ModalInfo.propTypes = {
   showModal: PropTypes.bool,
+  setShowModal: PropTypes.bool,
 };

@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import { CalculatorStyled } from "./CalculatorStyled";
 import { ButtonInfo } from "../../components/atoms/buttons/ButtonInfo";
 import { ModalInfo } from "../../components/atoms/modal/ModalInfo.jsx";
-import { Button } from "../../components/atoms/buttons/Button";
+
 export const Calculator = () => {
   //modal logic
 
@@ -14,13 +15,16 @@ export const Calculator = () => {
     setShowModal((prev) => !prev);
   };
 
+  // ejecuta la función cada vez que se actualiza la constande de estado
+  useEffect(() => {
+    calculateResult(), [formData];
+  });
+
   const [formData, setFormData] = useState({
     taxBase: "€",
     iva: "",
     irpf: "",
   });
-
-  // const [formIsSend, setFormIsSend] = useState(false);
 
   const [price, setPrice] = useState(0);
   const [totalInvoice, setTotalInvoice] = useState(0);
@@ -32,8 +36,6 @@ export const Calculator = () => {
       ...formData,
       [name]: value,
     });
-
-    calculateResult();
   };
 
   const onlyNumberAllow = (ev) => {
@@ -85,18 +87,7 @@ export const Calculator = () => {
             <label>Impuestos</label>
             <div>
               <input type="radio" id="iva" checked="checked" />
-              <label htmlFor="iva">
-                IVA (%)
-                {/*   <span>
-                  <a
-                    href="https://centregestor.es/que-tipo-de-iva-debo-aplicar/#:~:text=Tanto%20si%20usted%20es%20el,%25)%20es%20el%20que%20corresponde."
-                    target="_blank"
-                    title="info"
-                  >
-                    <img src="./assets/images/vectorInfo.png" alt="info icon" />
-                  </a>{" "}
-                </span> */}
-              </label>
+              <label htmlFor="iva">IVA (%)</label>
 
               <input
                 type="number"
@@ -130,8 +121,6 @@ export const Calculator = () => {
               />
               <p>{calculate(formData.irpf)}€</p>
             </div>
-
-            <input type="text" onChange={handleChange} />
           </fieldset>
         </form>
 
