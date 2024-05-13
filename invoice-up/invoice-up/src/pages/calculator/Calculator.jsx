@@ -1,20 +1,36 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { Tooltip } from "react-tooltip";
 import { CalculatorStyled } from "./CalculatorStyled";
 import { ButtonInfo } from "../../components/atoms/buttons/ButtonInfo";
-import { ModalInfo } from "../../components/atoms/modal/ModalInfo.jsx";
+import styled from "styled-components";
+
+// Estilos del Tooltip
+const Category = styled.th`
+  font-family: ${(props) => props.theme.fonts.titleFont};
+  color: ${(props) => props.theme.color.primary};
+  padding-bottom: 20px;
+
+  font-size: ${(props) => props.theme.fontSizes.small};
+`;
+const Cell = styled.td`
+  text-align: ${(props) => (props.align === "start" ? "start" : "center")};
+  padding: 10px 20px;
+  font-size: ${(props) => props.theme.fontSizes.xsmall};
+  color: ${(props) => props.theme.color.darl_text};
+`;
+const Title = styled.caption`
+  font-size: ${(props) => props.theme.fontSizes.normal};
+  font-weight: 300;
+  font-family: ${(props) => props.theme.fonts.titleFont};
+  color: ${(props) => props.theme.color.primary};
+  text-align: center;
+`;
+const Table = styled.table`
+  padding: 4rem 2rem;
+`;
 
 export const Calculator = () => {
-  //modal logic
-
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = (ev) => {
-    ev.preventDefault();
-    console.log("hello!");
-    setShowModal((prev) => !prev);
-  };
-
   // ejecuta la función cada vez que se actualiza la constande de estado
   useEffect(() => {
     calculateResult(), [formData];
@@ -40,7 +56,7 @@ export const Calculator = () => {
 
   const onlyNumberAllow = (ev) => {
     if (isNaN(ev.key) && ev.key !== "Backspace" && ev.key !== "Enter") {
-      ev.preventDefault();
+      ev.prevenDataefault();
     }
   };
 
@@ -55,14 +71,6 @@ export const Calculator = () => {
     setPrice((baseAmount + ivaAmount).toFixed(2));
     setTotalInvoice((baseAmount + ivaAmount - irpfAmount).toFixed(2));
     setTotalToReceive((baseAmount - irpfAmount).toFixed(2));
-
-    console.log("calculate");
-    console.log("irpfAmount", irpfAmount);
-    console.log("formData irpf", formData.irpf);
-    console.log("ivaAmount", ivaAmount);
-    console.log("formData iva", formData.iva);
-    console.log("baseAmount", baseAmount);
-    console.log("form taxbase", formData.taxBase);
   };
 
   return (
@@ -100,11 +108,74 @@ export const Calculator = () => {
                 onChange={handleChange}
               />
               <p>{calculate(formData.iva)}€</p>
-              <ButtonInfo onClick={openModal}></ButtonInfo>
-              <ModalInfo
-                showModal={showModal}
-                setShowModal={setShowModal}
-              ></ModalInfo>
+              <ButtonInfo data-tooltip-id="tooltipIva"></ButtonInfo>
+              <Tooltip id="tooltipIva" variant="light">
+                <Table>
+                  <Title>Tipos impositivos en el IVA</Title>
+
+                  <tr>
+                    <Category>Tipo </Category>
+                    <Category>% </Category>
+                    <Category>Tipo de bienes</Category>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>21%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>10%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>4%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>0%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>7%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>3%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>9,5%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                </Table>
+              </Tooltip>
             </div>
             <div>
               <input type="radio" id="irpf" checked="checked" />
@@ -120,6 +191,74 @@ export const Calculator = () => {
                 onChange={handleChange}
               />
               <p>{calculate(formData.irpf)}€</p>
+              <ButtonInfo data-tooltip-id="tooltipIRPF"></ButtonInfo>
+              <Tooltip id="tooltipIRPF" variant="light">
+                <Table>
+                  <Title>Tipos impositivos en el IVA</Title>
+
+                  <tr>
+                    <Category>Tipo </Category>
+                    <Category>% </Category>
+                    <Category>Tipo de bienes</Category>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>21%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>10%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>4%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>0%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>7%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>3%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General</Cell>
+                    <Cell>9,5%</Cell>
+                    <Cell>
+                      La marotía de servicios y propductos como
+                      electrodomésticos, coches, entradas de cine...
+                    </Cell>
+                  </tr>
+                </Table>
+              </Tooltip>
             </div>
           </fieldset>
         </form>

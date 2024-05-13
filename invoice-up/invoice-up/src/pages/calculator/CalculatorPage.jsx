@@ -26,9 +26,7 @@ export const CalculatorPage = () => {
         exigir de IVA e IRPF.
         "
       />
-
       <Calculator></Calculator>
-      <TableIva></TableIva>
       <Footer></Footer>
     </div>
   );
