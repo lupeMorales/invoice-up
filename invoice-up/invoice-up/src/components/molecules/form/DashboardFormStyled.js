@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const DashboardFormStyled = styled.form`
-  border: solid 1px blue;
-
   input {
     display: block;
     width: calc(100% - 20px);
@@ -18,22 +16,44 @@ export const DashboardFormStyled = styled.form`
       color: white;
     }
   }
+  fieldset {
+    width: 100%;
+    height: auto;
+    margin: 40px 0 20px;
+    border: 2px solid transparent;
+    border-top-color: ${(props) => props.theme.color.accent};
+  }
+
+  legend {
+    margin: auto;
+    padding: 0 10px;
+    font-family: ${(props) => props.theme.fonts.titleFont};
+    font-size: ${(props) => props.theme.fontSizes.xsmall};
+    font-weight: 300;
+    color: ${(props) => props.theme.color.light_text};
+  }
 
   input {
     display: block;
     width: 100%;
+    // width: calc(100% - 20px);
+
     border-radius: 0.375rem;
-    border: 2px solid ${(props) => props.theme.color.light_accent};
+    border: 1px solid ${(props) => props.theme.color.accent};
     outline: 0;
-    background-color: ${(props) => props.theme.color.secondary};
+    background-color: transparent;
     padding: 0.75rem 1rem;
     color: rgba(243, 244, 246, 1);
     font-size: ${(props) => props.theme.fontSizes.xsmall};
-    margin: 5px 0 10px;
+    margin: 20px 0 10px;
   }
   input:focus {
     border-color: ${(props) => props.theme.color.accent};
     color: ${(props) => props.theme.color.dark_text};
     background-color: #fff;
+  }
+  .input-group {
+    display: flex;
+    column-gap: 20px;
   }
 `;

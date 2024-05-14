@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DashboardFormWrapper = styled.div`
-  width: 600px;
+  width: 500px;
   min-width: 320px;
   height: auto;
   padding: 40px;

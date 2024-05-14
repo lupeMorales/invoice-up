@@ -9,15 +9,18 @@ export const DashboardForm = ({ onSubmit }) => {
     phone: "",
     email: "",
     cif: "",
-    tax: "",
+    iva: "",
+    irpf: "",
     date: "",
     service: "",
+    quantity: "",
     price: "",
-    name2: "",
-    adress2: "",
-    phone2: "",
-    email2: "",
-    cif2: "",
+    id: "",
+    clientName: "",
+    clientAddress: "",
+    clientPhone: "",
+    clientMail: "",
+    clientCif: "",
   });
 
   const handleChange = (ev) => {
@@ -36,7 +39,6 @@ export const DashboardForm = ({ onSubmit }) => {
 
   return (
     <DashboardFormStyled onSubmit={handleSubmit}>
-      <h2>Información</h2>
       <fieldset>
         <legend>Datos de emisor</legend>
         <input
@@ -81,6 +83,54 @@ export const DashboardForm = ({ onSubmit }) => {
         />
       </fieldset>
       <fieldset>
+        <legend>Datos del cliente</legend>
+        <input
+          type="text"
+          name="clientName"
+          id="clientName"
+          placeholder="nombre de cliente"
+          value={form.clientName}
+          onChange={handleChange}
+          aria-label="nombre de cliente"
+        />
+        <input
+          type="text"
+          name="clientCif"
+          id="clientCif"
+          placeholder="cif"
+          value={form.clientCif}
+          onChange={handleChange}
+          aria-label="cif del cliente"
+        />
+        <input
+          type="number"
+          name="clientPhone"
+          id="clientPhone"
+          placeholder="Teléfono"
+          value={form.clientPhone}
+          onChange={handleChange}
+          aria-label="teléfono del cliente"
+        />
+        <input
+          type="text"
+          name="clientAddress"
+          id="clientAddress"
+          placeholder="dirección"
+          value={form.clientAddress}
+          onChange={handleChange}
+          aria-label="dirección del cliente"
+        />
+        <input
+          type="email"
+          name="clientMail"
+          id="clientMail"
+          placeholder="emaildelcliente@mail.com"
+          value={form.clientMail}
+          onChange={handleChange}
+          aria-label="email del cliente"
+        />
+      </fieldset>
+      <fieldset>
         <legend>Datos de servicio</legend>
         <input
           type="text"
@@ -90,74 +140,67 @@ export const DashboardForm = ({ onSubmit }) => {
           value={form.service}
           onChange={handleChange}
         />
-        <input
-          type="number"
-          name="price"
-          id="price"
-          placeholder="importe"
-          value={form.price}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="tax"
-          id="tax"
-          placeholder="tax"
-          value={form.tax}
-          onChange={handleChange}
-        />
-        <input
-          type="date"
-          name="date"
-          id="date"
-          placeholder="fecha"
-          value={form.date}
-          onChange={handleChange}
-        />
+        <div className="input-group">
+          <input
+            type="number"
+            name="price"
+            id="price"
+            placeholder="importe"
+            value={form.price}
+            onChange={handleChange}
+          />
+          <input
+            type="number"
+            name="quantity"
+            id="quuantity"
+            placeholder="cantidad"
+            value={form.quantity}
+            onChange={handleChange}
+            aria-label="cantidad"
+          />
+        </div>
+        <div className="input-group">
+          <input
+            type="number"
+            name="iva"
+            id="iva"
+            placeholder="iva"
+            value={form.iva}
+            onChange={handleChange}
+            aria-label="porcentage de IVA"
+          />
+          <input
+            type="number"
+            name="irpf"
+            id="irpf"
+            placeholder="irpf"
+            value={form.irpf}
+            onChange={handleChange}
+            aria-label="porcentage de IRPF"
+          />
+        </div>
+        <div className="input-group">
+          <input
+            type="date"
+            name="date"
+            id="date"
+            placeholder="fecha"
+            value={form.date}
+            onChange={handleChange}
+            aria-label="fecha de emisión de factura"
+          />
+          <input
+            type="number"
+            name="id"
+            id="id"
+            placeholder="numero de factura"
+            value={form.id}
+            onChange={handleChange}
+            aria-label="número de factura"
+          />
+        </div>
       </fieldset>
-      <fieldset>
-        <legend>Datos de empresa a la que facturo</legend>
-        <input
-          type="text"
-          name="name2"
-          id="name2"
-          placeholder="nombre de  emisor"
-          value={form.name2}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="cif2"
-          id="cif2"
-          placeholder="cif"
-          value={form.cif2}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="phone2"
-          id="phone2"
-          placeholder="Teléfono"
-          value={form.phone2}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="adress2"
-          id="adress2"
-          placeholder="dirección"
-          value={form.adress2}
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          name="email2"
-          id="email2"
-          placeholder="tuemail@rmail.com"
-          value={form.email2}
-          onChange={handleChange}
-        />
-      </fieldset>
+
       <Button>enviar</Button>
     </DashboardFormStyled>
   );
