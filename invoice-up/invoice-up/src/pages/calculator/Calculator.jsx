@@ -25,6 +25,16 @@ const Title = styled.caption`
   font-family: ${(props) => props.theme.fonts.titleFont};
   color: ${(props) => props.theme.color.primary};
   text-align: center;
+  padding-bottom: 20px;
+`;
+const Subtitle = styled.caption`
+  font-size: ${(props) => props.theme.fontSizes.xsmall};
+  font-weight: 300;
+  color: ${(props) => props.theme.color.dark_text};
+  text-align: center;
+  width: 500px;
+  padding-bottom: 20px;
+  text-align: center;
 `;
 const Table = styled.table`
   padding: 4rem 2rem;
@@ -122,28 +132,28 @@ export const Calculator = () => {
                     <Cell>General</Cell>
                     <Cell>21%</Cell>
                     <Cell>
-                      La marotía de servicios y propductos como
+                      La mayoría de servicios y propductos como
                       electrodomésticos, coches, entradas de cine...
                     </Cell>
                   </tr>
                   <tr>
-                    <Cell>General</Cell>
+                    <Cell>Reducido</Cell>
                     <Cell>10%</Cell>
                     <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
+                      Actividades culturales, medios de transporte o
+                      electricidad.
                     </Cell>
                   </tr>
                   <tr>
-                    <Cell>General</Cell>
+                    <Cell>Superreducido</Cell>
                     <Cell>4%</Cell>
                     <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
+                      Bienes de primera necesidad como alimentos esenciales o
+                      viviendas de protección oficial.
                     </Cell>
                   </tr>
                   <tr>
-                    <Cell>General</Cell>
+                    <Cell>Sin IVA</Cell>
                     <Cell>0%</Cell>
                     <Cell>
                       La marotía de servicios y propductos como
@@ -194,68 +204,56 @@ export const Calculator = () => {
               <ButtonInfo data-tooltip-id="tooltipIRPF"></ButtonInfo>
               <Tooltip id="tooltipIRPF" variant="light">
                 <Table>
-                  <Title>Tipos impositivos en el IVA</Title>
+                  <Title>
+                    Quién debe practicar retenciones IRPF y tipo a aplicar
+                  </Title>
+                  <Subtitle>
+                    Autónomos dados de alta en actividades empresariales no
+                    tiene que practicar retenciones
+                  </Subtitle>
+                  <Subtitle>
+                    Cualquier autónomo que esté facturando a un particular o
+                    empresa en el extranjero tampoco tiene que practicar
+                    retenciones.
+                  </Subtitle>
 
                   <tr>
-                    <Category>Tipo </Category>
-                    <Category>% </Category>
-                    <Category>Tipo de bienes</Category>
+                    <Category>Tipo de autónomo/actividad</Category>
+                    <Category>% retención</Category>
                   </tr>
                   <tr>
-                    <Cell>General</Cell>
-                    <Cell>21%</Cell>
-                    <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
-                    </Cell>
-                  </tr>
-                  <tr>
-                    <Cell>General</Cell>
-                    <Cell>10%</Cell>
-                    <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
-                    </Cell>
-                  </tr>
-                  <tr>
-                    <Cell>General</Cell>
-                    <Cell>4%</Cell>
-                    <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
-                    </Cell>
-                  </tr>
-                  <tr>
-                    <Cell>General</Cell>
-                    <Cell>0%</Cell>
-                    <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
-                    </Cell>
-                  </tr>
-                  <tr>
-                    <Cell>General</Cell>
+                    <Cell>Nuevo autónomo</Cell>
                     <Cell>7%</Cell>
-                    <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
-                    </Cell>
                   </tr>
                   <tr>
                     <Cell>General</Cell>
-                    <Cell>3%</Cell>
-                    <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
-                    </Cell>
+                    <Cell>15%</Cell>
                   </tr>
                   <tr>
-                    <Cell>General</Cell>
-                    <Cell>9,5%</Cell>
+                    <Cell>Alquileres o intereses</Cell>
+                    <Cell>19%</Cell>
+                  </tr>
+                  <tr>
                     <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
+                      Actividades agrícolas,<br></br> ganaderas y avicultura
                     </Cell>
+                    <Cell>1%</Cell>
+                  </tr>
+                  <tr>
+                    <Cell>Actividades forestales</Cell>
+                    <Cell>2%</Cell>
+                  </tr>
+                  <tr>
+                    <Cell>Nuevo autónomo en Ceuta y Melilla</Cell>
+                    <Cell>2,8%</Cell>
+                  </tr>
+                  <tr>
+                    <Cell>General(Ceuta y Melilla)</Cell>
+                    <Cell>6%</Cell>
+                  </tr>
+                  <tr>
+                    <Cell>Alquileres o intereses(Ceuta y Melilla)</Cell>
+                    <Cell>7,6%</Cell>
                   </tr>
                 </Table>
               </Tooltip>

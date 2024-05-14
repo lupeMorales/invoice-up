@@ -41,7 +41,7 @@ export const Register = () => {
         <img src={image} alt="" />
         <form onSubmit={handleSubmit}>
           {" "}
-          <h1>Wellcome</h1>
+          <h1>Welcome</h1>
           <h3>Nos alegra tenerte a bordo</h3>
           <label htmlFor="username">
             Nombre de usuario
