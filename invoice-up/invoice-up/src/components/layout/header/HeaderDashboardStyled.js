@@ -6,6 +6,9 @@ export const HeaderDashboardStyled = styled.header`
   align-items: center;
   padding: 20px 40px;
   background: ${(props) => props.theme.color.primary};
+  box-shadow: -1px 10px 20px 0px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: -1px 10px 20px 0px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: -1px 10px 20px 0px rgba(0, 0, 0, 0.33);
 
   h2 {
     font-weight: 400;
@@ -21,14 +24,15 @@ export const HeaderDashboardStyled = styled.header`
   li {
     list-style: none;
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 40px;
     font-family: ${(props) => props.theme.fonts.titleFont};
     font-size: ${(props) => props.theme.fontSizes.xsmall};
     color: ${(props) => props.theme.color.light_text};
     transition: all 0.2s ease-in-out;
+
     &:hover {
       background-color: ${(props) => props.theme.color.accent};
-      padding: 8px 6px;
+      padding: 8px 16px;
       border-radius: 50px;
     }
   }
