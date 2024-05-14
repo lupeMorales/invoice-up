@@ -13,7 +13,12 @@ export const Header = () => {
   return (
     <HeaderStyled>
       <h2>
-        <Link to="/" style={linkStyle}>
+        <Link
+          to="/"
+          style={linkStyle}
+          aria-label="Ir a inicio"
+          title="Ir a inicio"
+        >
           InvoiceUp
         </Link>
       </h2>

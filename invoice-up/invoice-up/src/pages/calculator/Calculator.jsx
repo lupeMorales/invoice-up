@@ -156,33 +156,24 @@ export const Calculator = () => {
                     <Cell>Sin IVA</Cell>
                     <Cell>0%</Cell>
                     <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
+                      Servicios y productos exentos(mascarillas, productos
+                      financieros o servicios de asistencia sanitaria)
                     </Cell>
                   </tr>
                   <tr>
-                    <Cell>General</Cell>
+                    <Cell>IGIC general</Cell>
                     <Cell>7%</Cell>
-                    <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
-                    </Cell>
+                    <Cell>En lugar del IVA se cobra el IGIC en Canarias</Cell>
                   </tr>
                   <tr>
-                    <Cell>General</Cell>
+                    <Cell>IGIC reducido</Cell>
                     <Cell>3%</Cell>
-                    <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
-                    </Cell>
+                    <Cell>En lugar del IVA se cobra el IGIC en Canarias</Cell>
                   </tr>
                   <tr>
-                    <Cell>General</Cell>
+                    <Cell>IGIC incrementado</Cell>
                     <Cell>9,5%</Cell>
-                    <Cell>
-                      La marotía de servicios y propductos como
-                      electrodomésticos, coches, entradas de cine...
-                    </Cell>
+                    <Cell>En lugar del IVA se cobra el IGIC en Canarias</Cell>
                   </tr>
                 </Table>
               </Tooltip>
