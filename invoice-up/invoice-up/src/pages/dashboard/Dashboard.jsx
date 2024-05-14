@@ -2,7 +2,9 @@ import { useState } from "react";
 import { FormMyDatas } from "../../components/forms/FormMyDatas";
 import { HeaderDashboard } from "../../components/layout/header/HeaderDashboard";
 import { Previewer } from "../../components/layout/previewer/Previewer";
-import { Form } from "../../components/molecules/form/Form";
+import { DashboardForm } from "../../components/molecules/form/DashboardForm";
+import { DashboardWrapper } from "./DashboardWrapper";
+import { DashboardFormWrapper } from "./DashboardFormWrapper";
 
 export const Dashboard = () => {
   const [dataForm, setDataForm] = useState([]);
@@ -17,10 +19,14 @@ export const Dashboard = () => {
   return (
     <>
       <HeaderDashboard />
-      <h1>Bienvenido a tu dashboard</h1>
-      <Form onSubmit={handleSubmit}></Form>
-      {/*     <FormMyDatas onSubmit={handleSubmit}></FormMyDatas> */}
-      <Previewer dataForm={dataForm}></Previewer>
+      <DashboardWrapper>
+        <DashboardFormWrapper>
+          {" "}
+          <DashboardForm onSubmit={handleSubmit}></DashboardForm>
+        </DashboardFormWrapper>
+
+        <Previewer></Previewer>
+      </DashboardWrapper>
     </>
   );
 };

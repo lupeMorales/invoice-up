@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { DashboardFormStyled } from "./DashboardFormStyled";
+import { Button } from "../../atoms/buttons/Button";
 
-export const Form = ({ onSubmit }) => {
+export const DashboardForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
     name: "",
     adress: "",
@@ -33,7 +35,7 @@ export const Form = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <DashboardFormStyled onSubmit={handleSubmit}>
       <h2>Información</h2>
       <fieldset>
         <legend>Datos de emisor</legend>
@@ -156,7 +158,7 @@ export const Form = ({ onSubmit }) => {
           onChange={handleChange}
         />
       </fieldset>
-      <button>enviar</button>
-    </form>
+      <Button>enviar</Button>
+    </DashboardFormStyled>
   );
 };

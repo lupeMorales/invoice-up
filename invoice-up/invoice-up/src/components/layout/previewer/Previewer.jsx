@@ -1,9 +1,12 @@
+import { PreviewerStyled } from "./PreviewerStyled";
+
 // eslint-disable-next-line react/prop-types
-export const Previewer = ({ dataForm }) => {
+
+export const Previewer = (/* { dataForm } */) => {
   //dataForm has been sended by dashboard
   return (
     <>
-      {dataForm.map((item) => {
+      {/*   {dataForm.map((item) => {
         return (
           <>
             <h1>{item.name}</h1>
@@ -16,7 +19,8 @@ export const Previewer = ({ dataForm }) => {
             <p>{item.email2}</p>
           </>
         );
-      })}
+      })} */}
+      <PreviewerStyled></PreviewerStyled>
     </>
   );
 };
