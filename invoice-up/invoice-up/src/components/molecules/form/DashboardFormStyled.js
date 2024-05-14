@@ -56,4 +56,12 @@ export const DashboardFormStyled = styled.form`
     display: flex;
     column-gap: 20px;
   }
+
+  p {
+    margin-top: 12px;
+    margin-bottom: -12px;
+    font-size: ${(props) => props.theme.fontSizes.xsmall};
+    color: ${(props) => props.theme.color.light_text};
+    font-weight: 100;
+  }
 `;

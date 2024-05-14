@@ -6,7 +6,7 @@ export const DashboardWrapper = styled.main`
   padding: 40px;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   background-image: linear-gradient(
     to bottom,
     ${(props) => props.theme.color.primary},
