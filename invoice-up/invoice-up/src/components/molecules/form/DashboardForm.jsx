@@ -2,8 +2,8 @@ import { useState } from "react";
 import { DashboardFormStyled } from "./DashboardFormStyled";
 import { Button } from "../../atoms/buttons/Button";
 
-export const DashboardForm = ({ onSubmit }) => {
-  const [form, setForm] = useState({
+export const DashboardForm = ({ createInvoice }) => {
+  const [dataForm, setDataForm] = useState({
     myName: "",
     myAddress: "",
     myPhone: "",
@@ -26,16 +26,38 @@ export const DashboardForm = ({ onSubmit }) => {
 
   const handleChange = (ev) => {
     const { name, value } = ev.target;
-    setForm({
-      ...form,
+    setDataForm({
+      ...dataForm,
       [name]: value,
     });
   };
-
+  const resetForm = () => {
+    setDataForm.myAddress("");
+    setDataForm.myAddress("");
+    setDataForm.myPhone("");
+    setDataForm.myEmail("");
+    setDataForm.myCif("");
+    setDataForm.iva("");
+    setDataForm.irpf("");
+    setDataForm.issueDate("");
+    setDataForm.expirationDate("");
+    setDataForm.service("");
+    setDataForm.quantity("");
+    setDataForm.price("");
+    setDataForm.id("");
+    setDataForm.clientName("");
+    setDataForm.clientAddress("");
+    setDataForm.clientPhone("");
+    setDataForm.clientMail("");
+    setDataForm.clientCif("");
+  };
   //send data to dashboard
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    onSubmit(form);
+    //** OJO ** hay que hacer comprovación si falta algún input por rellenar
+    createInvoice(dataForm);
+    //volver al estado inicial del formurario
+    resetForm();
   };
 
   return (
@@ -47,7 +69,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="myName"
           id="myName"
           placeholder="nombre de emisor"
-          value={form.myName}
+          value={dataForm.myName}
           onChange={handleChange}
           aria-label="nombre del emisor"
         />
@@ -56,7 +78,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="myAddress"
           id="myAddress"
           placeholder="dirección"
-          value={form.myAddress}
+          value={dataForm.myAddress}
           onChange={handleChange}
           aria-label="dirección del emisor"
         />
@@ -66,7 +88,7 @@ export const DashboardForm = ({ onSubmit }) => {
             name="myPhone"
             id="myPhone"
             placeholder="Teléfono"
-            value={form.myPhone}
+            value={dataForm.myPhone}
             onChange={handleChange}
             aria-label="teléfono del emisor"
           />
@@ -75,7 +97,7 @@ export const DashboardForm = ({ onSubmit }) => {
             name="myCif"
             id="myCif"
             placeholder="cif"
-            value={form.myCif}
+            value={dataForm.myCif}
             onChange={handleChange}
             aria-label="cif del emisor"
           />
@@ -86,7 +108,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="myEmail"
           id="email"
           placeholder="tuemail@rmail.com"
-          value={form.myEmail}
+          value={dataForm.myEmail}
           onChange={handleChange}
           aria-label="email del emisor"
         />
@@ -98,7 +120,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="clientName"
           id="clientName"
           placeholder="nombre de cliente"
-          value={form.clientName}
+          value={dataForm.clientName}
           onChange={handleChange}
           aria-label="nombre de cliente"
         />
@@ -107,7 +129,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="clientAddress"
           id="clientAddress"
           placeholder="dirección"
-          value={form.clientAddress}
+          value={dataForm.clientAddress}
           onChange={handleChange}
           aria-label="dirección del cliente"
         />
@@ -117,7 +139,7 @@ export const DashboardForm = ({ onSubmit }) => {
             name="clientPhone"
             id="clientPhone"
             placeholder="Teléfono"
-            value={form.clientPhone}
+            value={dataForm.clientPhone}
             onChange={handleChange}
             aria-label="teléfono del cliente"
           />
@@ -126,7 +148,7 @@ export const DashboardForm = ({ onSubmit }) => {
             name="clientCif"
             id="clientCif"
             placeholder="cif"
-            value={form.clientCif}
+            value={dataForm.clientCif}
             onChange={handleChange}
             aria-label="cif del cliente"
           />
@@ -137,7 +159,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="clientMail"
           id="clientMail"
           placeholder="emaildelcliente@mail.com"
-          value={form.clientMail}
+          value={dataForm.clientMail}
           onChange={handleChange}
           aria-label="email del cliente"
         />
@@ -149,7 +171,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="service"
           id="service"
           placeholder="servicio"
-          value={form.service}
+          value={dataForm.service}
           onChange={handleChange}
         />
         <div className="input-group">
@@ -158,7 +180,7 @@ export const DashboardForm = ({ onSubmit }) => {
             name="price"
             id="price"
             placeholder="importe"
-            value={form.price}
+            value={dataForm.price}
             onChange={handleChange}
           />
           <input
@@ -166,7 +188,7 @@ export const DashboardForm = ({ onSubmit }) => {
             name="quantity"
             id="quuantity"
             placeholder="cantidad"
-            value={form.quantity}
+            value={dataForm.quantity}
             onChange={handleChange}
             aria-label="cantidad"
           />
@@ -177,7 +199,7 @@ export const DashboardForm = ({ onSubmit }) => {
             name="iva"
             id="iva"
             placeholder="iva"
-            value={form.iva}
+            value={dataForm.iva}
             onChange={handleChange}
             aria-label="porcentage de IVA"
           />
@@ -186,7 +208,7 @@ export const DashboardForm = ({ onSubmit }) => {
             name="irpf"
             id="irpf"
             placeholder="irpf"
-            value={form.irpf}
+            value={dataForm.irpf}
             onChange={handleChange}
             aria-label="porcentage de IRPF"
           />
@@ -200,7 +222,7 @@ export const DashboardForm = ({ onSubmit }) => {
               name="issueDate"
               id="issueDate"
               placeholder="fecha de emisión"
-              value={form.issueDate}
+              value={dataForm.issueDate}
               onChange={handleChange}
               aria-label="fecha de emisión de factura"
             />
@@ -212,7 +234,7 @@ export const DashboardForm = ({ onSubmit }) => {
               name="expirationDate"
               id="expirationDate"
               placeholder="fecha de vencimiento"
-              value={form.expirationDate}
+              value={dataForm.expirationDate}
               onChange={handleChange}
               aria-label="fecha de vencimietno de factura"
             />
@@ -224,7 +246,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="id"
           id="id"
           placeholder="numero de factura"
-          value={form.id}
+          value={dataForm.id}
           onChange={handleChange}
           aria-label="número de factura"
         />

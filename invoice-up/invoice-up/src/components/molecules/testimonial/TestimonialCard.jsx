@@ -21,7 +21,8 @@ export const TestimonialCard = () => {
 
       for (let index = 0; index < dataTestimonial.length; index++) {
         const element = dataTestimonial[index];
-        const image = useAssets("../../../assets" + element.img);
+        const image = useAssets("../../../assets/" + element.img);
+        console.log("image", image);
 
         result.push({
           ...element,
@@ -69,7 +70,7 @@ export const TestimonialCard = () => {
             <h3>{testimonial.name}</h3>
             <h5>{testimonial.job} </h5>
             <p>{testimonial.comment}</p>
-            <img src={testimonial.img} alt={testimonial.name} />
+            <img src={testimonial.image} alt={testimonial.name} />
           </TestimonialCardStyled>
         );
       })}

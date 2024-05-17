@@ -7,11 +7,11 @@ import { DashboardWrapper } from "./DashboardWrapper";
 import { DashboardFormWrapper } from "./DashboardFormWrapper";
 
 export const Dashboard = () => {
-  const [dataForm, setDataForm] = useState([]);
+  const [dataForm, setDataForm] = useState(dataForm());
 
   //Info is recived by FormMyData
   //keep info in dataForm to send info by Form props
-  const handleSubmit = (ev) => {
+  const createInvoice = (ev) => {
     console.log("say hello!");
     console.log({ ev });
     setDataForm([...dataForm, ev]);
@@ -22,10 +22,10 @@ export const Dashboard = () => {
       <DashboardWrapper>
         <DashboardFormWrapper>
           {" "}
-          <DashboardForm onSubmit={handleSubmit}></DashboardForm>
+          <DashboardForm createInvoice={createInvoice}></DashboardForm>
         </DashboardFormWrapper>
 
-        <Previewer></Previewer>
+        <Previewer dataForm={dataForm}></Previewer>
       </DashboardWrapper>
     </>
   );

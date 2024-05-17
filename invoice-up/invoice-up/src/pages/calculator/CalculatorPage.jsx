@@ -6,10 +6,11 @@ import { Hero } from "../../components/layout/hero/Hero";
 import { Footer } from "../../components/layout/footer/Footer";
 import { Calculator } from "./Calculator";
 import { TableIva } from "../../components/tables/tableIVA/TableIva";
+import { CalculatorPageStyled } from "./CalculatorPageStyled";
 
 export const CalculatorPage = () => {
   return (
-    <div>
+    <CalculatorPageStyled>
       <Header />
       <Hero
         title="Calculadora de los Autónomos"
@@ -28,6 +29,6 @@ export const CalculatorPage = () => {
       />
       <Calculator></Calculator>
       <Footer></Footer>
-    </div>
+    </CalculatorPageStyled>
   );
 };

@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const PreviewerStyled = styled.div`
   width: 600px;
+  aspect-ratio: 1/1.41;
   min-width: 320px;
-  height: 800px;
+
   padding: 40px;
   background-color: ${(props) => props.theme.color.light_text};
 

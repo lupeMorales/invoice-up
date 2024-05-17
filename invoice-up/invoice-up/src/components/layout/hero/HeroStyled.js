@@ -15,6 +15,7 @@ export const HeroStyled = styled.section`
     ${(props) => props.theme.color.primary},
     ${(props) => props.theme.color.secondary} 100%
   );
+  overflow: hidden;
 
   div {
     max-width: 500px;

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { Button } from "../../atoms/buttons/Button";
 import { HeroStyled, HeroStyledBounce } from "./HeroStyled";
 import { Link } from "react-router-dom";
+import { DiagonalSparator } from "../../atoms/DiagonalSeparator";
 
 export const Hero = (props) => {
   return (

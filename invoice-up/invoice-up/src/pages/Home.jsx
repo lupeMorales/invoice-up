@@ -12,12 +12,12 @@ import { TestimonialSection } from "../components/layout/TestimonialSection";
 import { Footer } from "../components/layout/footer/Footer";
 //import { BlogCard } from "../components/molecules/blog/BlogCard";
 import { BlogListSection } from "../components/layout/blogList/BlogListSection";
+import { HomeStyled } from "./home/HomeStyted";
 
 export const Home = () => {
   return (
-    <div>
+    <HomeStyled>
       <Header />
-
       <Hero
         title="Crea facturas profesionales en minutos"
         subtitle="InvoiceUp te permite crear facturas de forma fácil y rápida, con diferentes plantillas de facturas personalizables."
@@ -64,6 +64,6 @@ Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un re
       <TestimonialSection />
       <BlogListSection />
       <Footer />
-    </div>
+    </HomeStyled>
   );
 };

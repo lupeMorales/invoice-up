@@ -8,6 +8,7 @@ export const FooterStyled = styled.footer`
     ${(props) => props.theme.color.primary},
     ${(props) => props.theme.color.secondary} 100%
   );
+  overflow: hidden;
   div {
     padding-top: 40px;
   }

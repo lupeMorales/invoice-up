@@ -83,3 +83,37 @@ export const CalculatorStyled = styled.main`
     margin: 8px 0 25px;
   }
 `;
+// Estilos del Tooltip
+export const Category = styled.th`
+  font-family: ${(props) => props.theme.fonts.titleFont};
+  color: ${(props) => props.theme.color.primary};
+  padding-bottom: 20px;
+
+  font-size: ${(props) => props.theme.fontSizes.small};
+`;
+export const Cell = styled.td`
+  text-align: ${(props) => (props.align === "start" ? "start" : "center")};
+  padding: 10px 20px;
+  font-size: ${(props) => props.theme.fontSizes.xsmall};
+  color: ${(props) => props.theme.color.darl_text};
+`;
+export const Title = styled.caption`
+  font-size: ${(props) => props.theme.fontSizes.normal};
+  font-weight: 300;
+  font-family: ${(props) => props.theme.fonts.titleFont};
+  color: ${(props) => props.theme.color.primary};
+  text-align: center;
+  padding-bottom: 20px;
+`;
+export const Subtitle = styled.caption`
+  font-size: ${(props) => props.theme.fontSizes.xsmall};
+  font-weight: 300;
+  color: ${(props) => props.theme.color.dark_text};
+  text-align: center;
+  width: 500px;
+  padding-bottom: 20px;
+  text-align: center;
+`;
+export const Table = styled.table`
+  padding: 4rem 2rem;
+`;

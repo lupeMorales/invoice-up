@@ -1,56 +1,26 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Tooltip } from "react-tooltip";
-import { CalculatorStyled } from "./CalculatorStyled";
+import {
+  CalculatorStyled,
+  Category,
+  Cell,
+  Subtitle,
+  Table,
+  Title,
+} from "./CalculatorStyled";
 import { ButtonInfo } from "../../components/atoms/buttons/ButtonInfo";
-import styled from "styled-components";
-
-// Estilos del Tooltip
-const Category = styled.th`
-  font-family: ${(props) => props.theme.fonts.titleFont};
-  color: ${(props) => props.theme.color.primary};
-  padding-bottom: 20px;
-
-  font-size: ${(props) => props.theme.fontSizes.small};
-`;
-const Cell = styled.td`
-  text-align: ${(props) => (props.align === "start" ? "start" : "center")};
-  padding: 10px 20px;
-  font-size: ${(props) => props.theme.fontSizes.xsmall};
-  color: ${(props) => props.theme.color.darl_text};
-`;
-const Title = styled.caption`
-  font-size: ${(props) => props.theme.fontSizes.normal};
-  font-weight: 300;
-  font-family: ${(props) => props.theme.fonts.titleFont};
-  color: ${(props) => props.theme.color.primary};
-  text-align: center;
-  padding-bottom: 20px;
-`;
-const Subtitle = styled.caption`
-  font-size: ${(props) => props.theme.fontSizes.xsmall};
-  font-weight: 300;
-  color: ${(props) => props.theme.color.dark_text};
-  text-align: center;
-  width: 500px;
-  padding-bottom: 20px;
-  text-align: center;
-`;
-const Table = styled.table`
-  padding: 4rem 2rem;
-`;
 
 export const Calculator = () => {
+  const [formData, setFormData] = useState({
+    taxBase: "0",
+    iva: "0",
+    irpf: "0",
+  });
   // ejecuta la función cada vez que se actualiza la constande de estado
   useEffect(() => {
-    calculateResult(), [formData];
-  });
-
-  const [formData, setFormData] = useState({
-    taxBase: "€",
-    iva: "",
-    irpf: "",
-  });
+    calculateResult();
+  }, [formData]);
 
   const [price, setPrice] = useState(0);
   const [totalInvoice, setTotalInvoice] = useState(0);
@@ -75,8 +45,11 @@ export const Calculator = () => {
 
   const calculateResult = () => {
     const ivaAmount = calculate(parseInt(formData.iva));
+    console.log("ivaAmount", formData.iva, ivaAmount);
     const irpfAmount = calculate(parseInt(formData.irpf));
+    console.log("irpf", formData.irpf, irpfAmount);
     const baseAmount = parseInt(formData.taxBase);
+    console.log("base", baseAmount);
 
     setPrice((baseAmount + ivaAmount).toFixed(2));
     setTotalInvoice((baseAmount + ivaAmount - irpfAmount).toFixed(2));
