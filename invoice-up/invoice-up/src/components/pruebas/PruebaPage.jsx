@@ -2,35 +2,31 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { FormularioDatosParaFactura } from "./FormularioDatosParaFactura";
 
-import ls from "../../services/localStorage";
-
 const PruebaPageStyled = styled.main`
   padding: 50px;
 `;
 
 export const PruebaPage = () => {
-  const [dataInvoice, setDataInvoice] = useState(
-    ls.get("dataInvoice", {
-      myName: "",
-      myAddress: "",
-      myPhone: "",
-      myEmail: "",
-      myCif: "",
-      iva: "",
-      irpf: "",
-      issueDate: "",
-      expirationDate: "",
-      service: "",
-      quantity: "",
-      price: "",
-      id: "",
-      clientName: "",
-      clientAddress: "",
-      clientPhone: "",
-      clientMail: "",
-      clientCif: "",
-    })
-  );
+  const [dataInvoice, setDataInvoice] = useState({
+    myName: "",
+    myAddress: "",
+    myPhone: "",
+    myEmail: "",
+    myCif: "",
+    iva: "",
+    irpf: "",
+    issueDate: "",
+    expirationDate: "",
+    service: "",
+    quantity: "",
+    price: "",
+    id: "",
+    clientName: "",
+    clientAddress: "",
+    clientPhone: "",
+    clientMail: "",
+    clientCif: "",
+  });
   const [classCollapsed, setClassCollapsed] = useState("collapsed");
   const [isOpen, setIsOpen] = useState("emisor");
 

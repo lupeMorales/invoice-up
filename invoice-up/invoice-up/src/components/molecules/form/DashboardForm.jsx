@@ -2,8 +2,8 @@ import { useState } from "react";
 import { DashboardFormStyled } from "./DashboardFormStyled";
 import { Button } from "../../atoms/buttons/Button";
 
-export const DashboardForm = ({ createInvoice }) => {
-  const [dataForm, setDataForm] = useState({
+export const DashboardForm = ({ onSubmit }) => {
+  const [form, setForm] = useState({
     myName: "",
     myAddress: "",
     myPhone: "",
@@ -25,39 +25,23 @@ export const DashboardForm = ({ createInvoice }) => {
   });
 
   const handleChange = (ev) => {
+    // Actualiza el estado de 'form' con el valor del campo de entrada
     const { name, value } = ev.target;
-    setDataForm({
-      ...dataForm,
+    setForm({
+      ...form,
       [name]: value,
     });
   };
-  const resetForm = () => {
-    setDataForm.myAddress("");
-    setDataForm.myAddress("");
-    setDataForm.myPhone("");
-    setDataForm.myEmail("");
-    setDataForm.myCif("");
-    setDataForm.iva("");
-    setDataForm.irpf("");
-    setDataForm.issueDate("");
-    setDataForm.expirationDate("");
-    setDataForm.service("");
-    setDataForm.quantity("");
-    setDataForm.price("");
-    setDataForm.id("");
-    setDataForm.clientName("");
-    setDataForm.clientAddress("");
-    setDataForm.clientPhone("");
-    setDataForm.clientMail("");
-    setDataForm.clientCif("");
-  };
+
   //send data to dashboard
   const handleSubmit = (ev) => {
     ev.preventDefault();
     //** OJO ** hay que hacer comprovación si falta algún input por rellenar
-    createInvoice(dataForm);
+    // validaciones
+    // call to backend
+    onSubmit(form);
     //volver al estado inicial del formurario
-    resetForm();
+    // resetForm();
   };
 
   return (
@@ -69,7 +53,7 @@ export const DashboardForm = ({ createInvoice }) => {
           name="myName"
           id="myName"
           placeholder="nombre de emisor"
-          value={dataForm.myName}
+          value={form.myName}
           onChange={handleChange}
           aria-label="nombre del emisor"
         />
@@ -78,7 +62,7 @@ export const DashboardForm = ({ createInvoice }) => {
           name="myAddress"
           id="myAddress"
           placeholder="dirección"
-          value={dataForm.myAddress}
+          value={form.myAddress}
           onChange={handleChange}
           aria-label="dirección del emisor"
         />
@@ -88,7 +72,7 @@ export const DashboardForm = ({ createInvoice }) => {
             name="myPhone"
             id="myPhone"
             placeholder="Teléfono"
-            value={dataForm.myPhone}
+            value={form.myPhone}
             onChange={handleChange}
             aria-label="teléfono del emisor"
           />
@@ -97,7 +81,7 @@ export const DashboardForm = ({ createInvoice }) => {
             name="myCif"
             id="myCif"
             placeholder="cif"
-            value={dataForm.myCif}
+            value={form.myCif}
             onChange={handleChange}
             aria-label="cif del emisor"
           />
@@ -108,7 +92,7 @@ export const DashboardForm = ({ createInvoice }) => {
           name="myEmail"
           id="email"
           placeholder="tuemail@rmail.com"
-          value={dataForm.myEmail}
+          value={form.myEmail}
           onChange={handleChange}
           aria-label="email del emisor"
         />
@@ -120,7 +104,7 @@ export const DashboardForm = ({ createInvoice }) => {
           name="clientName"
           id="clientName"
           placeholder="nombre de cliente"
-          value={dataForm.clientName}
+          value={form.clientName}
           onChange={handleChange}
           aria-label="nombre de cliente"
         />
@@ -129,7 +113,7 @@ export const DashboardForm = ({ createInvoice }) => {
           name="clientAddress"
           id="clientAddress"
           placeholder="dirección"
-          value={dataForm.clientAddress}
+          value={form.clientAddress}
           onChange={handleChange}
           aria-label="dirección del cliente"
         />
@@ -139,7 +123,7 @@ export const DashboardForm = ({ createInvoice }) => {
             name="clientPhone"
             id="clientPhone"
             placeholder="Teléfono"
-            value={dataForm.clientPhone}
+            value={form.clientPhone}
             onChange={handleChange}
             aria-label="teléfono del cliente"
           />
@@ -148,7 +132,7 @@ export const DashboardForm = ({ createInvoice }) => {
             name="clientCif"
             id="clientCif"
             placeholder="cif"
-            value={dataForm.clientCif}
+            value={form.clientCif}
             onChange={handleChange}
             aria-label="cif del cliente"
           />
@@ -159,7 +143,7 @@ export const DashboardForm = ({ createInvoice }) => {
           name="clientMail"
           id="clientMail"
           placeholder="emaildelcliente@mail.com"
-          value={dataForm.clientMail}
+          value={form.clientMail}
           onChange={handleChange}
           aria-label="email del cliente"
         />
@@ -171,7 +155,7 @@ export const DashboardForm = ({ createInvoice }) => {
           name="service"
           id="service"
           placeholder="servicio"
-          value={dataForm.service}
+          value={form.service}
           onChange={handleChange}
         />
         <div className="input-group">
@@ -180,7 +164,7 @@ export const DashboardForm = ({ createInvoice }) => {
             name="price"
             id="price"
             placeholder="importe"
-            value={dataForm.price}
+            value={form.price}
             onChange={handleChange}
           />
           <input
@@ -188,7 +172,7 @@ export const DashboardForm = ({ createInvoice }) => {
             name="quantity"
             id="quuantity"
             placeholder="cantidad"
-            value={dataForm.quantity}
+            value={form.quantity}
             onChange={handleChange}
             aria-label="cantidad"
           />
@@ -199,7 +183,7 @@ export const DashboardForm = ({ createInvoice }) => {
             name="iva"
             id="iva"
             placeholder="iva"
-            value={dataForm.iva}
+            value={form.iva}
             onChange={handleChange}
             aria-label="porcentage de IVA"
           />
@@ -208,7 +192,7 @@ export const DashboardForm = ({ createInvoice }) => {
             name="irpf"
             id="irpf"
             placeholder="irpf"
-            value={dataForm.irpf}
+            value={form.irpf}
             onChange={handleChange}
             aria-label="porcentage de IRPF"
           />
@@ -222,7 +206,7 @@ export const DashboardForm = ({ createInvoice }) => {
               name="issueDate"
               id="issueDate"
               placeholder="fecha de emisión"
-              value={dataForm.issueDate}
+              value={form.issueDate}
               onChange={handleChange}
               aria-label="fecha de emisión de factura"
             />
@@ -234,7 +218,7 @@ export const DashboardForm = ({ createInvoice }) => {
               name="expirationDate"
               id="expirationDate"
               placeholder="fecha de vencimiento"
-              value={dataForm.expirationDate}
+              value={form.expirationDate}
               onChange={handleChange}
               aria-label="fecha de vencimietno de factura"
             />
@@ -246,7 +230,7 @@ export const DashboardForm = ({ createInvoice }) => {
           name="id"
           id="id"
           placeholder="numero de factura"
-          value={dataForm.id}
+          value={form.id}
           onChange={handleChange}
           aria-label="número de factura"
         />
