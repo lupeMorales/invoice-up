@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { DashboardFormStyled } from "./DashboardFormStyled";
 import { Button } from "../../atoms/buttons/Button";
+import GetAvatar from "../../atoms/getAvatar/GetAvatar";
+import avatar from "../../../assets/avatar.webp";
+import { GetAvatarStyled } from "../../atoms/getAvatar/GetAvatarStyled";
 
 export const DashboardForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
@@ -23,6 +26,7 @@ export const DashboardForm = ({ onSubmit }) => {
     clientMail: "",
     clientCif: "",
     template: "classic",
+    logo: "",
   });
 
   const handleChange = (ev) => {
@@ -31,6 +35,13 @@ export const DashboardForm = ({ onSubmit }) => {
     setForm({
       ...form,
       [name]: value,
+    });
+  };
+
+  const updateAvatar = (avatar) => {
+    setForm({
+      ...form,
+      logo: avatar,
     });
   };
 
@@ -97,6 +108,7 @@ export const DashboardForm = ({ onSubmit }) => {
             </label>
           </div>
         </div>
+        <GetAvatar avatar={form.Logo} updateAvatar={updateAvatar}></GetAvatar>
       </fieldset>
 
       <fieldset>

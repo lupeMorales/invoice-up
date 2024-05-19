@@ -24,6 +24,7 @@ export const Previewer = ({ dataForm }) => {
       {dataForm.template === "minimal" && (
         <InvoiceMinimal dataForm={dataForm}></InvoiceMinimal>
       )}
+      <img src={dataForm.logo} alt="" />
     </PreviewerStyled>
   );
 };
