@@ -22,6 +22,7 @@ export const DashboardForm = ({ onSubmit }) => {
     clientPhone: "",
     clientMail: "",
     clientCif: "",
+    template: "classic",
   });
 
   const handleChange = (ev) => {
@@ -234,6 +235,35 @@ export const DashboardForm = ({ onSubmit }) => {
           onChange={handleChange}
           aria-label="número de factura"
         />
+
+        <input
+          type="radio"
+          name="template"
+          id="classic"
+          value="classic"
+          checked={form.template === "classic"}
+          onChange={handleChange}
+        />
+        <label htmlFor="Classic"></label>
+        <input
+          type="radio"
+          name="template"
+          id="wave"
+          value="wave"
+          checked={form.template === "wave"}
+          onChange={handleChange}
+        />
+        <label htmlFor="Classic"></label>
+        <input
+          type="radio"
+          name="template"
+          id="minimal"
+          value="minimal"
+          checked={form.template === "minimal"}
+          onChange={handleChange}
+        />
+        <label htmlFor="Classic"></label>
+        <p>template {form.template}</p>
       </fieldset>
 
       <Button>enviar</Button>
