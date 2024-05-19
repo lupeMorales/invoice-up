@@ -13,9 +13,7 @@ export const PreviewerStyled = styled.div`
     display: block;
     margin: auto;
     width: 100%;
-
     max-width: 100px;
-
     object-fit: fill;
     margin-bottom: 20px;
   }

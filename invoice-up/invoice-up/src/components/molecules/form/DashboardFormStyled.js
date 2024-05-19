@@ -71,6 +71,7 @@ export const DashboardFormStyled = styled.form`
   }
   .inputRadio {
     margin: 0.4rem;
+    padding: 50px;
   }
   .labelRadio {
     font-size: ${(props) => props.theme.fontSizes.xsmall};

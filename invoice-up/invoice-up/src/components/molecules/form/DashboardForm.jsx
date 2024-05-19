@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { DashboardFormStyled } from "./DashboardFormStyled";
 import { Button } from "../../atoms/buttons/Button";
-import GetAvatar from "../../atoms/getAvatar/GetAvatar";
-import avatar from "../../../assets/avatar.webp";
-import { GetAvatarStyled } from "../../atoms/getAvatar/GetAvatarStyled";
+import GetAvatar from "../../atoms/getLogo/GetAvatar";
 
 export const DashboardForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
@@ -84,7 +82,7 @@ export const DashboardForm = ({ onSubmit }) => {
               name="template"
               id="moderno"
               value="moderno"
-              checked={form.template === "wave"}
+              checked={form.template === "moderno"}
               onChange={handleChange}
             />
             <label htmlFor="Moderno" className="labelRadio">

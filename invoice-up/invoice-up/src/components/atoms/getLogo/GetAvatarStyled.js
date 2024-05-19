@@ -39,6 +39,6 @@ export const GetAvatarStyled = styled.div`
     border: 1px solid #ccc;
     height: 50px;
     margin-left: 15px;
-    width: 50px;
+    width: 100px;
   }
 `;
