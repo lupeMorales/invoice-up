@@ -64,4 +64,17 @@ export const DashboardFormStyled = styled.form`
     color: ${(props) => props.theme.color.light_text};
     font-weight: 100;
   }
+  .desing {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+  }
+  .inputRadio {
+    margin: 0.4rem;
+  }
+  .labelRadio {
+    font-size: ${(props) => props.theme.fontSizes.xsmall};
+    color: ${(props) => props.theme.color.light_text};
+    font-weight: 100;
+  }
 `;

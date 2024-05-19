@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { InvoiceClasic } from "../invoice/InvoiceClasic";
-import { InvoiceWave } from "../invoice/InvoiceWave";
+import { InvoiceMinimal } from "../invoice/InvoiceMinimal";
 import { PreviewerStyled } from "./PreviewerStyled";
 
 // eslint-disable-next-line react/prop-types
@@ -21,8 +21,8 @@ export const Previewer = ({ dataForm }) => {
       {dataForm.template === "classic" && <p> etse es el template classic</p>}
 
       {dataForm.template === "classic" && <InvoiceClasic></InvoiceClasic>}
-      {dataForm.template === "wave" && (
-        <InvoiceWave dataForm={dataForm}></InvoiceWave>
+      {dataForm.template === "minimal" && (
+        <InvoiceMinimal dataForm={dataForm}></InvoiceMinimal>
       )}
     </PreviewerStyled>
   );

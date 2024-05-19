@@ -48,6 +48,58 @@ export const DashboardForm = ({ onSubmit }) => {
   return (
     <DashboardFormStyled onSubmit={handleSubmit}>
       <fieldset>
+        <legend>Elige diseño</legend>
+
+        <div className="desing">
+          <div>
+            <input
+              className="inputRadio"
+              type="radio"
+              name="template"
+              id="classic"
+              value="classic"
+              checked={form.template === "classic"}
+              onChange={handleChange}
+            />
+            <label htmlFor="Classic" className="labelRadio">
+              Clásico
+            </label>
+          </div>
+          <div>
+            {" "}
+            <input
+              className="inputRadio"
+              type="radio"
+              name="template"
+              id="moderno"
+              value="moderno"
+              checked={form.template === "wave"}
+              onChange={handleChange}
+            />
+            <label htmlFor="Moderno" className="labelRadio">
+              Moderno
+            </label>
+          </div>
+
+          <div>
+            {" "}
+            <input
+              className="inputRadio"
+              type="radio"
+              name="template"
+              id="minimal"
+              value="minimal"
+              checked={form.template === "minimal"}
+              onChange={handleChange}
+            />
+            <label htmlFor="Minimal" className="labelRadio">
+              Minimal
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
         <legend>Datos de emisor</legend>
         <input
           type="text"
@@ -235,35 +287,6 @@ export const DashboardForm = ({ onSubmit }) => {
           onChange={handleChange}
           aria-label="número de factura"
         />
-
-        <input
-          type="radio"
-          name="template"
-          id="classic"
-          value="classic"
-          checked={form.template === "classic"}
-          onChange={handleChange}
-        />
-        <label htmlFor="Classic"></label>
-        <input
-          type="radio"
-          name="template"
-          id="wave"
-          value="wave"
-          checked={form.template === "wave"}
-          onChange={handleChange}
-        />
-        <label htmlFor="Classic"></label>
-        <input
-          type="radio"
-          name="template"
-          id="minimal"
-          value="minimal"
-          checked={form.template === "minimal"}
-          onChange={handleChange}
-        />
-        <label htmlFor="Classic"></label>
-        <p>template {form.template}</p>
       </fieldset>
 
       <Button>enviar</Button>
