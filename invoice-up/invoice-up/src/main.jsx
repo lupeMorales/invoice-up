@@ -15,7 +15,6 @@ import { Register } from "./pages/register/Register";
 import { CalculatorPage } from "./pages/calculator/CalculatorPage";
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import { ProtectedRoute } from "./utils/ProtectedRoute";
-import { PruebaPage } from "./components/pruebas/PruebaPage";
 
 /* export const main = () => {
   const [user, setUser] = useState([]);
@@ -53,10 +52,6 @@ const router = createBrowserRouter([
   {
     path: "calculadora-de-autonomos",
     element: <CalculatorPage />,
-  },
-  {
-    path: "prueba",
-    element: <PruebaPage />,
   },
 
   {

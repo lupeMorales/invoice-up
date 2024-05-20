@@ -78,4 +78,7 @@ export const DashboardFormStyled = styled.form`
     color: ${(props) => props.theme.color.light_text};
     font-weight: 100;
   }
+  .collapsed {
+    display: none;
+  }
 `;

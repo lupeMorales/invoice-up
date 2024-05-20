@@ -76,10 +76,10 @@ function GetAvatar(props) {
           onChange={uploadImage}
         />
 
-        <div
+        {/*   <div
           className="get-avatar__preview"
           style={{ backgroundImage: `url(${avatar})` }}
-        ></div>
+        ></div> */}
       </div>
     </GetAvatarStyled>
   );
