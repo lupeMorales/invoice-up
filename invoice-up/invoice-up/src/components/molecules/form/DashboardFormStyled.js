@@ -5,11 +5,9 @@ export const DashboardFormStyled = styled.form`
     display: block;
     width: calc(100% - 20px);
     margin: 10px auto;
-
     padding: 8.5px 16px 8.5px 16px;
     border-radius: 40px;
     border: solid 2px white;
-
     color: white;
     background-color: transparent;
     &::placeholder {
@@ -76,7 +74,7 @@ export const DashboardFormStyled = styled.form`
   .labelRadio {
     font-size: ${(props) => props.theme.fontSizes.xsmall};
     color: ${(props) => props.theme.color.light_text};
-    font-weight: 100;
+    font-weight: 300;
   }
   .collapsed {
     display: none;

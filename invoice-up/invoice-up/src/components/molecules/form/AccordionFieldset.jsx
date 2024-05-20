@@ -4,11 +4,14 @@ import { useState } from "react";
 const AccordionFieldsetStyled = styled.div`
   padding: 20px 0;
   .accordion {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     cursor: pointer;
     padding: 10px;
     width: 100%;
     text-align: left;
-    border: none;
+
     outline: none;
     transition: 0.8s;
     background-color: transparent;
@@ -18,11 +21,19 @@ const AccordionFieldsetStyled = styled.div`
     font-size: ${(props) => props.theme.fontSizes.xsmall};
     color: ${(props) => props.theme.color.light_text};
     font-weight: 100;
+    svg {
+      border: none;
+      margin-right: -165px;
+    }
   }
 
   .accordion.active {
     background-color: ${(props) => props.theme.color.primary};
     color: ${(props) => props.theme.color.light_text};
+  }
+  .accordion.rotate {
+    transform: rotate(180deg);
+    transition-duration: 500ms;
   }
 
   .panel {
@@ -49,7 +60,20 @@ export const AccordionFieldset = ({ title, children }) => {
         className={`accordion ${isActive ? "active" : ""}`}
         onClick={toggleAccordion}
       >
-        {title}
+        {title}{" "}
+        <svg
+          display="flex"
+          width="34"
+          height="34"
+          className={`accordion ${isActive ? "rotate" : ""}`}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="#FAF9F7"
+            d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+          />
+        </svg>
       </button>
       <fieldset
         className="panel"
