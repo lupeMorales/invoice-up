@@ -30,7 +30,7 @@ export const InvoiceClasicStyled = styled.main`
   .classic_totals {
     position: absolute;
     right: 10%;
-    bottom: 15%;
+    bottom: 8%;
     width: 200px;
     margin-top: 20px;
     border: solid 2px black;

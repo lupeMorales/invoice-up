@@ -10,16 +10,16 @@ export const InvoiceClasic = ({ dataForm }) => {
         <div>
           <img
             src={dataForm.logo || imageDeafult}
-            alt="logo de ${dataForm.myName}"
+            alt="logo de ${dataForm.company_name}"
           />
         </div>
         <div>
           <h2>Nº Factura:{dataForm.numberInvoice}</h2>
-          <h2>{dataForm.myName || ""} </h2>
-          <p>{dataForm.myAddress}</p>
-          <p>TELÉFONO:{dataForm.myPhone}</p>
-          <p>CIF:{dataForm.myCif}</p>
-          <p>EMAIL:{dataForm.myEmail}</p>
+          <h2>{dataForm.company_name || ""} </h2>
+          <p>{dataForm.company_address}</p>
+          <p>TELÉFONO:{dataForm.company_phone}</p>
+          <p>CIF:{dataForm.company_cif}</p>
+          <p>EMAIL:{dataForm.company_mail}</p>
         </div>
       </div>
       <div className="classic_clientDates">
