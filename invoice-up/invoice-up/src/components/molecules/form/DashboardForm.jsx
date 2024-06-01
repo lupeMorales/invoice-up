@@ -6,7 +6,7 @@ import { AccordionFieldset } from "./AccordionFieldset";
 import GetAvatar from "../../atoms/getLogo/GetAvatar";
 export const DashboardForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
-    template: "classic",
+    /*     template: "classic",
     logo: "",
     company_name: "",
     company_address: "",
@@ -26,20 +26,43 @@ export const DashboardForm = ({ onSubmit }) => {
     expiration_date: "",
     service: "",
     quantity: "",
+    price: "", */
+    myName: "",
+    myAddress: "",
+    myPhone: "",
+    myEmail: "",
+    myCif: "",
+    iva: "",
+    irpf: "",
+    issueDate: "",
+    expirationDate: "",
+    service: "",
+    quantity: "",
     price: "",
+    id: "",
+    clientName: "",
+    clientAddress: "",
+    clientPhone: "",
+    clientMail: "",
+    clientCif: "",
+    template: "classic",
+    logo: "",
+    numberInvoice: "",
   });
-  const [codigo, setCodigo] = useState("");
+  /*   const [numberInvoice, setNumberInvoice] = useState(""); */
 
-  const generarCodigo = () => {
+  const generateNumberInvoice = () => {
     // Generar un código alfanumérico de 6 caracteres
-    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let codigoGenerado = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let code = "";
     for (let i = 0; i < 6; i++) {
-      codigoGenerado += caracteres.charAt(
-        Math.floor(Math.random() * caracteres.length)
-      );
+      code += characters.charAt(Math.floor(Math.random() * characters.length));
     }
-    setCodigo(codigoGenerado);
+
+    setForm({
+      ...form,
+      numberInvoice: code,
+    });
   };
 
   const updateAvatar = (avatar) => {
@@ -64,8 +87,9 @@ export const DashboardForm = ({ onSubmit }) => {
     //** OJO ** hay que hacer comprovación si falta algún input por rellenar
     // validaciones
     // call to backend
-    generarCodigo();
+    generateNumberInvoice();
     onSubmit(form);
+
     //volver al estado inicial del formurario
     // resetForm();
   };
@@ -73,7 +97,8 @@ export const DashboardForm = ({ onSubmit }) => {
   return (
     <DashboardFormStyled onSubmit={handleSubmit}>
       <h1>Mi códico generado:</h1>
-      <h1>{codigo}</h1>
+      <h1>{form.numberInvoice}</h1>
+
       <fieldset>
         <legend>Elige diseño</legend>
 
@@ -129,20 +154,20 @@ export const DashboardForm = ({ onSubmit }) => {
       <AccordionFieldset title="Datos del Emisor">
         <input
           type="text"
-          name="companyName"
-          id="companyName"
+          name="myName"
+          id="myName"
           placeholder="nombre de emisor"
-          value={form.company_name}
+          value={form.myName}
           onChange={handleChange}
           required=""
           maxLength="40"
         />
         <input
           type="text"
-          name="companyAddress"
-          id="companyAddress"
+          name="myAddress"
+          id="myAddress"
           placeholder="dirección"
-          value={form.company_address}
+          value={form.myAddress}
           onChange={handleChange}
           aria-label="dirección del emisor"
           required=""
@@ -150,11 +175,11 @@ export const DashboardForm = ({ onSubmit }) => {
         />
         <div className="input-group">
           <input
-            type="tel"
-            name="companyPhone"
-            id="companyPhone"
+            type="number"
+            name="myPhone"
+            id="myPhone"
             placeholder="Teléfono"
-            value={form.company_phone}
+            value={form.myPhone}
             onChange={handleChange}
             aria-label="teléfono del emisor"
             required=""
@@ -162,10 +187,10 @@ export const DashboardForm = ({ onSubmit }) => {
           />
           <input
             type="text"
-            name="companyCif"
-            id="companyCif"
+            name="myCif"
+            id="myCif"
             placeholder="cif"
-            value={form.company_cif}
+            value={form.myCif}
             onChange={handleChange}
             aria-label="cif del emisor"
             required=""
@@ -175,10 +200,10 @@ export const DashboardForm = ({ onSubmit }) => {
 
         <input
           type="email"
-          name="companyEmail"
-          id="companyEmail"
+          name="myEmail"
+          id="myEmail"
           placeholder="tuemail@rmail.com"
-          value={form.company_mail}
+          value={form.myEmail}
           onChange={handleChange}
           aria-label="email del emisor"
           required=""
@@ -192,7 +217,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="clientName"
           id="clientName"
           placeholder="nombre de cliente"
-          value={form.client_name}
+          value={form.clientName}
           onChange={handleChange}
           aria-label="nombre de cliente"
           required=""
@@ -203,7 +228,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="clientAddress"
           id="clientAddress"
           placeholder="dirección"
-          value={form.client_address}
+          value={form.clientAddress}
           onChange={handleChange}
           aria-label="dirección del cliente"
           required=""
@@ -215,7 +240,7 @@ export const DashboardForm = ({ onSubmit }) => {
             name="clientPhone"
             id="clientPhone"
             placeholder="Teléfono"
-            value={form.client_phone}
+            value={form.clientPhone}
             onChange={handleChange}
             aria-label="teléfono del cliente"
             required=""
@@ -226,7 +251,7 @@ export const DashboardForm = ({ onSubmit }) => {
             name="clientCif"
             id="clientCif"
             placeholder="cif"
-            value={form.client_cif}
+            value={form.clientCif}
             onChange={handleChange}
             aria-label="cif del cliente"
             required=""
@@ -239,7 +264,7 @@ export const DashboardForm = ({ onSubmit }) => {
           name="clientMail"
           id="clientMail"
           placeholder="emaildelcliente@mail.com"
-          value={form.client_mail}
+          value={form.clientMail}
           onChange={handleChange}
           aria-label="email del cliente"
           required=""
@@ -304,7 +329,7 @@ export const DashboardForm = ({ onSubmit }) => {
               name="issueDate"
               id="issueDate"
               placeholder="fecha de emisión"
-              value={form.issue_date}
+              value={form.issueDate}
               onChange={handleChange}
               aria-label="fecha de emisión de factura"
             />
@@ -316,7 +341,7 @@ export const DashboardForm = ({ onSubmit }) => {
               name="expirationDate"
               id="expirationDate"
               placeholder="fecha de vencimiento"
-              value={form.expiration_date}
+              value={form.expirationDate}
               onChange={handleChange}
               aria-label="fecha de vencimietno de factura"
             />

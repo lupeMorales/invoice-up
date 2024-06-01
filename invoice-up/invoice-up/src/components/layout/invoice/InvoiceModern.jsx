@@ -1,11 +1,11 @@
 import { InvoiceClasicStyled } from "./InvoiceClasicStyled";
 import imageDeafult from "../../../assets/avatar.webp";
-export const InvoiceClasic = ({ dataForm }) => {
-  const subtotal = dataForm.price * dataForm.quantity;
 
+export const InvoiceModern = ({ dataForm }) => {
+  const subtotal = dataForm.price * dataForm.quantity;
   return (
     <InvoiceClasicStyled>
-      <h1>Soy la factura {dataForm.template}</h1>
+      <h1>Soy la factura de estilo {dataForm.template}</h1>
       <div className="classic_companyDates">
         <div>
           <img
