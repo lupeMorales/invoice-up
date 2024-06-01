@@ -26,6 +26,10 @@ export const Calculator = () => {
   const [totalInvoice, setTotalInvoice] = useState(0);
   const [totalToReceive, setTotalToReceive] = useState(0);
 
+  const handleClick = (ev) => {
+    ev.preventDefault();
+  };
+
   const handleChange = (ev) => {
     const { name, value } = ev.target;
     setFormData({
@@ -36,7 +40,7 @@ export const Calculator = () => {
 
   const onlyNumberAllow = (ev) => {
     if (isNaN(ev.key) && ev.key !== "Backspace" && ev.key !== "Enter") {
-      ev.prevenDataefault();
+      ev.preventDefault();
     }
   };
 
@@ -91,7 +95,10 @@ export const Calculator = () => {
                 onChange={handleChange}
               />
               <p>{calculate(formData.iva)}€</p>
-              <ButtonInfo data-tooltip-id="tooltipIva"></ButtonInfo>
+              <ButtonInfo
+                data-tooltip-id="tooltipIva"
+                onClick={handleClick}
+              ></ButtonInfo>
               <Tooltip id="tooltipIva" variant="light">
                 <Table>
                   <Title>Tipos impositivos en el IVA</Title>
@@ -165,7 +172,10 @@ export const Calculator = () => {
                 onChange={handleChange}
               />
               <p>{calculate(formData.irpf)}€</p>
-              <ButtonInfo data-tooltip-id="tooltipIRPF"></ButtonInfo>
+              <ButtonInfo
+                data-tooltip-id="tooltipIRPF"
+                onClick={handleClick}
+              ></ButtonInfo>
               <Tooltip id="tooltipIRPF" variant="light">
                 <Table>
                   <Title>

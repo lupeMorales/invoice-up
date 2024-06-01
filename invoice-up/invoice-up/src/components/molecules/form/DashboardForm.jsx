@@ -1,32 +1,46 @@
+import axios from "axios";
 import { useState } from "react";
 import { DashboardFormStyled } from "./DashboardFormStyled";
 import { Button } from "../../atoms/buttons/Button";
 import { AccordionFieldset } from "./AccordionFieldset";
 import GetAvatar from "../../atoms/getLogo/GetAvatar";
-
 export const DashboardForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
-    myName: "",
-    myAddress: "",
-    myPhone: "",
-    myEmail: "",
-    myCif: "",
+    template: "classic",
+    logo: "",
+    company_name: "",
+    company_address: "",
+    company_phone: "",
+    company_mail: "",
+    company_cif: "",
+
+    client_name: "",
+    client_address: "",
+    client_phone: "",
+    client_mail: "",
+    client_cif: "",
+
     iva: "",
     irpf: "",
-    issueDate: "",
-    expirationDate: "",
+    issue_date: "",
+    expiration_date: "",
     service: "",
     quantity: "",
     price: "",
-    id: "",
-    clientName: "",
-    clientAddress: "",
-    clientPhone: "",
-    clientMail: "",
-    clientCif: "",
-    template: "classic",
-    logo: "",
   });
+  const [codigo, setCodigo] = useState("");
+
+  const generarCodigo = () => {
+    // Generar un código alfanumérico de 6 caracteres
+    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let codigoGenerado = "";
+    for (let i = 0; i < 6; i++) {
+      codigoGenerado += caracteres.charAt(
+        Math.floor(Math.random() * caracteres.length)
+      );
+    }
+    setCodigo(codigoGenerado);
+  };
 
   const updateAvatar = (avatar) => {
     // Actualiza el logo
@@ -50,6 +64,7 @@ export const DashboardForm = ({ onSubmit }) => {
     //** OJO ** hay que hacer comprovación si falta algún input por rellenar
     // validaciones
     // call to backend
+    generarCodigo();
     onSubmit(form);
     //volver al estado inicial del formurario
     // resetForm();
@@ -57,251 +72,8 @@ export const DashboardForm = ({ onSubmit }) => {
 
   return (
     <DashboardFormStyled onSubmit={handleSubmit}>
-      {/*       <fieldset>
-        <legend>Elige diseño</legend>
-
-        <div className="desing">
-          <div>
-            <input
-              className="inputRadio"
-              type="radio"
-              name="template"
-              id="classic"
-              value="classic"
-              checked={form.template === "classic"}
-              onChange={handleChange}
-            />
-            <label htmlFor="Classic" className="labelRadio">
-              Clásico
-            </label>
-          </div>
-          <div>
-            {" "}
-            <input
-              className="inputRadio"
-              type="radio"
-              name="template"
-              id="moderno"
-              value="moderno"
-              checked={form.template === "moderno"}
-              onChange={handleChange}
-            />
-            <label htmlFor="Moderno" className="labelRadio">
-              Moderno
-            </label>
-          </div>
-
-          <div>
-            {" "}
-            <input
-              className="inputRadio"
-              type="radio"
-              name="template"
-              id="minimal"
-              value="minimal"
-              checked={form.template === "minimal"}
-              onChange={handleChange}
-            />
-            <label htmlFor="Minimal" className="labelRadio">
-              Minimal
-            </label>
-          </div>
-        </div>
-        <GetAvatar avatar={form.Logo} updateAvatar={updateAvatar}></GetAvatar>
-      </fieldset>
-
-      <fieldset>
-        <legend>Datos de emisor</legend>
-
-        <input
-          type="text"
-          name="myName"
-          id="myName"
-          placeholder="nombre de emisor"
-          value={form.myName}
-          onChange={handleChange}
-          aria-label="nombre del emisor"
-        />
-        <input
-          type="text"
-          name="myAddress"
-          id="myAddress"
-          placeholder="dirección"
-          value={form.myAddress}
-          onChange={handleChange}
-          aria-label="dirección del emisor"
-        />
-        <div className="input-group">
-          <input
-            type="number"
-            name="myPhone"
-            id="myPhone"
-            placeholder="Teléfono"
-            value={form.myPhone}
-            onChange={handleChange}
-            aria-label="teléfono del emisor"
-          />
-          <input
-            type="text"
-            name="myCif"
-            id="myCif"
-            placeholder="cif"
-            value={form.myCif}
-            onChange={handleChange}
-            aria-label="cif del emisor"
-          />
-        </div>
-
-        <input
-          type="myEmail"
-          name="myEmail"
-          id="email"
-          placeholder="tuemail@rmail.com"
-          value={form.myEmail}
-          onChange={handleChange}
-          aria-label="email del emisor"
-        />
-      </fieldset>
-      <fieldset>
-        <legend>Datos del cliente</legend>
-        <input
-          type="text"
-          name="clientName"
-          id="clientName"
-          placeholder="nombre de cliente"
-          value={form.clientName}
-          onChange={handleChange}
-          aria-label="nombre de cliente"
-        />
-        <input
-          type="text"
-          name="clientAddress"
-          id="clientAddress"
-          placeholder="dirección"
-          value={form.clientAddress}
-          onChange={handleChange}
-          aria-label="dirección del cliente"
-        />
-        <div className="input-group">
-          <input
-            type="number"
-            name="clientPhone"
-            id="clientPhone"
-            placeholder="Teléfono"
-            value={form.clientPhone}
-            onChange={handleChange}
-            aria-label="teléfono del cliente"
-          />
-          <input
-            type="text"
-            name="clientCif"
-            id="clientCif"
-            placeholder="cif"
-            value={form.clientCif}
-            onChange={handleChange}
-            aria-label="cif del cliente"
-          />
-        </div>
-
-        <input
-          type="email"
-          name="clientMail"
-          id="clientMail"
-          placeholder="emaildelcliente@mail.com"
-          value={form.clientMail}
-          onChange={handleChange}
-          aria-label="email del cliente"
-        />
-      </fieldset>
-      <fieldset>
-        <legend>Datos de servicio</legend>
-        <input
-          type="text"
-          name="service"
-          id="service"
-          placeholder="servicio"
-          value={form.service}
-          onChange={handleChange}
-        />
-        <div className="input-group">
-          <input
-            type="number"
-            name="price"
-            id="price"
-            placeholder="importe"
-            value={form.price}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            name="quantity"
-            id="quuantity"
-            placeholder="cantidad"
-            value={form.quantity}
-            onChange={handleChange}
-            aria-label="cantidad"
-          />
-        </div>
-        <div className="input-group">
-          <input
-            type="number"
-            name="iva"
-            id="iva"
-            placeholder="iva"
-            value={form.iva}
-            onChange={handleChange}
-            aria-label="porcentage de IVA"
-          />
-          <input
-            type="number"
-            name="irpf"
-            id="irpf"
-            placeholder="irpf"
-            value={form.irpf}
-            onChange={handleChange}
-            aria-label="porcentage de IRPF"
-          />
-        </div>
-
-        <div className="input-group">
-          <label htmlFor="issueDate">
-            <p>Fecha de emisión</p>
-            <input
-              type="date"
-              name="issueDate"
-              id="issueDate"
-              placeholder="fecha de emisión"
-              value={form.issueDate}
-              onChange={handleChange}
-              aria-label="fecha de emisión de factura"
-            />
-          </label>
-          <label htmlFor="expirationDate">
-            <p>Fecha de vencimiento</p>
-            <input
-              type="date"
-              name="expirationDate"
-              id="expirationDate"
-              placeholder="fecha de vencimiento"
-              value={form.expirationDate}
-              onChange={handleChange}
-              aria-label="fecha de vencimietno de factura"
-            />
-          </label>
-        </div>
-
-        <input
-          type="number"
-          name="id"
-          id="id"
-          placeholder="numero de factura"
-          value={form.id}
-          onChange={handleChange}
-          aria-label="número de factura"
-        />
-      </fieldset>
-
-      <Button>enviar</Button> */}
+      <h1>Mi códico generado:</h1>
+      <h1>{codigo}</h1>
       <fieldset>
         <legend>Elige diseño</legend>
 
@@ -357,51 +129,60 @@ export const DashboardForm = ({ onSubmit }) => {
       <AccordionFieldset title="Datos del Emisor">
         <input
           type="text"
-          name="myName"
-          id="myName"
+          name="companyName"
+          id="companyName"
           placeholder="nombre de emisor"
-          value={form.myName}
+          value={form.company_name}
           onChange={handleChange}
-          aria-label="nombre del emisor"
+          required=""
+          maxLength="40"
         />
         <input
           type="text"
-          name="myAddress"
-          id="myAddress"
+          name="companyAddress"
+          id="companyAddress"
           placeholder="dirección"
-          value={form.myAddress}
+          value={form.company_address}
           onChange={handleChange}
           aria-label="dirección del emisor"
+          required=""
+          maxLength="240"
         />
         <div className="input-group">
           <input
-            type="number"
-            name="myPhone"
-            id="myPhone"
+            type="tel"
+            name="companyPhone"
+            id="companyPhone"
             placeholder="Teléfono"
-            value={form.myPhone}
+            value={form.company_phone}
             onChange={handleChange}
             aria-label="teléfono del emisor"
+            required=""
+            maxLength="9"
           />
           <input
             type="text"
-            name="myCif"
-            id="myCif"
+            name="companyCif"
+            id="companyCif"
             placeholder="cif"
-            value={form.myCif}
+            value={form.company_cif}
             onChange={handleChange}
             aria-label="cif del emisor"
+            required=""
+            maxLength="9"
           />
         </div>
 
         <input
-          type="myEmail"
-          name="myEmail"
-          id="email"
+          type="email"
+          name="companyEmail"
+          id="companyEmail"
           placeholder="tuemail@rmail.com"
-          value={form.myEmail}
+          value={form.company_mail}
           onChange={handleChange}
           aria-label="email del emisor"
+          required=""
+          pattern="[a-zA-Z0-9!#$%&amp;'*_+-]([\.]?[a-zA-Z0-9!#$%&amp;'*_+-])+@[a-zA-Z0-9]([^@&amp;%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
         />
       </AccordionFieldset>
 
@@ -411,18 +192,22 @@ export const DashboardForm = ({ onSubmit }) => {
           name="clientName"
           id="clientName"
           placeholder="nombre de cliente"
-          value={form.clientName}
+          value={form.client_name}
           onChange={handleChange}
           aria-label="nombre de cliente"
+          required=""
+          maxLength="40"
         />
         <input
           type="text"
           name="clientAddress"
           id="clientAddress"
           placeholder="dirección"
-          value={form.clientAddress}
+          value={form.client_address}
           onChange={handleChange}
           aria-label="dirección del cliente"
+          required=""
+          maxLength="240"
         />
         <div className="input-group">
           <input
@@ -430,18 +215,22 @@ export const DashboardForm = ({ onSubmit }) => {
             name="clientPhone"
             id="clientPhone"
             placeholder="Teléfono"
-            value={form.clientPhone}
+            value={form.client_phone}
             onChange={handleChange}
             aria-label="teléfono del cliente"
+            required=""
+            maxLength="9"
           />
           <input
             type="text"
             name="clientCif"
             id="clientCif"
             placeholder="cif"
-            value={form.clientCif}
+            value={form.client_cif}
             onChange={handleChange}
             aria-label="cif del cliente"
+            required=""
+            maxLength="9"
           />
         </div>
 
@@ -450,9 +239,11 @@ export const DashboardForm = ({ onSubmit }) => {
           name="clientMail"
           id="clientMail"
           placeholder="emaildelcliente@mail.com"
-          value={form.clientMail}
+          value={form.client_mail}
           onChange={handleChange}
           aria-label="email del cliente"
+          required=""
+          pattern="[a-zA-Z0-9!#$%&amp;'*_+-]([\.]?[a-zA-Z0-9!#$%&amp;'*_+-])+@[a-zA-Z0-9]([^@&amp;%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
         />
       </AccordionFieldset>
 
@@ -513,7 +304,7 @@ export const DashboardForm = ({ onSubmit }) => {
               name="issueDate"
               id="issueDate"
               placeholder="fecha de emisión"
-              value={form.issueDate}
+              value={form.issue_date}
               onChange={handleChange}
               aria-label="fecha de emisión de factura"
             />
@@ -525,22 +316,12 @@ export const DashboardForm = ({ onSubmit }) => {
               name="expirationDate"
               id="expirationDate"
               placeholder="fecha de vencimiento"
-              value={form.expirationDate}
+              value={form.expiration_date}
               onChange={handleChange}
               aria-label="fecha de vencimietno de factura"
             />
           </label>
         </div>
-
-        <input
-          type="number"
-          name="id"
-          id="id"
-          placeholder="numero de factura"
-          value={form.id}
-          onChange={handleChange}
-          aria-label="número de factura"
-        />
       </AccordionFieldset>
 
       <Button type="submit"></Button>

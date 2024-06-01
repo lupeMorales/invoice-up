@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Heading } from "../molecules/Heading";
 import { Button } from "../atoms/buttons/Button";
+import { Link } from "react-router-dom";
 
 const InfoWrapper = styled.section`
   display: flex;
@@ -68,7 +69,9 @@ export const InfoSection = (props) => {
           subtitle={props.subtitle}
         ></Heading>
         <p> {props.text} </p>
-        <Button action={props.action}></Button>
+        <Link to={props.path}>
+          <Button action={props.action}></Button>
+        </Link>
       </div>
     </InfoWrapper>
   );
@@ -79,6 +82,7 @@ InfoSection.propTypes = {
   image: PropTypes.string.isRequired,
   alt: PropTypes.string,
   text: PropTypes.string.isRequired,
+  path: PropTypes.string,
 };
 
 /* Button.propTypes = {

@@ -23,10 +23,12 @@ export const Home = () => {
         subtitle="InvoiceUp te permite crear facturas de forma fácil y rápida, con diferentes plantillas de facturas personalizables."
         image={image}
         action="Facturar ahora"
+        path="/login"
       />
       <DiagonalSparator />
       <FeaturesSection />
       <InfoSection
+        path="/login"
         action="Facturar ahora"
         title="InvoiceUp trabaja por tí"
         subtitle="Facturación inteligente"
@@ -36,6 +38,7 @@ export const Home = () => {
         No necesitas asignar números de factura o calcular precios e Iva, InvoiceUp lo hace por tí."
       ></InfoSection>
       <InfoSection
+        path="/login"
         action="Facturar ahora"
         direction="reverse"
         title="Libre de errores"
@@ -47,6 +50,7 @@ export const Home = () => {
         Hemos preparado un intuitivo proceso paso a paso que reduce el riesgo de cometer errores u olvidarse de información importante. Con InvoiceUp tienes la tranquilidad de que tus facturas son correctas."
       ></InfoSection>
       <InfoSection
+        path="/login"
         action="Facturar ahora"
         title="Crea facturas profesionales"
         subtitle="Mejora tu imagen profesional."
@@ -60,6 +64,8 @@ Añadir facturas a tu proceso de ventas os brindará, a ti y a tu cliente, un re
       <CTA
         title="Calcula tu beneficio neto AHORA."
         subtitle="Olvídate de los cálculos complicados. Usa nuestra calculadora de autónomos GRATIS."
+        path1="/calculadora-de-autonomos"
+        path2="/login"
       ></CTA>
       <TestimonialSection />
       <BlogListSection />

@@ -9,6 +9,7 @@ export const ButtonStyled = styled.button`
   border: 2px solid ${(props) => props.theme.color.accent};
   border-radius: 50px;
   font-family: ${(props) => props.theme.fonts.titleFont};
+  cursor: pointer;
 
   &:hover {
     background-color: ${(props) =>

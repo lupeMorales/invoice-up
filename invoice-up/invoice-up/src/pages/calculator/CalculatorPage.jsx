@@ -17,7 +17,8 @@ export const CalculatorPage = () => {
         subtitle="Calcula tu IVA, IRPF y beneficio neto en segundos."
         image={image}
         action="Calcular ahora"
-      />
+        path="/login"
+      ></Hero>
       <DiagonalSparator />
       <Heading
         title="Toma el control de tus finanzas como autónomo."
