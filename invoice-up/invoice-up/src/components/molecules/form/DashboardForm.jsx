@@ -27,28 +27,28 @@ export const DashboardForm = ({ onSubmit }) => {
     service: "",
     quantity: "",
     price: "", */
+    template: "classic",
+    logo: "",
+    number_invoice: "",
+
     company_name: "",
     company_address: "",
     company_phone: "",
     company_mail: "",
     company_cif: "",
-    clientName: "",
-    clientAddress: "",
-    clientPhone: "",
-    clientMail: "",
-    clientCif: "",
+    client_name: "",
+    client_address: "",
+    client_phone: "",
+    client_mail: "",
+    client_cif: "",
     iva: "",
     irpf: "",
-    issueDate: "",
-    expirationDate: "",
+    issue_date: "",
+    expiration_date: "",
     service: "",
     quantity: "",
     price: "",
     id: "",
-
-    template: "classic",
-    logo: "",
-    numberInvoice: "",
   });
   /*   const [numberInvoice, setNumberInvoice] = useState(""); */
 
@@ -62,7 +62,7 @@ export const DashboardForm = ({ onSubmit }) => {
 
     setForm({
       ...form,
-      numberInvoice: code,
+      number_invoice: code,
     });
   };
 
@@ -98,7 +98,7 @@ export const DashboardForm = ({ onSubmit }) => {
   return (
     <DashboardFormStyled onSubmit={handleSubmit}>
       <h1>Mi códico generado:</h1>
-      <h1>{form.numberInvoice}</h1>
+      <h1>{form.number_invoice}</h1>
 
       <fieldset>
         <legend>Elige diseño</legend>
@@ -215,10 +215,10 @@ export const DashboardForm = ({ onSubmit }) => {
       <AccordionFieldset title="Datos del cliente">
         <input
           type="text"
-          name="clientName"
-          id="clientName"
+          name="client_name"
+          id="client-name"
           placeholder="nombre de cliente"
-          value={form.clientName}
+          value={form.client_name}
           onChange={handleChange}
           aria-label="nombre de cliente"
           required=""
@@ -226,10 +226,10 @@ export const DashboardForm = ({ onSubmit }) => {
         />
         <input
           type="text"
-          name="clientAddress"
-          id="clientAddress"
+          name="client_address"
+          id="client_address"
           placeholder="dirección"
-          value={form.clientAddress}
+          value={form.client_address}
           onChange={handleChange}
           aria-label="dirección del cliente"
           required=""
@@ -238,10 +238,10 @@ export const DashboardForm = ({ onSubmit }) => {
         <div className="input-group">
           <input
             type="number"
-            name="clientPhone"
-            id="clientPhone"
+            name="client_phone"
+            id="client_phone"
             placeholder="Teléfono"
-            value={form.clientPhone}
+            value={form.client_phone}
             onChange={handleChange}
             aria-label="teléfono del cliente"
             required=""
@@ -249,10 +249,10 @@ export const DashboardForm = ({ onSubmit }) => {
           />
           <input
             type="text"
-            name="clientCif"
-            id="clientCif"
+            name="client_cif"
+            id="client_cif"
             placeholder="cif"
-            value={form.clientCif}
+            value={form.client_cif}
             onChange={handleChange}
             aria-label="cif del cliente"
             required=""
@@ -262,10 +262,10 @@ export const DashboardForm = ({ onSubmit }) => {
 
         <input
           type="email"
-          name="clientMail"
-          id="clientMail"
+          name="client_mail"
+          id="client_mail"
           placeholder="emaildelcliente@mail.com"
-          value={form.clientMail}
+          value={form.client_mail}
           onChange={handleChange}
           aria-label="email del cliente"
           required=""
@@ -330,7 +330,7 @@ export const DashboardForm = ({ onSubmit }) => {
               name="issueDate"
               id="issueDate"
               placeholder="fecha de emisión"
-              value={form.issueDate}
+              value={form.issue_date}
               onChange={handleChange}
               aria-label="fecha de emisión de factura"
             />
@@ -342,7 +342,7 @@ export const DashboardForm = ({ onSubmit }) => {
               name="expirationDate"
               id="expirationDate"
               placeholder="fecha de vencimiento"
-              value={form.expirationDate}
+              value={form.expiration_date}
               onChange={handleChange}
               aria-label="fecha de vencimietno de factura"
             />
