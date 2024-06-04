@@ -42,7 +42,7 @@ export const InvoiceClasic = ({ dataForm }) => {
             <td>{dataForm.service}</td>
             <td>{dataForm.quantity}</td>
             <td>{dataForm.price}€</td>
-            <td>{subtotal}</td>
+            <td>{subtotal}€</td>
           </tr>
         </table>
         <div className="classic_totals">

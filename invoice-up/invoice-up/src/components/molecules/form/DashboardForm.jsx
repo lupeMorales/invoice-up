@@ -1,32 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DashboardFormStyled } from "./DashboardFormStyled";
 import { Button } from "../../atoms/buttons/Button";
 import { AccordionFieldset } from "./AccordionFieldset";
 import GetAvatar from "../../atoms/getLogo/GetAvatar";
 export const DashboardForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
-    /*     template: "classic",
-    logo: "",
-    company_name: "",
-    company_address: "",
-    company_phone: "",
-    company_mail: "",
-    company_cif: "",
-
-    client_name: "",
-    client_address: "",
-    client_phone: "",
-    client_mail: "",
-    client_cif: "",
-
-    iva: "",
-    irpf: "",
-    issue_date: "",
-    expiration_date: "",
-    service: "",
-    quantity: "",
-    price: "", */
     template: "classic",
     logo: "",
     number_invoice: "",
@@ -52,8 +31,12 @@ export const DashboardForm = ({ onSubmit }) => {
   });
   /*   const [numberInvoice, setNumberInvoice] = useState(""); */
 
+  useEffect(() => {
+    onSubmit(form);
+  }, [form]);
+
   const generateNumberInvoice = () => {
-    // Generar un código alfanumérico de 6 caracteres
+    // Generar un código alfanumérico de 6 caracteres para el número de factura
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     let code = "";
     for (let i = 0; i < 6; i++) {
@@ -83,7 +66,7 @@ export const DashboardForm = ({ onSubmit }) => {
   };
 
   //send data to dashboard
-  const handleSubmit = (ev) => {
+  /*   const handleSubmit = (ev) => {
     ev.preventDefault();
     //** OJO ** hay que hacer comprovación si falta algún input por rellenar
     // validaciones
@@ -93,6 +76,20 @@ export const DashboardForm = ({ onSubmit }) => {
 
     //volver al estado inicial del formurario
     // resetForm();
+  }; */
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    generateNumberInvoice();
+    try {
+      // Realiza la llamada a axios para enviar datos al servidor
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/v1/invoices",
+        form
+      );
+      console.log("Respuesta del servidor:", response.data);
+    } catch (error) {
+      console.error("Error al enviar datos:", error);
+    }
   };
 
   return (
@@ -350,7 +347,7 @@ export const DashboardForm = ({ onSubmit }) => {
         </div>
       </AccordionFieldset>
 
-      <Button type="submit"></Button>
+      <Button type="submit" action="Generar Factura"></Button>
     </DashboardFormStyled>
   );
 };

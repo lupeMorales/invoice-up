@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Button } from "../../components/atoms/buttons/Button";
 import { RegisterStyled } from "./RegisterStyled";
 import image from "../../assets/welcome.png";
@@ -9,7 +10,7 @@ export const Register = () => {
   const navigate = useNavigate();
   const [formIsSend, setFormIsSend] = useState(false);
   const [form, setForm] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -22,14 +23,36 @@ export const Register = () => {
     });
   };
 
-  const handleSubmit = (ev) => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
     setFormIsSend(true);
     console.log("Genial, tu cuenta ha sido creada");
     console.log("Data:", form);
+
+    try {
+      // Realizar la llamada Axios para enviar datos al servidor
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/v1/register",
+        form
+      );
+      // Verifica si existe un token en la respuesta de la API
+      if (response.data.data.token) {
+        // Si hay un token, almacénalo en el localStorage del navegador
+        localStorage.setItem("token", response.data.data.token);
+
+        // Redirige al usuario a la página principal
+        return navigate("/");
+      }
+
+      console.log("Respuesta del servidor:", response.data);
+    } catch (error) {
+      // Manejar errores en la llamada Axios
+      console.error("Error al enviar datos:", error);
+    }
+
     //reset form
     setForm({
-      username: "",
+      name: "",
       email: "",
       password: "",
     });
@@ -46,13 +69,13 @@ export const Register = () => {
             {" "}
             <h1>Welcome</h1>
             <h3>Nos alegra tenerte a bordo</h3>
-            <label htmlFor="username">
+            <label htmlFor="name">
               Nombre de usuario
               <input
                 type="text"
-                id="username"
-                name="username"
-                value={form.username}
+                id="name"
+                name="name"
+                value={form.name}
                 onChange={handleInputChange}
                 required
               ></input>

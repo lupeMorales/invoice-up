@@ -14,6 +14,7 @@ import { Login } from "./pages/login/Login";
 import { Register } from "./pages/register/Register";
 import { CalculatorPage } from "./pages/calculator/CalculatorPage";
 import { Dashboard } from "./pages/dashboard/Dashboard";
+import { MyInvoices } from "./pages/myInvoices/MyInvoices";
 import { ProtectedRoute } from "./utils/ProtectedRoute";
 
 /* export const main = () => {
@@ -61,6 +62,16 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+    ],
+  },
+  {
+    path: "/",
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: "/my-invoices",
+        element: <MyInvoices />,
       },
     ],
   },
