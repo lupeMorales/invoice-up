@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const DashboardWrapper = styled.main`
-  width: 100vw;
   height: auto;
   padding: 40px;
   display: flex;
