@@ -32,7 +32,7 @@ export const Register = () => {
     try {
       // Realizar la llamada Axios para enviar datos al servidor
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/v1/register",
+        "http://127.0.0.1:8000/api/register",
         form
       );
       // Verifica si existe un token en la respuesta de la API

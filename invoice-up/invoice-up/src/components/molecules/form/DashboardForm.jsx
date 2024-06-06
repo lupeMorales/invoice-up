@@ -9,7 +9,6 @@ export const DashboardForm = ({ onSubmit }) => {
     template: "classic",
     logo: "",
     number_invoice: "",
-
     company_name: "",
     company_address: "",
     company_phone: "",
@@ -21,7 +20,9 @@ export const DashboardForm = ({ onSubmit }) => {
     client_mail: "",
     client_cif: "",
     iva: "",
+    iva_amount: "",
     irpf: "",
+    irpf_amount: "",
     issue_date: "",
     expiration_date: "",
     service: "",
@@ -83,7 +84,7 @@ export const DashboardForm = ({ onSubmit }) => {
     try {
       // Realiza la llamada a axios para enviar datos al servidor
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/v1/invoices",
+        "http://127.0.0.1:8000/api/invoices",
         form
       );
       console.log("Respuesta del servidor:", response.data);
@@ -324,8 +325,8 @@ export const DashboardForm = ({ onSubmit }) => {
             <p>Fecha de emisión</p>
             <input
               type="date"
-              name="issueDate"
-              id="issueDate"
+              name="issue_date"
+              id="issue_date"
               placeholder="fecha de emisión"
               value={form.issue_date}
               onChange={handleChange}
@@ -336,8 +337,8 @@ export const DashboardForm = ({ onSubmit }) => {
             <p>Fecha de vencimiento</p>
             <input
               type="date"
-              name="expirationDate"
-              id="expirationDate"
+              name="expiration_date"
+              id="expiration_date"
               placeholder="fecha de vencimiento"
               value={form.expiration_date}
               onChange={handleChange}

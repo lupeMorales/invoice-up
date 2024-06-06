@@ -5,7 +5,7 @@ export const Button = (props) => {
   return (
     <ButtonStyled variant={props.variant} {...props}>
       {" "}
-      {props.variant === ""}
+      {props.action}
     </ButtonStyled>
   );
 };
