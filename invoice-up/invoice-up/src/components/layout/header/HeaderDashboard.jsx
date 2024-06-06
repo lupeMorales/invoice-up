@@ -23,8 +23,16 @@ export const HeaderDashboard = () => {
         </Link>
       </h2>
       <ul>
-        <li>Nueva factura</li>
-        <li>Mis facturas</li>
+        <li>
+          <Link to="/dashboard" style={linkStyle}>
+            Nueva factura
+          </Link>
+        </li>
+        <li>
+          <Link to="/my-invoices" style={linkStyle}>
+            Mis facturas
+          </Link>
+        </li>
       </ul>
       <div>
         <p>userName</p>

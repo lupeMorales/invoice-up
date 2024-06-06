@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { useState } from "react";
 import { InvoiceInfoItemStyled } from "./InvoiceInfoItemStyled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,6 +27,7 @@ export const InvoiceInfoItem = () => {
       <h2>fecha</h2>
       <h2>importe</h2>
       <h2
+        title='cambia el estado de la factura a "cobrado"'
         style={{
           backgroundColor: color,
           padding: "5px 10px",
@@ -53,13 +53,3 @@ export const InvoiceInfoItem = () => {
     </InvoiceInfoItemStyled>
   );
 };
-/* InvoiceInfoItem.propTypes = {
-  variant: PropTypes.string,
-  state: PropTypes.string.isRequired,
-};
-
-InvoiceInfoItem.defaultProps = {
-  state: "pendiente",
-  variant: "pendiente",
-};
- */
