@@ -15,6 +15,9 @@ export const InvoiceInfoItemStyled = styled.article`
   color: ${(props) => props.theme.color.grey};
   border-radius: 20px;
 
+  &:hover {
+    background-color: ${(props) => props.theme.color.secondary};
+  }
   .container-edit {
     display: flex;
     justify-content: center;
