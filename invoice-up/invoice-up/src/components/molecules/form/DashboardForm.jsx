@@ -4,10 +4,11 @@ import { DashboardFormStyled } from "./DashboardFormStyled";
 import { Button } from "../../atoms/buttons/Button";
 import { AccordionFieldset } from "./AccordionFieldset";
 import GetAvatar from "../../atoms/getLogo/GetAvatar";
+import { config } from "@fortawesome/fontawesome-svg-core";
 export const DashboardForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
     template: "classic",
-    logo: "",
+    logo: null,
     number_invoice: "",
     company_name: "",
     company_address: "",
@@ -59,11 +60,18 @@ export const DashboardForm = ({ onSubmit }) => {
   };
   const handleChange = (ev) => {
     // Actualiza el estado de 'form' con el valor del campo de entrada
-    const { name, value } = ev.target;
-    setForm({
+    const { name, value, files } = ev.target;
+    if (name == "logo") {
+      setForm({
+        ...form, [logo]:files[0]
+      })
+    } else { setForm({
       ...form,
       [name]: value,
     });
+
+    }
+   
   };
 
   //send data to dashboard
@@ -81,12 +89,16 @@ export const DashboardForm = ({ onSubmit }) => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     generateNumberInvoice();
+    const formData = new formData();
+    Object.keys(form).forEach((key)=>{formData.append(key, form[key])});
+    console.log (formData);
     try {
       // Realiza la llamada a axios para enviar datos al servidor
       const response = await axios.post(
         "http://127.0.0.1:8000/api/invoices",
-        form
+        formData,  headers: {'Content-Type':'multipart/form-data'}
       );
+    
       console.log("Respuesta del servidor:", response.data);
     } catch (error) {
       console.error("Error al enviar datos:", error);
