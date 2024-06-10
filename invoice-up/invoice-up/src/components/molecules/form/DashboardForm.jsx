@@ -63,15 +63,15 @@ export const DashboardForm = ({ onSubmit }) => {
     const { name, value, files } = ev.target;
     if (name == "logo") {
       setForm({
-        ...form, [logo]:files[0]
-      })
-    } else { setForm({
-      ...form,
-      [name]: value,
-    });
-
+        ...form,
+        [logo]: files[0],
+      });
+    } else {
+      setForm({
+        ...form,
+        [name]: value,
+      });
     }
-   
   };
 
   //send data to dashboard
@@ -90,15 +90,22 @@ export const DashboardForm = ({ onSubmit }) => {
     ev.preventDefault();
     generateNumberInvoice();
     const formData = new formData();
-    Object.keys(form).forEach((key)=>{formData.append(key, form[key])});
-    console.log (formData);
+    Object.keys(form).forEach((key) => {
+      formData.append(key, form[key]);
+    });
+    console.log(formData);
     try {
       // Realiza la llamada a axios para enviar datos al servidor
       const response = await axios.post(
         "http://127.0.0.1:8000/api/invoices",
-        formData,  headers: {'Content-Type':'multipart/form-data'}
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
-    
+
       console.log("Respuesta del servidor:", response.data);
     } catch (error) {
       console.error("Error al enviar datos:", error);
