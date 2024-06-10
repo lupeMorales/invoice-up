@@ -1,6 +1,7 @@
 import { MyInvoicesWrapperStyled } from "./MyInvoicesWrapperStyled";
 import { InvoiceInfoItem } from "../../components/molecules/invoicesInfo/InvoiceInfoItem";
 import styled from "styled-components";
+import { FiltersInvoices } from "./FiltersInvoices";
 
 const InvoiceListHeaderStyled = styled.div`
   display: flex;
@@ -25,6 +26,7 @@ const InvoiceListHeaderStyled = styled.div`
 export const MyInvoicesWrapper = () => {
   return (
     <MyInvoicesWrapperStyled>
+      <FiltersInvoices></FiltersInvoices>
       <InvoiceListHeaderStyled>
         <h2>Número de factura</h2>
         <h2>Cliente</h2>
@@ -37,6 +39,7 @@ export const MyInvoicesWrapper = () => {
           <h2>Borrar</h2>
         </div>
       </InvoiceListHeaderStyled>
+
       <InvoiceInfoItem></InvoiceInfoItem>
       <InvoiceInfoItem></InvoiceInfoItem>
       <InvoiceInfoItem></InvoiceInfoItem>

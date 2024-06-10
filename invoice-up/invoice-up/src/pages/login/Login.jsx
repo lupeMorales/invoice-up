@@ -8,6 +8,7 @@ import { Header } from "../../components/layout/header/Header";
 export const Login = () => {
   const navigate = useNavigate();
   const [formIsSend, setFormIsSend] = useState(false);
+
   const [form, setForm] = useState({
     mail: "",
     password: "",
@@ -18,16 +19,25 @@ export const Login = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
-    setFormIsSend(true);
-    console.log("Formulario de logueo enviado");
-    console.log("data", form);
-    //reset form
-    setForm({
-      mail: "",
-      password: "",
-    });
+ const handleSubmit = async (ev) => {
+      ev.preventDefault();
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/api/login", form);
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+          navigate("/");
+        }
+      } catch (error) {
+        console.error("Login failed:", error);
+      }
+
+      setForm({
+        mail: "",
+        password: "",
+      })
+    };
+  
+    localStorage.setItem("user", JSON.stringify(form));
 
     //navigate to dashboard
     navigate("/dashboard");
