@@ -22,22 +22,24 @@ export const InvoiceInfoItem = () => {
 
   return (
     <InvoiceInfoItemStyled>
-      <h2>numero de factura</h2>
-      <h2>cliente</h2>
-      <h2>fecha</h2>
-      <h2>importe</h2>
-      <h2
-        title='cambia el estado de la factura a "cobrado"'
-        style={{
-          backgroundColor: color,
-          padding: "5px 10px",
-          borderRadius: "20px",
-          cursor: "pointer",
-        }}
-        onClick={handleClick}
-      >
-        {text}
-      </h2>
+      <div className="container-info">
+        <h2 className="invoice-number">numero de factura</h2>
+        <h2>cliente</h2>
+        <h2 className="invoice-date">fecha</h2>
+        <h2>importe</h2>
+        <h2
+          title='cambia el estado de la factura a "cobrado"'
+          style={{
+            backgroundColor: color,
+            padding: "5px 10px",
+            borderRadius: "20px",
+            cursor: "pointer",
+          }}
+          onClick={handleClick}
+        >
+          {text}
+        </h2>
+      </div>
 
       <div className="container-edit">
         <button className="button-info" title="ver detalle">

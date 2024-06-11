@@ -18,11 +18,23 @@ export const InvoiceInfoItemStyled = styled.article`
   &:hover {
     background-color: ${(props) => props.theme.color.secondary};
   }
-  .container-edit {
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .invoice-number,
+    .invoice-date {
+      display: none; // Ocultar estos elementos en pantallas pequeñas
+    }
+  }
+
+  .container-edit,
+  .container-info {
     display: flex;
     justify-content: center;
     align-items: center;
     column-gap: 20px;
+    padding: 8px 0;
   }
 
   button {

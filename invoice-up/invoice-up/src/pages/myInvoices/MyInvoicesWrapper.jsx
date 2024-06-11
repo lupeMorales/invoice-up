@@ -22,6 +22,9 @@ const InvoiceListHeaderStyled = styled.div`
     align-items: center;
     column-gap: 20px;
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 export const MyInvoicesWrapper = () => {
   return (
