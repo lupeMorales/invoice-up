@@ -48,7 +48,11 @@ export const HeaderDashboard = () => {
             </Link>
           </li>
           <li>
-            <Link to="/my-invoices" style={linkStyle} onClick={handleLinkClick}>
+            <Link
+              to="/mis-facturas"
+              style={linkStyle}
+              onClick={handleLinkClick}
+            >
               Mis facturas
             </Link>
           </li>
