@@ -11,13 +11,17 @@ const HeadingWrapper = styled.div`
   padding: 100px 0 20px 0;
 
   h2 {
-    max-width: 800px;
+    max-width: 500px;
     text-align: center;
     text-align: ${(props) => (props.align === "start" ? "start" : "center")};
     padding-bottom: 20px;
     font-family: ${(props) => props.theme.fonts.titleFont};
     font-size: ${(props) => props.theme.fontSizes.xlarge};
     color: ${(props) => props.theme.color.darl_text};
+    @media only screen and (max-width: 798px) {
+      max-width: 290px;
+      font-size: ${(props) => props.theme.fontSizes.xlarge};
+    }
   }
 
   p {
@@ -27,6 +31,10 @@ const HeadingWrapper = styled.div`
     padding-bottom: 40px;
     font-size: ${(props) => props.theme.fontSizes.normal};
     color: ${(props) => props.theme.color.darl_text};
+    @media only screen and (max-width: 798px) {
+      max-width: 300px;
+      font-weight: 300;
+    }
   }
   hr {
     width: 80px;

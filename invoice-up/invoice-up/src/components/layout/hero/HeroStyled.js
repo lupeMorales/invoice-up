@@ -31,12 +31,20 @@ export const HeroStyled = styled.section`
     font-size: ${(props) => props.theme.fontSizes.normal};
     color: ${(props) => props.theme.color.light_text};
     padding-bottom: 20px;
+
+    @media only screen and (max-width: 798px) {
+      line-height: 1.5;
+      font-weight: 300;
+    }
   }
   img {
     width: 100%;
     max-width: 550px;
     object-fit: fill;
     animation: slide-left 1.2s linear both;
+    @media only screen and (max-width: 798px) {
+      display: none;
+    }
   }
 
   @keyframes slide-left {
