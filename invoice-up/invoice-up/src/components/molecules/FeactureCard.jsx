@@ -13,7 +13,9 @@ const StyledCard = styled.article`
     background-color: ${(props) => props.theme.color.light_text};
     border: 2px solid ${(props) => props.theme.color.primary};
   }
-
+  @media only screen and (max-width: 798px) {
+    padding: 40px 20px;
+  }
   h3,
   p {
     text-align: center;
@@ -25,6 +27,9 @@ const StyledCard = styled.article`
   }
   p {
     font-size: ${(props) => props.theme.fontSizes.small};
+    @media only screen and (max-width: 798px) {
+      font-weight: 300;
+    }
   }
   img {
     display: block;
@@ -33,6 +38,9 @@ const StyledCard = styled.article`
     max-width: 100px;
     object-fit: fill;
     margin-bottom: 20px;
+    @media only screen and (max-width: 798px) {
+      max-width: 70px;
+    }
   }
 `;
 
