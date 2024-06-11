@@ -69,31 +69,39 @@ export const HeaderDashboardStyled = styled.header`
     }
   }
 
+  div.container-user {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    p {
+      font-size: ${(props) => props.theme.fontSizes.small};
+      color: ${(props) => props.theme.color.light_text};
+    }
+    img {
+      width: 50px;
+    }
+    @media (max-width: 768px) {
+      display: none; // Ocultar nombre de usuario y imagen en móviles
+    }
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    /*   div {
-      display: none; // Ocultar nombre de usuario y imagen en móviles
-    } */
-  }
-  @media (max-width: 768px) {
-    p,
-    img {
-      display: none; // Ocultar nombre de usuario y imagen en móviles
-    }
   }
 `;
 
 export const Nav = styled.nav`
   display: flex;
-  align-items: center;
-  z-index: 99;
+  padding: 20px 0;
 
   ul {
     display: flex;
     list-style: none;
+    justify-content: center;
+    align-items: center;
+
     @media (max-width: 768px) {
       width: 100%;
       flex-direction: column;

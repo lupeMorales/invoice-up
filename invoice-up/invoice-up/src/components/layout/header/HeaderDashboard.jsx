@@ -53,7 +53,7 @@ export const HeaderDashboard = () => {
             </Link>
           </li>
         </ul>
-        <div>
+        <div className="container-user">
           <p>userName</p>
           <img src={imageDeafult} alt="image usuario" />
         </div>
