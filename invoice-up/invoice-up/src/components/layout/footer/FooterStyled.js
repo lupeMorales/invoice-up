@@ -13,6 +13,19 @@ export const FooterStyled = styled.footer`
     height: auto;
   }
 
+  img {
+    background-color: aliceblue;
+    border-radius: 100%;
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 100px;
+    object-fit: fill;
+    margin-bottom: 20px;
+    /*   @media only screen and (max-width: 798px) {
+      max-width: 150px;
+    } */
+  }
   div {
     padding-top: 40px;
   }

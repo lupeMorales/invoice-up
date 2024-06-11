@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { FooterStyled } from "./FooterStyled";
-
 import { DiagonalSparatorUp } from "../../atoms/DiagonalSeparator";
 import { Copyright } from "../../atoms/copyright/Copyright";
 import styled from "styled-components";
-
+import logo from "../../../assets/favicon.png";
 //ojo cuidao! funciona pero no me gusta ** refactorizar **
 /* const linkStyle = {
   margin: "1rem",
@@ -28,6 +27,10 @@ export const Footer = () => {
       <DiagonalSparatorUp></DiagonalSparatorUp>
       <section>
         <div>
+          {/*   <Link to="/">
+            {" "}
+            <img src={logo} alt="logo de invoice up" />
+          </Link> */}
           <h2>InvoiceUp</h2>
           <p>Crea facturas en minutos. Optimiza tu tiempo y tu negocio.</p>
           <nav></nav>
