@@ -42,8 +42,18 @@ export const CalculatorStyled = styled.main`
   fieldset div {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: start;
     align-items: baseline;
+    width: 580px;
+    @media only screen and (max-width: 798px) {
+      /*       flex-direction: column; */
+      flex-wrap: wrap;
+      width: 280px;
+      justify-content: space-between;
+      border-bottom: 1px solid black;
+      padding: 20px 0;
+    }
   }
 
   fieldset div p {
@@ -66,7 +76,7 @@ export const CalculatorStyled = styled.main`
     text-align: end;
     margin: 8px 15px 25px 45px;
     @media only screen and (max-width: 798px) {
-      width: 50px;
+      width: 40px;
     }
   }
 
