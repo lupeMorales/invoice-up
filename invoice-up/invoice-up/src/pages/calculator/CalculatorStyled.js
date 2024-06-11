@@ -6,6 +6,13 @@ export const CalculatorStyled = styled.main`
   padding: 80px;
   justify-content: space-evenly;
   align-items: center;
+  gap: 20px;
+  @media only screen and (max-width: 798px) {
+    flex-direction: column;
+    padding: 40px;
+    width: 250px;
+    margin: auto;
+  }
 
   h2 {
     font-size: ${(props) => props.theme.fontSizes.small};
@@ -23,6 +30,9 @@ export const CalculatorStyled = styled.main`
     padding: 80px 30px;
     border-radius: 20px;
     box-shadow: 5px 10px 20px ${(props) => props.theme.color.grey};
+    @media only screen and (max-width: 798px) {
+      width: 280px;
+    }
   }
 
   fieldset {
@@ -55,23 +65,44 @@ export const CalculatorStyled = styled.main`
     padding: 5px;
     text-align: end;
     margin: 8px 15px 25px 45px;
+    @media only screen and (max-width: 798px) {
+      width: 50px;
+    }
   }
+
   section div:nth-child(1) {
-    width: 500px;
-    min-width: 360px;
     margin-bottom: 30px;
     padding: 30px;
     background-color: ${(props) => props.theme.color.primary};
     border-radius: 20px;
+    @media only screen and (max-width: 798px) {
+      width: 280px;
+      padding: 20px;
+      margin: 20px auto 10px;
+    }
   }
   section div:nth-child(2) {
     padding: 30px;
     background-color: ${(props) => props.theme.color.light_accent};
     border-radius: 20px;
+    @media only screen and (max-width: 798px) {
+      width: 280px;
+      padding: 20px;
+      margin: 20px auto;
+    }
+    @media only screen and (min-width: 799px) {
+      width: 500px;
+      padding: 20px;
+      margin: 20px auto;
+    }
   }
 
   p {
     font-size: ${(props) => props.theme.fontSizes.small};
+    @media only screen and (max-width: 798px) {
+      width: 250px;
+      margin: 20px auto 10px;
+    }
   }
   p:nth-child(4),
   p:nth-child(2) {
@@ -81,6 +112,10 @@ export const CalculatorStyled = styled.main`
     padding: 5px;
     text-align: end;
     margin: 8px 0 25px;
+    @media only screen and (max-width: 798px) {
+      width: 250px;
+      margin: 20px auto 10px;
+    }
   }
 `;
 // Estilos del Tooltip
