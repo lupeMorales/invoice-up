@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const DashboardFormStyled = styled.form`
+  /*  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
   input {
     display: block;
     width: calc(100% - 20px);

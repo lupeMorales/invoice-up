@@ -19,7 +19,6 @@ export const Dashboard = () => {
       <HeaderDashboard />
       <DashboardWrapper>
         <DashboardFormWrapper>
-          {" "}
           <DashboardForm onSubmit={handleSubmit}></DashboardForm>
         </DashboardFormWrapper>
         <Previewer dataForm={dataForm}></Previewer>

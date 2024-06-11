@@ -11,4 +11,9 @@ export const DashboardWrapper = styled.main`
     ${(props) => props.theme.color.primary},
     ${(props) => props.theme.color.secondary} 100%
   );
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
 `;
