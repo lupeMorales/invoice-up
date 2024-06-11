@@ -14,10 +14,17 @@ const InfoWrapper = styled.section`
   flex-wrap: wrap;
   gap: 10rem;
   padding-bottom: 100px;
+  @media only screen and (max-width: 798px) {
+    padding: 0 70px 100px;
+    gap: 1.5rem;
+  }
 
   p {
     font-size: ${(props) => props.theme.fontSizes.small};
     padding-bottom: 40px;
+    @media only screen and (max-width: 798px) {
+      font-weight: 300;
+    }
   }
 
   img {
