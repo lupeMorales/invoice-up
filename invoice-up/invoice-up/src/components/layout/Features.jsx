@@ -13,6 +13,9 @@ const FeaturesWrapper = styled.div`
   align-items: center;
   gap: 1.5rem;
   padding: 80px 0;
+  @media only screen and (max-width: 798px) {
+    padding: 80px 20px;
+  }
 `;
 
 export const Features = () => {
