@@ -4,7 +4,7 @@ import { HeaderStyled } from "./HeaderStyled";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Nav, MenuToggle, MenuIcon } from "./HeaderStyled";
-import { width } from "@fortawesome/free-solid-svg-icons/fa0";
+/* import { width } from "@fortawesome/free-solid-svg-icons/fa0"; */
 
 //ojo cuidao! funciona pero no me gusta ** refactorizar **
 const linkStyle = {
@@ -18,6 +18,10 @@ export const Header = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
   };
   return (
     <HeaderStyled>
@@ -37,24 +41,28 @@ export const Header = () => {
       <Nav isOpen={isOpen}>
         <ul>
           <li>
-            <Link to="/" style={linkStyle}>
+            <Link to="/" style={linkStyle} onClick={handleLinkClick}>
               Inicio
             </Link>
           </li>
           <li>
-            <Link to="/calculadora-de-autonomos" style={linkStyle}>
+            <Link
+              to="/calculadora-de-autonomos"
+              style={linkStyle}
+              onClick={handleLinkClick}
+            >
               Calculadora de autónomos
             </Link>
           </li>
-          <li>About</li>
+          <li onClick={handleLinkClick}>About</li>
         </ul>
         <div className="buttons-wrapper">
           {" "}
-          <Link to="/login">
+          <Link to="/login" onClick={handleLinkClick}>
             {" "}
             <Button action="Empezar a facturar"></Button>
           </Link>
-          <Link to="/register">
+          <Link to="/register" onClick={handleLinkClick}>
             <Button action="Crear cuenta" variant="outline"></Button>
           </Link>
         </div>

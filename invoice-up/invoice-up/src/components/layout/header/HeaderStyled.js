@@ -103,7 +103,7 @@ export const Nav = styled.nav`
   @media (max-width: 768px) {
     width: 100%;
     display: ${({ isOpen }) => (isOpen ? "block" : "none")};
-    background-color: ${(props) => props.theme.color.light_accent};
+    background-color: ${(props) => props.theme.color.primary};
     padding: 40px 0;
   }
 
