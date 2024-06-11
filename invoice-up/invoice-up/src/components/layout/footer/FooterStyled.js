@@ -9,6 +9,10 @@ export const FooterStyled = styled.footer`
     ${(props) => props.theme.color.secondary} 100%
   );
   overflow: hidden;
+  @media only screen and (max-width: 798px) {
+    height: auto;
+  }
+
   div {
     padding-top: 40px;
   }
@@ -16,6 +20,9 @@ export const FooterStyled = styled.footer`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    @media only screen and (max-width: 798px) {
+      flex-direction: column;
+    }
   }
   h2 {
     max-width: 800px;
