@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "../../atoms/buttons/Button";
 import { HeaderStyled } from "./HeaderStyled";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Nav, MenuToggle, MenuIcon } from "./HeaderStyled";
 
 //ojo cuidao! funciona pero no me gusta ** refactorizar **
 const linkStyle = {
@@ -10,6 +13,11 @@ const linkStyle = {
 };
 
 export const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <HeaderStyled>
       <h2>
@@ -22,29 +30,34 @@ export const Header = () => {
           InvoiceUp
         </Link>
       </h2>
-      <ul>
-        <li>
-          <Link to="/" style={linkStyle}>
-            Inicio
-          </Link>
-        </li>
-        <li>
-          <Link to="/calculadora-de-autonomos" style={linkStyle}>
-            Calculadora de autónomos
-          </Link>
-        </li>
-        <li>About</li>
-      </ul>
-      <div>
-        {" "}
-        <Link to="/login">
+      <MenuToggle onClick={toggleMenu}>
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </MenuToggle>
+      <Nav isOpen={isOpen}>
+        <ul>
+          <li>
+            <Link to="/" style={linkStyle}>
+              Inicio
+            </Link>
+          </li>
+          <li>
+            <Link to="/calculadora-de-autonomos" style={linkStyle}>
+              Calculadora de autónomos
+            </Link>
+          </li>
+          <li>About</li>
+        </ul>
+        <div>
           {" "}
-          <Button action="Empezar a facturar"></Button>
-        </Link>
-        <Link to="/register">
-          <Button action="Crear cuenta" variant="outline"></Button>
-        </Link>
-      </div>
+          <Link to="/login">
+            {" "}
+            <Button action="Empezar a facturar"></Button>
+          </Link>
+          <Link to="/register">
+            <Button action="Crear cuenta" variant="outline"></Button>
+          </Link>
+        </div>
+      </Nav>
     </HeaderStyled>
   );
 };

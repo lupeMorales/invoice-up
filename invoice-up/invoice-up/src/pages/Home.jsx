@@ -18,6 +18,7 @@ export const Home = () => {
   return (
     <HomeStyled>
       <Header />
+
       <Hero
         title="Crea facturas profesionales en minutos"
         subtitle="InvoiceUp te permite crear facturas de forma fácil y rápida, con diferentes plantillas de facturas personalizables."
