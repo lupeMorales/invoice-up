@@ -18,6 +18,10 @@ const Wrapper = styled.div`
     overflow: auto;
     overflow-x: scroll;
     padding: 0 20px;
+    @media only screen and (max-width: 798px) {
+      aspect-ratio: 2/3;
+      width: 90vw;
+    }
   }
   /* Define the scrollbar style */
   ul::-webkit-scrollbar {
