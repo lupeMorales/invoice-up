@@ -24,6 +24,15 @@ const StyledCTA = styled.div`
 
   Button {
     margin: 40px 10px 250px 10px;
+    @media only screen and (max-width: 798px) {
+      margin: 40px 10px 80px 10px;
+    }
+  }
+
+  .buttons-wrapper {
+    @media only screen and (max-width: 798px) {
+      display: flex;
+    }
   }
 `;
 export const CTA = (props) => {
@@ -32,7 +41,7 @@ export const CTA = (props) => {
       <StyledCTA>
         <DiagonalSparatorUp></DiagonalSparatorUp>
         <Heading title={props.title} subtitle={props.subtitle}></Heading>
-        <div>
+        <div className="buttons-wrapper">
           <Link to={props.path1}>
             {" "}
             <Button action="Calculadora de Autónomos"></Button>
