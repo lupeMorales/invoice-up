@@ -4,6 +4,7 @@ import { HeaderStyled } from "./HeaderStyled";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Nav, MenuToggle, MenuIcon } from "./HeaderStyled";
+import { width } from "@fortawesome/free-solid-svg-icons/fa0";
 
 //ojo cuidao! funciona pero no me gusta ** refactorizar **
 const linkStyle = {
@@ -31,7 +32,7 @@ export const Header = () => {
         </Link>
       </h2>
       <MenuToggle onClick={toggleMenu}>
-        {isOpen ? <FaTimes /> : <FaBars />}
+        {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
       </MenuToggle>
       <Nav isOpen={isOpen}>
         <ul>
@@ -47,7 +48,7 @@ export const Header = () => {
           </li>
           <li>About</li>
         </ul>
-        <div>
+        <div className="buttons-wrapper">
           {" "}
           <Link to="/login">
             {" "}
