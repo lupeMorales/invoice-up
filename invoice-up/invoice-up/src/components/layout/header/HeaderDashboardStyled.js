@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderDashboardStyled = styled.header`
+/* export const HeaderDashboardStyled = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,4 +48,103 @@ export const HeaderDashboardStyled = styled.header`
   img {
     width: 50px;
   }
+`;
+ */
+
+export const HeaderDashboardStyled = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: ${(props) => props.theme.color.primary};
+  /*  height: auto; */
+
+  h2 {
+    font-weight: 400;
+    font-family: ${(props) => props.theme.fonts.titleFont};
+    font-size: 3rem;
+    color: ${(props) => props.theme.color.light_text};
+    @media (max-width: 768px) {
+      margin: 20px auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /*   div {
+      display: none; // Ocultar nombre de usuario y imagen en móviles
+    } */
+  }
+  @media (max-width: 768px) {
+    p,
+    img {
+      display: none; // Ocultar nombre de usuario y imagen en móviles
+    }
+  }
+`;
+
+export const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+  z-index: 99;
+
+  ul {
+    display: flex;
+    list-style: none;
+    @media (max-width: 768px) {
+      width: 100%;
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  li {
+    list-style: none;
+    display: inline-block;
+    padding: 0 20px;
+    font-family: ${(props) => props.theme.fonts.titleFont};
+    font-size: ${(props) => props.theme.fontSizes.xsmall};
+    color: ${(props) => props.theme.color.light_text};
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: ${(props) => props.theme.color.accent};
+      padding: 8px 6px;
+      border-radius: 50px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+    display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+
+    /*     ul {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    li {
+      padding: 10px 0;
+      text-align: center;
+    } */
+  }
+`;
+
+export const MenuToggle = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    color: ${(props) => props.theme.color.light_text};
+    cursor: pointer;
+    margin: auto;
+  }
+`;
+export const MenuIcon = styled.div`
+  font-size: 2rem;
+  color: ${(props) => props.theme.color.light_text};
 `;

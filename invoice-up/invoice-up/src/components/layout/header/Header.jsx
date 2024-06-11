@@ -4,7 +4,6 @@ import { HeaderStyled } from "./HeaderStyled";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Nav, MenuToggle, MenuIcon } from "./HeaderStyled";
-/* import { width } from "@fortawesome/free-solid-svg-icons/fa0"; */
 
 //ojo cuidao! funciona pero no me gusta ** refactorizar **
 const linkStyle = {
