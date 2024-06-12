@@ -18,7 +18,7 @@ export const ProtectedRoute = ({ children }) => {
 
   // Si no hay un token de autenticación, redirige al usuario a la página de inicio de sesión
   if (!loginToken) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/register" />;
   }
 
   // Si hay un token de autenticación, permite que se renderice el contenido protegido

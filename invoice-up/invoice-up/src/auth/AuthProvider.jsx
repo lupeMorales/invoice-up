@@ -14,3 +14,13 @@ export function AuthProvider({ children }) {
 }
 export const useAuth = () => useContex(AuthContext);
  */
+import { Navigate, Outlet } from "react-router-dom";
+export const AuthProvider = () => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
+
+  return <Outlet />;
+};

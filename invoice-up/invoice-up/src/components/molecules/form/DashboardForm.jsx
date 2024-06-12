@@ -6,6 +6,7 @@ import { AccordionFieldset } from "./AccordionFieldset";
 import GetAvatar from "../../atoms/getLogo/GetAvatar";
 import { config } from "@fortawesome/fontawesome-svg-core";
 export const DashboardForm = ({ onSubmit }) => {
+  const [formData, setFormData] = useState(new FormData());
   const [form, setForm] = useState({
     template: "classic",
     logo: null,
@@ -64,7 +65,7 @@ export const DashboardForm = ({ onSubmit }) => {
     if (name == "logo") {
       setForm({
         ...form,
-        [logo]: files[0],
+        [form.logo]: files[0],
       });
     } else {
       setForm({
@@ -89,11 +90,11 @@ export const DashboardForm = ({ onSubmit }) => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     generateNumberInvoice();
-    const formData = new formData();
-    Object.keys(form).forEach((key) => {
+
+    Object.keys(formData).forEach((key) => {
       formData.append(key, form[key]);
     });
-    console.log(formData);
+    console.log("FORM DATA:", formData);
     try {
       // Realiza la llamada a axios para enviar datos al servidor
       const response = await axios.post(

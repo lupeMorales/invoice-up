@@ -31,6 +31,7 @@ export const Register = () => {
 
     try {
       // Realizar la llamada Axios para enviar datos al servidor
+
       const response = await axios.post(
         "http://127.0.0.1:8000/api/register",
         form

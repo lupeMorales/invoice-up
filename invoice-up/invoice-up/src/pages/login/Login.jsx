@@ -4,13 +4,12 @@ import { Button } from "../../components/atoms/buttons/Button";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Header } from "../../components/layout/header/Header";
+import axios from "axios";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const [formIsSend, setFormIsSend] = useState(false);
-
   const [form, setForm] = useState({
-    mail: "",
+    email: "",
     password: "",
   });
 
@@ -21,21 +20,41 @@ export const Login = () => {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
+    console.log("Hola de nuevo");
+    console.log("Data:", form);
     try {
+      //envio datos al servidos
       const response = await axios.post(
         "http://127.0.0.1:8000/api/login",
         form
       );
+      console.log(response.data);
+      // verifica si existe el token
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
-        navigate("/");
+        navigate("/dashboard");
+        console.log("Token exists:", response.data.token);
+        console.log("response:", response);
       }
+
+      // maneja respuesta del servidor
     } catch (error) {
       console.error("Login failed:", error);
+      if (error.response) {
+        // El servidor respondió con un código de estado que no está en el rango de 2xx
+        console.error("Error response data:", error.response.data);
+        console.error("Error response status:", error.response.status);
+        console.error("Error response headers:", error.response.headers);
+      } else if (error.request) {
+        // La solicitud fue hecha pero no se recibió respuesta
+        console.error("Error request:", error.request);
+      } else {
+        // Algo pasó al preparar la solicitud que desencadenó un error
+        console.error("Error message:", error.message);
+      }
     }
-
     setForm({
-      mail: "",
+      email: "",
       password: "",
     });
   };
