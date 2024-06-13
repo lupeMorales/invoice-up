@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import imageDeafult from "../../../assets/avatar.webp";
 import { Link } from "react-router-dom";
 import {
@@ -7,6 +7,7 @@ import {
   MenuToggle,
 } from "./HeaderDashboardStyled";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { UserContext } from "../../../context/UserContext"; // Importa el contexto del usuario
 
 //ojo cuidao! funciona pero no me gusta ** refactorizar **
 const linkStyle = {
@@ -16,6 +17,7 @@ const linkStyle = {
 };
 
 export const HeaderDashboard = () => {
+  const { user } = useContext(UserContext); // Usa el contexto del usuario
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -58,7 +60,7 @@ export const HeaderDashboard = () => {
           </li>
         </ul>
         <div className="container-user">
-          <p>userName</p>
+          <p>{user ? user : "Guest"}</p> {/* Muestra el usuario */}
           <img src={imageDeafult} alt="image usuario" />
         </div>
       </Nav>

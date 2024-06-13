@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import GlobalStyle from "./GlobalStyle";
 import ReactDOM from "react-dom/client";
-import {
-  Form,
-  Link,
-  RouterProvider,
-  createBrowserRouter,
-} from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Theme from "./Theme";
 import { Home } from "./pages/Home";
 import { Page404 } from "./pages/Page404";
@@ -15,8 +10,9 @@ import { Register } from "./pages/register/Register";
 import { CalculatorPage } from "./pages/calculator/CalculatorPage";
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import { MyInvoices } from "./pages/myInvoices/MyInvoices";
-import { ProtectedRoute } from "./utils/ProtectedRoute";
+
 import axios from "axios";
+import { UserProvider } from "./context/UserContext";
 
 /* export const main = () => {
   const [user, setUser] = useState([]);
@@ -115,10 +111,13 @@ axios.interceptors.request.use((config) => {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Theme>
-      <GlobalStyle />
-      <RouterProvider router={router} />
-      <GlobalStyle />
-    </Theme>
+    <UserProvider>
+      {/* con esto puedo usar el useContext */}
+      <Theme>
+        <GlobalStyle />
+        <RouterProvider router={router} />
+        <GlobalStyle />
+      </Theme>
+    </UserProvider>
   </React.StrictMode>
 );

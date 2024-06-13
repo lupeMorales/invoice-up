@@ -1,13 +1,15 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/atoms/buttons/Button";
 import { RegisterStyled } from "./RegisterStyled";
 import image from "../../assets/welcome.png";
 import { Header } from "../../components/layout/header/Header";
+import { UserContext } from "../../context/UserContext"; // Importa el contexto del usuario
 
 export const Register = () => {
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext); // Usa el contexto del usuario
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -57,9 +59,10 @@ export const Register = () => {
       if (response.data.token) {
         // Si hay un token, almacénalo en el localStorage del navegador
         localStorage.setItem("token", response.data.token);
-
+        setUser(form.name); // Actualiza el contexto con el nombre del usuario
         // Redirige al usuario a la página principal
         console.log("Redirigiendo a dashboard...");
+        console.log("contexto", setUser);
         return navigate("/dashboard");
       }
 
@@ -70,6 +73,7 @@ export const Register = () => {
     }
 
     //reset form
+    setUser(form.name);
     navigate("/dashboard");
     setForm({
       name: "",
