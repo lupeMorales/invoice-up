@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import defaultAvatar from "../../../assets/logo.svg";
 import { GetAvatarStyled } from "./GetAvatarStyled";
 
-function GetAvatar(props) {
+function GetAvatar({ avatar, updateAvatar }) {
   // creamos una propiedad de la clase que es la que vamos a usar en varios métodos para cargar la imagen
   // esto es un manejador de ficheros
   const fr = new FileReader();
@@ -55,10 +55,8 @@ function GetAvatar(props) {
 
     // aquí hago lifting con los datos del fichero
     // lo que haga el componente madre con esta información es otro problema diferente
-    props.updateAvatar(image);
+    updateAvatar(image);
   };
-
-  const avatar = props.avatar === "" ? defaultAvatar : props.avatar;
 
   return (
     <GetAvatarStyled>
@@ -69,17 +67,17 @@ function GetAvatar(props) {
         </label>
         <input
           type="file"
-          name="photo"
+          name="logo"
           id="img-selector"
           className="action__hiddenField"
           ref={myFileField}
           onChange={uploadImage}
         />
 
-        {/*   <div
+        <div
           className="get-avatar__preview"
-          style={{ backgroundImage: `url(${avatar})` }}
-        ></div> */}
+          style={{ backgroundImage: `url(${avatar || defaultAvatar})` }}
+        ></div>
       </div>
     </GetAvatarStyled>
   );

@@ -5,6 +5,8 @@ import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Header } from "../../components/layout/header/Header";
 import axios from "axios";
+axios.defaults.headers.common["Content-Type"] = "application/json";
+axios.defaults.headers.common["Accept"] = "application/json";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -23,18 +25,19 @@ export const Login = () => {
     console.log("Hola de nuevo");
     console.log("Data:", form);
     try {
+      console.log("ha entrado en el try");
       //envio datos al servidos
       const response = await axios.post(
         "http://127.0.0.1:8000/api/login",
         form
       );
-      console.log(response.data);
+      console.log("he pasado la response");
       // verifica si existe el token
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
-        navigate("/dashboard");
         console.log("Token exists:", response.data.token);
         console.log("response:", response);
+        return navigate("/dashboard");
       }
 
       // maneja respuesta del servidor
@@ -74,14 +77,14 @@ export const Login = () => {
             {" "}
             <h1>Hola de nuevo</h1>
             <h3>Nos alegra verte otra vez</h3>
-            <label htmlFor="mail">
+            <label htmlFor="email">
               Email
               <input
                 type="email"
-                id="mail"
-                name="mail"
+                id="email"
+                name="email"
                 placeholder="email@email.com"
-                value={form.mail}
+                value={form.email}
                 onChange={handleInputChange}
                 required
               ></input>

@@ -6,7 +6,6 @@ import { AccordionFieldset } from "./AccordionFieldset";
 import GetAvatar from "../../atoms/getLogo/GetAvatar";
 import { config } from "@fortawesome/fontawesome-svg-core";
 export const DashboardForm = ({ onSubmit }) => {
-  const [formData, setFormData] = useState(new FormData());
   const [form, setForm] = useState({
     template: "classic",
     logo: null,
@@ -32,7 +31,8 @@ export const DashboardForm = ({ onSubmit }) => {
     price: "",
     id: "",
   });
-  /*   const [numberInvoice, setNumberInvoice] = useState(""); */
+
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     onSubmit(form);
@@ -62,10 +62,10 @@ export const DashboardForm = ({ onSubmit }) => {
   const handleChange = (ev) => {
     // Actualiza el estado de 'form' con el valor del campo de entrada
     const { name, value, files } = ev.target;
-    if (name == "logo") {
+    if (name === "logo") {
       setForm({
         ...form,
-        [form.logo]: files[0],
+        logo: files[0],
       });
     } else {
       setForm({
@@ -87,11 +87,45 @@ export const DashboardForm = ({ onSubmit }) => {
     //volver al estado inicial del formurario
     // resetForm();
   }; */
-  const handleSubmit = async (ev) => {
+
+  const validateEmail = (email) => {
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateForm = () => {
+    let formErrors = {};
+
+    if (!form.logo) {
+      formErrors.logo = "El campo 'Logo' es requerido.";
+    }
+    if (!form.client_mail || !form.company_mail) {
+      formErrors.email = "El campo 'Email' es requerido.";
+    } else if (
+      !validateEmail(form.client_mail) ||
+      !validateEmail(form.company_mail)
+    ) {
+      formErrors.email = "El formato del email no es válido.";
+    }
+
+    if (!form.client_address) {
+      formErrors.number_invoice = "El campo 'Número de Factura' es requerido.";
+      console.log(formErrors);
+    }
+
+    // Agrega más validaciones para los demás campos
+
+    setErrors(formErrors);
+    return Object.keys(formErrors).length === 0;
+  };
+
+  /*   const handleSubmit = async (ev) => {
     ev.preventDefault();
     generateNumberInvoice();
+    validateForm();
 
-    Object.keys(formData).forEach((key) => {
+    const formData = new FormData();
+    Object.keys(form).forEach((key) => {
       formData.append(key, form[key]);
     });
     console.log("FORM DATA:", formData);
@@ -110,6 +144,24 @@ export const DashboardForm = ({ onSubmit }) => {
       console.log("Respuesta del servidor:", response.data);
     } catch (error) {
       console.error("Error al enviar datos:", error);
+    }
+  }; */
+
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+
+    if (validateForm()) {
+      try {
+        const formData = new FormData();
+        Object.entries(form).forEach(([key, value]) => {
+          formData.append(key, value);
+        });
+
+        await axios.post("http://127.0.0.1:8000/api/invoices", formData);
+        onSubmit(form);
+      } catch (error) {
+        console.error("Error al enviar los datos de la factura:", error);
+      }
     }
   };
 
@@ -367,6 +419,11 @@ export const DashboardForm = ({ onSubmit }) => {
           </label>
         </div>
       </AccordionFieldset>
+      {Object.keys(errors).map((key) => (
+        <div key={key} className="error">
+          {errors[key]}
+        </div>
+      ))}
 
       <Button type="submit" action="Generar Factura"></Button>
     </DashboardFormStyled>

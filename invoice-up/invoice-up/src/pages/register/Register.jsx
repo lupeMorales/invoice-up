@@ -8,7 +8,6 @@ import { Header } from "../../components/layout/header/Header";
 
 export const Register = () => {
   const navigate = useNavigate();
-  const [formIsSend, setFormIsSend] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -25,7 +24,6 @@ export const Register = () => {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    setFormIsSend(true);
     console.log("Genial, tu cuenta ha sido creada");
     console.log("Data:", form);
 

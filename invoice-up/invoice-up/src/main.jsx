@@ -55,6 +55,10 @@ const router = createBrowserRouter([
     path: "calculadora-de-autonomos",
     element: <CalculatorPage />,
   },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+  },
   /*  {
     path: "/dashboard",
     element: <Dashboard />,
@@ -64,7 +68,7 @@ const router = createBrowserRouter([
     element: <MyInvoices />,
   }, */
 
-  {
+  /*   {
     path: "/",
     element: <ProtectedRoute />,
     children: [
@@ -73,7 +77,7 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
     ],
-  },
+  }, */
   /*   {
     path: "/",
     element: <ProtectedRoute />,
