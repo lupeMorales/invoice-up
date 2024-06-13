@@ -1,9 +1,9 @@
 import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/atoms/buttons/Button";
 import { RegisterStyled } from "./RegisterStyled";
 import image from "../../assets/welcome.png";
-import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Header } from "../../components/layout/header/Header";
 
 export const Register = () => {
@@ -42,6 +42,7 @@ export const Register = () => {
       setErrors(validationErrors);
       return;
     }
+
     console.log("Genial, tu cuenta ha sido creada");
     console.log("Data:", form);
 
@@ -53,11 +54,12 @@ export const Register = () => {
         form
       );
       // Verifica si existe un token en la respuesta de la API
-      if (response.data.data.token) {
+      if (response.data.token) {
         // Si hay un token, almacénalo en el localStorage del navegador
-        localStorage.setItem("token", response.data.data.token);
+        localStorage.setItem("token", response.data.token);
 
         // Redirige al usuario a la página principal
+        console.log("Redirigiendo a dashboard...");
         return navigate("/dashboard");
       }
 
@@ -68,12 +70,12 @@ export const Register = () => {
     }
 
     //reset form
+    navigate("/dashboard");
     setForm({
       name: "",
       email: "",
       password: "",
     });
-    //  navigate("/login");
   };
 
   return (

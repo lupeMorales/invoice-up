@@ -1,10 +1,11 @@
+import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginStyled } from "./LoginStyled";
 import image from "../../assets/community.png";
 import { Button } from "../../components/atoms/buttons/Button";
-import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Header } from "../../components/layout/header/Header";
-import axios from "axios";
+
 axios.defaults.headers.common["Content-Type"] = "application/json";
 axios.defaults.headers.common["Accept"] = "application/json";
 
@@ -14,6 +15,7 @@ export const Login = () => {
     email: "",
     password: "",
   });
+  const [errors, setErrors] = useState("");
 
   const handleInputChange = (ev) => {
     const { name, value } = ev.target;
@@ -22,6 +24,13 @@ export const Login = () => {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
+    setErrors("");
+    // Validar formulario
+    if (form.password.length < 8) {
+      setErrors("La contraseña debe tener al menos 8 caracteres.");
+      return;
+    }
+
     console.log("Hola de nuevo");
     console.log("Data:", form);
     try {
@@ -100,6 +109,9 @@ export const Login = () => {
                 required
               ></input>
             </label>
+            {errors && (
+              <p style={{ color: "red", fontSize: "16px" }}>{errors}</p>
+            )}
             <Button action="Iniciar sesión"></Button>
             <Link to="/register">
               {" "}
