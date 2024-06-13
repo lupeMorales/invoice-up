@@ -13,6 +13,7 @@ export const Register = () => {
     email: "",
     password: "",
   });
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (ev) => {
     const { name, value } = ev.target;
@@ -22,8 +23,25 @@ export const Register = () => {
     });
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!form.name) newErrors.name = "El nombre de usuario es obligatorio.";
+    if (!form.email) newErrors.email = "El correo electrónico es obligatorio.";
+    if (!form.password) {
+      newErrors.password = "La contraseña es obligatoria.";
+    } else if (form.password.length < 8) {
+      newErrors.password = "La contraseña debe tener al menos 8 caracteres.";
+    }
+    return newErrors;
+  };
+
   const handleSubmit = async (ev) => {
     ev.preventDefault();
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
     console.log("Genial, tu cuenta ha sido creada");
     console.log("Data:", form);
 
@@ -40,7 +58,7 @@ export const Register = () => {
         localStorage.setItem("token", response.data.data.token);
 
         // Redirige al usuario a la página principal
-        return navigate("/");
+        return navigate("/dashboard");
       }
 
       console.log("Respuesta del servidor:", response.data);
@@ -78,6 +96,7 @@ export const Register = () => {
                 onChange={handleInputChange}
                 required
               ></input>
+              {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
             </label>
             <label htmlFor="email">
               Email
@@ -90,6 +109,7 @@ export const Register = () => {
                 onChange={handleInputChange}
                 required
               ></input>
+              {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
             </label>
             <label htmlFor="password">
               Contraseña
@@ -101,6 +121,9 @@ export const Register = () => {
                 onChange={handleInputChange}
                 required
               ></input>
+              {errors.password && (
+                <p style={{ color: "red" }}>{errors.password}</p>
+              )}
             </label>
             <Button action="Crear cuenta"></Button>
             <Link to="/login">

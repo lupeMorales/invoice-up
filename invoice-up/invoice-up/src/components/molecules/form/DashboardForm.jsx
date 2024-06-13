@@ -96,9 +96,6 @@ export const DashboardForm = ({ onSubmit }) => {
   const validateForm = () => {
     let formErrors = {};
 
-    if (!form.logo) {
-      formErrors.logo = "El campo 'Logo' es requerido.";
-    }
     if (!form.client_mail || !form.company_mail) {
       formErrors.email = "El campo 'Email' es requerido.";
     } else if (
@@ -149,6 +146,7 @@ export const DashboardForm = ({ onSubmit }) => {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
+    generateNumberInvoice();
 
     if (validateForm()) {
       try {
@@ -278,7 +276,7 @@ export const DashboardForm = ({ onSubmit }) => {
           onChange={handleChange}
           aria-label="email del emisor"
           required=""
-          pattern="[a-zA-Z0-9!#$%&amp;'*_+-]([\.]?[a-zA-Z0-9!#$%&amp;'*_+-])+@[a-zA-Z0-9]([^@&amp;%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
+          // pattern="[a-zA-Z0-9!#$%&amp;'*_+-]([\.]?[a-zA-Z0-9!#$%&amp;'*_+-])+@[a-zA-Z0-9]([^@&amp;%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
         />
       </AccordionFieldset>
 
@@ -339,7 +337,7 @@ export const DashboardForm = ({ onSubmit }) => {
           onChange={handleChange}
           aria-label="email del cliente"
           required=""
-          pattern="[a-zA-Z0-9!#$%&amp;'*_+-]([\.]?[a-zA-Z0-9!#$%&amp;'*_+-])+@[a-zA-Z0-9]([^@&amp;%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
+          // pattern="[a-zA-Z0-9!#$%&amp;'*_+-]([\.]?[a-zA-Z0-9!#$%&amp;'*_+-])+@[a-zA-Z0-9]([^@&amp;%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
         />
       </AccordionFieldset>
 
