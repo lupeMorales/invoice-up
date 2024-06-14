@@ -146,10 +146,19 @@ export const DashboardForm = ({ onSubmit }) => {
       console.error("Error al enviar datos:", error);
     }
   }; */
+  // metemos el generateNumberInvoie para que se genere y se actualiza antes de enviar el formulario
+  // el useEfect sucede cuando llamo a generateNumberInvoice();
+  useEffect(() => {
+    if (!form.number_invoice) {
+      generateNumberInvoice();
+    }
+  }, [form.number_invoice, generateNumberInvoice]);
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    generateNumberInvoice();
+    if (!form.number_invoice) {
+      generateNumberInvoice();
+    }
 
     if (validateForm()) {
       try {
