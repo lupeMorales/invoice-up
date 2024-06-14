@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LoginStyled } from "./LoginStyled";
+import { LoginStyled } from "./LoginStyled.js";
 import image from "../../assets/community.png";
 import { Button } from "../../components/atoms/buttons/Button";
 import { Header } from "../../components/layout/header/Header";
