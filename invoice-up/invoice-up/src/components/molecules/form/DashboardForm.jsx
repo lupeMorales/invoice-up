@@ -45,11 +45,13 @@ export const DashboardForm = ({ onSubmit }) => {
     for (let i = 0; i < 6; i++) {
       code += characters.charAt(Math.floor(Math.random() * characters.length));
     }
+    console.log(`code para number_invoice -${code}-`);
 
     setForm({
       ...form,
       number_invoice: code,
     });
+    console.log(form);
   };
 
   const updateAvatar = (avatar) => {
@@ -58,6 +60,7 @@ export const DashboardForm = ({ onSubmit }) => {
       ...form,
       logo: avatar,
     });
+    console.log(avatar);
   };
   const handleChange = (ev) => {
     // Actualiza el estado de 'form' con el valor del campo de entrada
@@ -73,21 +76,21 @@ export const DashboardForm = ({ onSubmit }) => {
         [name]: value,
       });
     }
+    // };
+
+    //send data to dashboard
+    /*   const handleSubmit = (ev) => {
+      ev.preventDefault();
+      //** OJO ** hay que hacer comprovación si falta algún input por rellenar
+      // validaciones
+      // call to backend
+      generateNumberInvoice();
+      onSubmit(form);
+
+      //volver al estado inicial del formurario
+      // resetForm();
+    }; */
   };
-
-  //send data to dashboard
-  /*   const handleSubmit = (ev) => {
-    ev.preventDefault();
-    //** OJO ** hay que hacer comprovación si falta algún input por rellenar
-    // validaciones
-    // call to backend
-    generateNumberInvoice();
-    onSubmit(form);
-
-    //volver al estado inicial del formurario
-    // resetForm();
-  }; */
-
   const validateEmail = (email) => {
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return emailRegex.test(email);
@@ -155,7 +158,11 @@ export const DashboardForm = ({ onSubmit }) => {
           formData.append(key, value);
         });
 
-        await axios.post("http://127.0.0.1:8000/api/invoices", formData);
+        await axios.post("http://127.0.0.1:8000/api/invoices", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
         onSubmit(form);
       } catch (error) {
         console.error("Error al enviar los datos de la factura:", error);
@@ -218,7 +225,7 @@ export const DashboardForm = ({ onSubmit }) => {
             </label>
           </div>
         </div>
-        <GetAvatar avatar={form.Logo} updateAvatar={updateAvatar}></GetAvatar>
+        <GetAvatar avatar={form.logo} updateAvatar={updateAvatar}></GetAvatar>
       </fieldset>
       <AccordionFieldset title="Datos del Emisor">
         <input

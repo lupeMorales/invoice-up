@@ -70,6 +70,7 @@ export const HeaderDashboardStyled = styled.header`
   }
 
   div.container-user {
+    margin-left: 60px;
     display: flex;
     align-items: center;
     gap: 2rem;

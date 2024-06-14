@@ -44,9 +44,6 @@ export const MyInvoicesWrapper = () => {
       </InvoiceListHeaderStyled>
 
       <InvoiceInfoItem></InvoiceInfoItem>
-      <InvoiceInfoItem></InvoiceInfoItem>
-      <InvoiceInfoItem></InvoiceInfoItem>
-      <InvoiceInfoItem></InvoiceInfoItem>
     </MyInvoicesWrapperStyled>
   );
 };

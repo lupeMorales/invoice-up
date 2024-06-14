@@ -60,7 +60,7 @@ export const HeaderDashboard = () => {
           </li>
         </ul>
         <div className="container-user">
-          <p>{user ? user : "Guest"}</p> {/* Muestra el usuario */}
+          <p>Hola, {user ? user : "Guest"}</p> {/* Muestra el usuario */}
           <img src={imageDeafult} alt="image usuario" />
         </div>
       </Nav>
