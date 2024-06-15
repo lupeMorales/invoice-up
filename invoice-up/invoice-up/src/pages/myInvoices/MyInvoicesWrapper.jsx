@@ -30,18 +30,6 @@ export const MyInvoicesWrapper = () => {
   return (
     <MyInvoicesWrapperStyled>
       <FiltersInvoices></FiltersInvoices>
-      <InvoiceListHeaderStyled>
-        <h2>Número de factura</h2>
-        <h2>Cliente</h2>
-        <h2>Fecha</h2>
-        <h2>Importe</h2>
-        <h2>Estado</h2>
-        <div className="container-edit">
-          <h2>Ver</h2>
-          <h2>Editar</h2>
-          <h2>Borrar</h2>
-        </div>
-      </InvoiceListHeaderStyled>
 
       <InvoiceInfoItem></InvoiceInfoItem>
     </MyInvoicesWrapperStyled>
