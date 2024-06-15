@@ -6,27 +6,31 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 export const InvoiceInfoItem = () => {
-  // Crear estados para el texto y el color
-  const [text, setText] = useState("pendiente");
-  const [color, setColor] = useState("red");
   const [invoices, setInvoices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [invoiceStates, setInvoiceStates] = useState({});
 
+  // llamo a la API para obtener las facturas
   useEffect(() => {
-    // Función para obtener las facturas desde la API
     const fetchInvoices = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/api/invoices");
         setInvoices(response.data);
         setLoading(false);
+
+        // Inicializar invoiceStates con el estado inicial de cada factura
+        const initialStates = {};
+        response.data.forEach((invoice) => {
+          initialStates[invoice.id] = { text: "pendiente", color: "red" };
+        });
+        setInvoiceStates(initialStates);
       } catch (error) {
         setError(error);
         setLoading(false);
       }
     };
 
-    // Llamar a la función de obtener facturas
     fetchInvoices();
   }, []);
 
@@ -37,21 +41,42 @@ export const InvoiceInfoItem = () => {
   if (error) {
     return <p>Error al cargar las facturas: {error.message}</p>;
   }
+  // al clickar cambio el estado de la factura (solo visualmente)
+  // ojo cuidao!! añade funcionalidad para editar el estado en bbdd
+  // modifica bbdd y envia pendind por default desde dashoboard
+  const changeStatus = (id) => {
+    const currentState = invoiceStates[id];
+    const newState =
+      currentState.text === "pendiente"
+        ? { text: "cobrado", color: "green" }
+        : { text: "pendiente", color: "red" };
 
-  // Función para manejar el clic
-  const handleClick = () => {
-    if (text === "pendiente") {
-      setText("cobrado");
-      setColor("green");
-    } else {
-      setText("pendiente");
-      setColor("red");
+    setInvoiceStates({
+      ...invoiceStates,
+      [id]: newState,
+    });
+  };
+
+  // elimina factura
+  const handleDelete = async (number_invoice) => {
+    try {
+      await axios.delete(
+        `http://127.0.0.1:8000/api/invoices/${number_invoice}`
+      );
+      // Eliminar la factura del estado
+      setInvoices((prevInvoices) =>
+        prevInvoices.filter(
+          (invoice) => invoice.number_invoice !== number_invoice
+        )
+      );
+    } catch (error) {
+      console.error("Error al eliminar la factura:", error);
     }
   };
 
   return (
     <div>
-      <ul>
+      <ul style={{ listStyle: "none" }}>
         {invoices.map((invoice) => (
           <li key={invoice.id}>
             <InvoiceInfoItemStyled>
@@ -63,14 +88,14 @@ export const InvoiceInfoItem = () => {
                 <h2
                   title='cambia el estado de la factura a "cobrado"'
                   style={{
-                    backgroundColor: color,
+                    backgroundColor: invoiceStates[invoice.id].color,
                     padding: "5px 10px",
                     borderRadius: "20px",
                     cursor: "pointer",
                   }}
-                  onClick={handleClick}
+                  onClick={() => changeStatus(invoice.id)}
                 >
-                  {text}
+                  {invoiceStates[invoice.id].text}
                 </h2>
               </div>
 
@@ -81,7 +106,11 @@ export const InvoiceInfoItem = () => {
                 <button className="button-info" title="editar">
                   <FontAwesomeIcon icon={faEdit} />
                 </button>
-                <button className="button-danger" title="eliminar factura">
+                <button
+                  className="button-danger"
+                  title="eliminar factura"
+                  onClick={() => handleDelete(invoice.number_invoice)}
+                >
                   <FontAwesomeIcon icon={faTrashAlt} />
                 </button>
               </div>

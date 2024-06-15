@@ -7,6 +7,7 @@ import GetAvatar from "../../atoms/getLogo/GetAvatar";
 import { config } from "@fortawesome/fontawesome-svg-core";
 export const DashboardForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
+    paid: false,
     template: "classic",
     logo: null,
     number_invoice: "",
@@ -118,36 +119,35 @@ export const DashboardForm = ({ onSubmit }) => {
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
-
-  /*   const handleSubmit = async (ev) => {
-    ev.preventDefault();
-    generateNumberInvoice();
-    validateForm();
-
-    const formData = new FormData();
-    Object.keys(form).forEach((key) => {
-      formData.append(key, form[key]);
+  const resetForm = () => {
+    setForm({
+      paid: false,
+      template: "classic",
+      logo: null,
+      number_invoice: "",
+      company_name: "",
+      company_address: "",
+      company_phone: "",
+      company_mail: "",
+      company_cif: "",
+      client_name: "",
+      client_address: "",
+      client_phone: "",
+      client_mail: "",
+      client_cif: "",
+      iva: "",
+      iva_amount: "",
+      irpf: "",
+      irpf_amount: "",
+      issue_date: "",
+      expiration_date: "",
+      service: "",
+      quantity: "",
+      price: "",
+      id: "",
     });
-    console.log("FORM DATA:", formData);
-    try {
-      // Realiza la llamada a axios para enviar datos al servidor
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/invoices",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+  };
 
-      console.log("Respuesta del servidor:", response.data);
-    } catch (error) {
-      console.error("Error al enviar datos:", error);
-    }
-  }; */
-  // metemos el generateNumberInvoie para que se genere y se actualiza antes de enviar el formulario
-  // el useEfect sucede cuando llamo a generateNumberInvoice();
   useEffect(() => {
     if (!form.number_invoice) {
       generateNumberInvoice();
@@ -173,6 +173,8 @@ export const DashboardForm = ({ onSubmit }) => {
           },
         });
         onSubmit(form);
+        // volver al estado inicial del formurario
+        resetForm();
       } catch (error) {
         console.error("Error al enviar los datos de la factura:", error);
       }
