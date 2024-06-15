@@ -10,6 +10,12 @@ export const InvoiceInfoItem = () => {
   const [error, setError] = useState(null);
   const [invoiceStates, setInvoiceStates] = useState({});
 
+  const [filterStatus, setFilterStatus] = useState("all");
+
+  const handleFilterStatus = (status) => {
+    setFilterStatus(status);
+  };
+
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
@@ -71,47 +77,66 @@ export const InvoiceInfoItem = () => {
 
   return (
     <div>
-      <ul style={{ listStyle: "none" }}>
-        {invoices.map((invoice) => (
-          <li key={invoice.id}>
-            <InvoiceInfoItemStyled>
-              <div className="container-info">
-                <h2 className="invoice-number">{invoice.number_invoice}</h2>
-                <h2>{invoice.client_name}</h2>
-                <h2 className="invoice-date">{invoice.issue_date}</h2>
-                <h2>importe</h2>
-                <h2
-                  title='cambia el estado de la factura a "cobrado"'
-                  style={{
-                    backgroundColor: invoiceStates[invoice.id].color,
-                    padding: "5px 10px",
-                    borderRadius: "20px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => handleChangeStatus(invoice.id)}
-                >
-                  {invoiceStates[invoice.id].text}
-                </h2>
-              </div>
+      <div>
+        <button onClick={() => handleFilterStatus("all")}>Todas</button>
+        <button onClick={() => handleFilterStatus("pending")}>
+          Pendientes
+        </button>
+        <button onClick={() => handleFilterStatus("paid")}>Cobradas</button>
+      </div>
 
-              <div className="container-edit">
-                <button className="button-info" title="ver detalle">
-                  <FontAwesomeIcon icon={faEye} />
-                </button>
-                <button className="button-info" title="editar">
-                  <FontAwesomeIcon icon={faEdit} />
-                </button>
-                <button
-                  className="button-danger"
-                  title="eliminar factura"
-                  onClick={() => handleDelete(invoice.number_invoice)}
-                >
-                  <FontAwesomeIcon icon={faTrashAlt} />
-                </button>
-              </div>
-            </InvoiceInfoItemStyled>
-          </li>
-        ))}
+      <ul style={{ listStyle: "none", marginTop: "55px" }}>
+        {invoices
+          .filter((invoice) => {
+            if (filterStatus === "all") {
+              return true;
+            } else if (filterStatus === "pending") {
+              return invoiceStates[invoice.id].text === "pendiente";
+            } else if (filterStatus === "paid") {
+              return invoiceStates[invoice.id].text === "cobrado";
+            }
+            return false;
+          })
+          .map((invoice) => (
+            <li key={invoice.id}>
+              <InvoiceInfoItemStyled>
+                <div className="container-info">
+                  <h2 className="invoice-number">{invoice.number_invoice}</h2>
+                  <h2>{invoice.client_name}</h2>
+                  <h2 className="invoice-date">{invoice.issue_date}</h2>
+                  <h2>importe</h2>
+                  <h2
+                    title='cambia el estado de la factura a "cobrado"'
+                    style={{
+                      backgroundColor: invoiceStates[invoice.id].color,
+                      padding: "5px 10px",
+                      borderRadius: "20px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => handleChangeStatus(invoice.id)}
+                  >
+                    {invoiceStates[invoice.id].text}
+                  </h2>
+                </div>
+
+                <div className="container-edit">
+                  <button className="button-info" title="ver detalle">
+                    <FontAwesomeIcon icon={faEye} />
+                  </button>
+                  <button className="button-info" title="editar">
+                    <FontAwesomeIcon icon={faEdit} />
+                  </button>
+                  <button
+                    className="button-danger"
+                    title="eliminar factura"
+                    onClick={() => handleDelete(invoice.number_invoice)}
+                  >
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
+                </div>
+              </InvoiceInfoItemStyled>
+            </li>
+          ))}
       </ul>
     </div>
   );
