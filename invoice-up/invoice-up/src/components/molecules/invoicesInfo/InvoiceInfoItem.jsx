@@ -2,16 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { InvoiceInfoItemStyled } from "./InvoiceInfoItemStyled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
+
 export const InvoiceInfoItem = () => {
   const [invoices, setInvoices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [invoiceStates, setInvoiceStates] = useState({});
 
-  // llamo a la API para obtener las facturas
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
@@ -41,10 +39,8 @@ export const InvoiceInfoItem = () => {
   if (error) {
     return <p>Error al cargar las facturas: {error.message}</p>;
   }
-  // al clickar cambio el estado de la factura (solo visualmente)
-  // ojo cuidao!! añade funcionalidad para editar el estado en bbdd
-  // modifica bbdd y envia pendind por default desde dashoboard
-  const changeStatus = (id) => {
+
+  const handleClick = (id) => {
     const currentState = invoiceStates[id];
     const newState =
       currentState.text === "pendiente"
@@ -57,7 +53,6 @@ export const InvoiceInfoItem = () => {
     });
   };
 
-  // elimina factura
   const handleDelete = async (number_invoice) => {
     try {
       await axios.delete(
@@ -93,7 +88,7 @@ export const InvoiceInfoItem = () => {
                     borderRadius: "20px",
                     cursor: "pointer",
                   }}
-                  onClick={() => changeStatus(invoice.id)}
+                  onClick={() => handleClick(invoice.id)}
                 >
                   {invoiceStates[invoice.id].text}
                 </h2>
