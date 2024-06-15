@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Button } from "../../atoms/buttons/Button";
 import { InvoiceInfoItemStyled } from "./InvoiceInfoItemStyled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -77,12 +78,20 @@ export const InvoiceInfoItem = () => {
 
   return (
     <div>
-      <div>
-        <button onClick={() => handleFilterStatus("all")}>Todas</button>
-        <button onClick={() => handleFilterStatus("pending")}>
-          Pendientes
-        </button>
-        <button onClick={() => handleFilterStatus("paid")}>Cobradas</button>
+      <div style={{ display: "flex", gap: "7px" }}>
+        <Button
+          variant="outline"
+          action="Todas"
+          onClick={() => handleFilterStatus("all")}
+        ></Button>
+        <Button
+          action="Pendientes de cobro"
+          onClick={() => handleFilterStatus("pending")}
+        ></Button>
+        <Button
+          action="Cobradas"
+          onClick={() => handleFilterStatus("paid")}
+        ></Button>
       </div>
 
       <ul style={{ listStyle: "none", marginTop: "55px" }}>
