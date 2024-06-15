@@ -27,7 +27,10 @@ export const InvoiceInfoItem = () => {
         // Inicializar invoiceStates con el estado inicial de cada factura
         const initialStates = {};
         response.data.forEach((invoice) => {
-          initialStates[invoice.id] = { text: "pendiente", color: "red" };
+          initialStates[invoice.id] = {
+            text: invoice.paid ? "cobrado" : "pendiente",
+            color: invoice.paid ? "green" : "red",
+          };
         });
         setInvoiceStates(initialStates);
       } catch (error) {
@@ -47,17 +50,29 @@ export const InvoiceInfoItem = () => {
     return <p>Error al cargar las facturas: {error.message}</p>;
   }
 
-  const handleChangeStatus = (id) => {
-    const currentState = invoiceStates[id];
-    const newState =
-      currentState.text === "pendiente"
-        ? { text: "cobrado", color: "green" }
-        : { text: "pendiente", color: "red" };
+  const handleMarkAsPaid = async (numberInvoice) => {
+    try {
+      // Actualizar el estado de la factura en el backend
+      await axios.put(
+        `http://127.0.0.1:8000/api/invoices/${numberInvoice}/mark-as-paid`
+      );
 
-    setInvoiceStates({
-      ...invoiceStates,
-      [id]: newState,
-    });
+      // Actualizar el estado local del componente
+      setInvoiceStates((prevStates) => {
+        const updatedStates = { ...prevStates };
+        Object.keys(prevStates).forEach((key) => {
+          if (
+            invoices.find((invoice) => invoice.number_invoice === key)
+              ?.number_invoice === numberInvoice
+          ) {
+            updatedStates[key] = { text: "cobrado", color: "green" };
+          }
+        });
+        return updatedStates;
+      });
+    } catch (error) {
+      console.error("Error al marcar la factura como cobrado:", error);
+    }
   };
 
   const handleDelete = async (number_invoice) => {
@@ -114,15 +129,28 @@ export const InvoiceInfoItem = () => {
                   <h2>{invoice.client_name}</h2>
                   <h2 className="invoice-date">{invoice.issue_date}</h2>
                   <h2>importe</h2>
+
                   <h2
-                    title='cambia el estado de la factura a "cobrado"'
+                    className="button-info"
+                    title="Marcar como cobrada"
+                    onClick={() => {
+                      handleMarkAsPaid(invoice.number_invoice);
+                      setInvoiceStates((prevStates) => {
+                        const updatedStates = { ...prevStates };
+                        updatedStates[invoice.id] = {
+                          text: "cobrada",
+                          color: "green",
+                        };
+                        return updatedStates;
+                      });
+                    }}
                     style={{
-                      backgroundColor: invoiceStates[invoice.id].color,
                       padding: "5px 10px",
                       borderRadius: "20px",
                       cursor: "pointer",
+                      backgroundColor: invoiceStates[invoice.id].color,
+                      color: "white",
                     }}
-                    onClick={() => handleChangeStatus(invoice.id)}
                   >
                     {invoiceStates[invoice.id].text}
                   </h2>
