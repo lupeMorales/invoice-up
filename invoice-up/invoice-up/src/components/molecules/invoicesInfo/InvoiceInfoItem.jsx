@@ -40,7 +40,7 @@ export const InvoiceInfoItem = () => {
     return <p>Error al cargar las facturas: {error.message}</p>;
   }
 
-  const handleClick = (id) => {
+  const handleChangeStatus = (id) => {
     const currentState = invoiceStates[id];
     const newState =
       currentState.text === "pendiente"
@@ -88,7 +88,7 @@ export const InvoiceInfoItem = () => {
                     borderRadius: "20px",
                     cursor: "pointer",
                   }}
-                  onClick={() => handleClick(invoice.id)}
+                  onClick={() => handleChangeStatus(invoice.id)}
                 >
                   {invoiceStates[invoice.id].text}
                 </h2>

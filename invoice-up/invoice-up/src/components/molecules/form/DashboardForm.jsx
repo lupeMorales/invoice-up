@@ -2,9 +2,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { DashboardFormStyled } from "./DashboardFormStyled";
 import { Button } from "../../atoms/buttons/Button";
+import { ModalStyled } from "../../atoms/modal/ModalStyled";
+import Modal from "../../atoms/modal/Modal";
 import { AccordionFieldset } from "./AccordionFieldset";
 import GetAvatar from "../../atoms/getLogo/GetAvatar";
-import { config } from "@fortawesome/fontawesome-svg-core";
+
 export const DashboardForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
     paid: false,
@@ -32,7 +34,7 @@ export const DashboardForm = ({ onSubmit }) => {
     price: "",
     id: "",
   });
-
+  const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -173,6 +175,9 @@ export const DashboardForm = ({ onSubmit }) => {
           },
         });
         onSubmit(form);
+        // Mostrar el modal
+        setShowModal(true);
+        console.log(showModal);
         // volver al estado inicial del formurario
         resetForm();
       } catch (error) {
@@ -183,9 +188,6 @@ export const DashboardForm = ({ onSubmit }) => {
 
   return (
     <DashboardFormStyled onSubmit={handleSubmit}>
-      <h1>Mi códico generado:</h1>
-      <h1>{form.number_invoice}</h1>
-
       <fieldset>
         <legend>Elige diseño</legend>
 
@@ -442,6 +444,17 @@ export const DashboardForm = ({ onSubmit }) => {
       ))}
 
       <Button type="submit" action="Generar Factura"></Button>
+      {showModal && (
+        <ModalStyled show={showModal}>
+          <div className="modal-content">
+            <span className="close-button" onClick={() => setShowModal(false)}>
+              &times;
+            </span>
+            <h2>¡Factura creada correctamente!</h2>
+            <p>La factura se ha guardado en la base de datos.</p>
+          </div>
+        </ModalStyled>
+      )}
     </DashboardFormStyled>
   );
 };
