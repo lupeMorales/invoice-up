@@ -12,7 +12,6 @@ export const InvoiceModern = ({ dataForm }) => {
 
   return (
     <InvoiceModernStyled>
-      <h1>Soy la factura de estilo {dataForm.template}</h1>
       <div className="modern_heading">
         <div>
           <img src={logoUrl} alt={`logo de ${dataForm.company_name}`} />
@@ -24,8 +23,7 @@ export const InvoiceModern = ({ dataForm }) => {
       </div>
       <div className="modern_dates">
         <div>
-          <h2>Cliente:</h2>
-          <p>{dataForm.client_name || ""}</p>
+          <h2>{dataForm.client_name || "Cliente"}</h2>
           <p>{dataForm.client_address}</p>
           <p>TELÉFONO:{dataForm.client_phone}</p>
           <p>CIF:{dataForm.client_cif}</p>

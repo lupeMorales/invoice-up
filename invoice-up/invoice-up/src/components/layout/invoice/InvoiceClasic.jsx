@@ -12,7 +12,6 @@ export const InvoiceClasic = ({ dataForm }) => {
 
   return (
     <InvoiceClasicStyled>
-      <h1>Soy la factura {dataForm.template}</h1>
       <div className="classic_companyDates">
         <div>
           <img src={logoUrl} alt={`logo de ${dataForm.company_name}`} />
