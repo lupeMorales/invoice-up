@@ -15,6 +15,8 @@ export const About = () => {
         title="La revolución de la facturación."
         subtitle="Conociendo a la banda detrás de la magia"
         image={image}
+        action="Facturar ahora"
+        path="/login"
       ></Hero>
       <DiagonalSparator />
       <FeaturesAbout></FeaturesAbout>
