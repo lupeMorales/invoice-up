@@ -3,11 +3,13 @@ import { Header } from "../../components/layout/header/Header";
 import { DiagonalSparator } from "../../components/atoms/DiagonalSeparator";
 import { Footer } from "../../components/layout/footer/Footer";
 import { FeaturesAbout } from "../../components/layout/FeaturesAbout";
+import { TeamSection } from "../../components/layout/team/TeamSection";
+import { AboutStyled } from "./AboutStyled";
 import image from "../../assets/Friends taking selfie.png";
 
 export const About = () => {
   return (
-    <>
+    <AboutStyled>
       <Header />
       <Hero
         title="La revolución de la facturación."
@@ -17,7 +19,9 @@ export const About = () => {
       <DiagonalSparator />
       <FeaturesAbout></FeaturesAbout>
 
+      <TeamSection></TeamSection>
+
       <Footer />
-    </>
+    </AboutStyled>
   );
 };
