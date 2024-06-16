@@ -53,7 +53,12 @@ export const Header = () => {
               Calculadora de autónomos
             </Link>
           </li>
-          <li onClick={handleLinkClick}>About</li>
+          <li>
+            {" "}
+            <Link to="/about" style={linkStyle} onClick={handleLinkClick}>
+              Sobre nosotros
+            </Link>
+          </li>
         </ul>
         <div className="buttons-wrapper">
           {" "}

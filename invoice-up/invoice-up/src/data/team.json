@@ -1,0 +1,23 @@
+[
+  {
+    "img": "photo1.jpg",
+    "name": "Lupe Morales",
+    "job": "CEO y fumdadora",
+    "id": 1,
+    "linkedin": "https://www.linkedin.com/in/lupe-morales/"
+  },
+  {
+    "img": "photo2.jpg",
+    "name": "Lupita",
+    "job": "MArketing y comunicación",
+    "id": 2,
+    "linkedin": "https://www.linkedin.com/in/lupe-morales/"
+  },
+  {
+    "img": "photo3.jpg",
+    "name": "Lupita Dalessio",
+    "job": "Desarrollo de software",
+    "id": 3,
+    "linkedin": "https://www.linkedin.com/in/lupe-morales/"
+  }
+]

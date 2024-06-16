@@ -2,6 +2,8 @@ import React from "react";
 import GlobalStyle from "./GlobalStyle";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import axios from "axios";
+import { UserProvider } from "./context/UserContext";
 import Theme from "./Theme";
 import { Home } from "./pages/Home";
 import { Page404 } from "./pages/Page404";
@@ -9,13 +11,9 @@ import { Login } from "./pages/login/Login";
 import { Register } from "./pages/register/Register";
 import { CalculatorPage } from "./pages/calculator/CalculatorPage";
 import { Dashboard } from "./pages/dashboard/Dashboard";
+import { About } from "./pages/about/About";
 import { MyInvoices } from "./pages/myInvoices/MyInvoices";
-
-import axios from "axios";
-import { UserProvider } from "./context/UserContext";
-
 import { LegalPage } from "./pages/legal/LegalPage";
-import { AvisoLegal } from "./pages/legal/AvisoLegal";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: "about",
-    element: <div>About</div>,
+    element: <About />,
   },
   {
     path: "login",

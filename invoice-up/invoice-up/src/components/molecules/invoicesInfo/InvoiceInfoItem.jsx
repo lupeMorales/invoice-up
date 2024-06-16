@@ -4,8 +4,12 @@ import { Button } from "../../atoms/buttons/Button";
 import { InvoiceInfoItemStyled } from "./InvoiceInfoItemStyled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { ModalInvoiceStyled } from "../../atoms/modal/ModalInvoiceStyled";
+import { Previewer } from "../../layout/previewer/Previewer";
 
 export const InvoiceInfoItem = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedInvoice, setSelectedInvoice] = useState(null);
   const [invoices, setInvoices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -103,6 +107,12 @@ export const InvoiceInfoItem = () => {
     }
   };
 
+  // Maneja el evento de mostrar el modal con la factura seleccionada
+  const handleShowModal = (invoice) => {
+    setSelectedInvoice(invoice);
+    setShowModal(true);
+  };
+
   return (
     <div>
       <div style={{ display: "flex", gap: "7px" }}>
@@ -169,7 +179,11 @@ export const InvoiceInfoItem = () => {
                 </div>
 
                 <div className="container-edit">
-                  <button className="button-info" title="ver detalle">
+                  <button
+                    className="button-info"
+                    title="ver detalle"
+                    onClick={() => handleShowModal(invoice)}
+                  >
                     <FontAwesomeIcon icon={faEye} />
                   </button>
                   <button className="button-info" title="editar">
@@ -187,6 +201,17 @@ export const InvoiceInfoItem = () => {
             </li>
           ))}
       </ul>
+
+      {showModal && selectedInvoice && (
+        <ModalInvoiceStyled show={showModal}>
+          <div className="modal-content">
+            <span className="close-button" onClick={() => setShowModal(false)}>
+              &times;
+            </span>
+            <Previewer dataForm={selectedInvoice} />
+          </div>
+        </ModalInvoiceStyled>
+      )}
     </div>
   );
 };
