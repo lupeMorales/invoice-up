@@ -27,11 +27,11 @@ export const Footer = () => {
       <DiagonalSparatorUp></DiagonalSparatorUp>
       <section>
         <div>
-          {/*   <Link to="/">
+          <StyledLink to="/">
             {" "}
-            <img src={logo} alt="logo de invoice up" />
-          </Link> */}
-          <h2>InvoiceUp</h2>
+            <h2>InvoiceUp</h2>
+          </StyledLink>
+
           <p>Crea facturas en minutos. Optimiza tu tiempo y tu negocio.</p>
           <nav></nav>
         </div>

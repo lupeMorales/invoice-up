@@ -50,6 +50,17 @@ export const InvoiceInfoItem = () => {
     return <p>Error al cargar las facturas: {error.message}</p>;
   }
 
+  // calcula el importe total de la factura
+
+  const calculateTotalAmount = (invoices) => {
+    const subtotal = invoices.price * invoices.quantity;
+    return (
+      subtotal +
+      (subtotal * invoices.iva) / 100 -
+      (subtotal * invoices.irpf) / 100
+    );
+  };
+  // cambia el estado de la factura de pendiente a cog¡brada
   const handleMarkAsPaid = async (numberInvoice) => {
     try {
       // Actualizar el estado de la factura en el backend
@@ -75,6 +86,7 @@ export const InvoiceInfoItem = () => {
     }
   };
 
+  // elimina la factura
   const handleDelete = async (number_invoice) => {
     try {
       await axios.delete(
@@ -128,7 +140,7 @@ export const InvoiceInfoItem = () => {
                   <h2 className="invoice-number">{invoice.number_invoice}</h2>
                   <h2>{invoice.client_name}</h2>
                   <h2 className="invoice-date">{invoice.issue_date}</h2>
-                  <h2>importe</h2>
+                  <h2>{calculateTotalAmount(invoice)}€</h2>
 
                   <h2
                     className="button-info"
