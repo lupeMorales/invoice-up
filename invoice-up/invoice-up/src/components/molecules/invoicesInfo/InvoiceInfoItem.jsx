@@ -28,7 +28,7 @@ export const InvoiceInfoItem = () => {
         const initialStates = {};
         response.data.forEach((invoice) => {
           initialStates[invoice.id] = {
-            text: invoice.paid ? "cobrado" : "pendiente",
+            text: invoice.paid ? "cobrada" : "pendiente",
             color: invoice.paid ? "green" : "red",
           };
         });
@@ -129,7 +129,7 @@ export const InvoiceInfoItem = () => {
             } else if (filterStatus === "pending") {
               return invoiceStates[invoice.id].text === "pendiente";
             } else if (filterStatus === "paid") {
-              return invoiceStates[invoice.id].text === "cobrado";
+              return invoiceStates[invoice.id].text === "cobrada";
             }
             return false;
           })
