@@ -14,11 +14,17 @@ export const InvoiceInfoItem = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [invoiceStates, setInvoiceStates] = useState({});
+  const [hasPendingInvoices, setHasPendingInvoices] = useState(true);
+  const [hasPaidInvoices, setHasPaidInvoices] = useState(true);
 
   const [filterStatus, setFilterStatus] = useState("all");
 
   const handleFilterStatus = (status) => {
     setFilterStatus(status);
+    const pendingInvoices = invoices.filter((invoice) => !invoice.paid);
+    setHasPendingInvoices(pendingInvoices.length > 0);
+    const paidInvoices = invoices.filter((invoice) => invoice.paid);
+    setHasPaidInvoices(pendingInvoices.length > 0);
   };
 
   useEffect(() => {
@@ -64,6 +70,7 @@ export const InvoiceInfoItem = () => {
       (subtotal * invoices.irpf) / 100
     );
   };
+
   // cambia el estado de la factura de pendiente a cog¡brada
   const handleMarkAsPaid = async (numberInvoice) => {
     try {
@@ -130,6 +137,17 @@ export const InvoiceInfoItem = () => {
           onClick={() => handleFilterStatus("paid")}
         ></Button>
       </div>
+
+      {filterStatus === "pending" && !hasPendingInvoices && (
+        <p style={{ fontSize: "1.9em", padding: "40px 20px" }}>
+          No hay facturas pendientes
+        </p>
+      )}
+      {filterStatus === "paid" && !hasPaidInvoices && (
+        <p style={{ fontSize: "1.9em", padding: "40px 20px" }}>
+          No hay facturas cobradas
+        </p>
+      )}
 
       <ul style={{ listStyle: "none", marginTop: "55px" }}>
         {invoices

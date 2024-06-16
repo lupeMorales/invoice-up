@@ -49,4 +49,13 @@ export const InvoiceInfoItemStyled = styled.article`
   button:hover {
     background-color: transparent;
   }
+  p {
+    font-family: ${(props) => props.theme.fonts.titleFont};
+    font-size: ${(props) => props.theme.fontSizes.xlarge};
+    color: ${(props) => props.theme.color.dark_text};
+    @media only screen and (max-width: 798px) {
+      max-width: 290px;
+      font-size: ${(props) => props.theme.fontSizes.xlarge};
+    }
+  }
 `;
