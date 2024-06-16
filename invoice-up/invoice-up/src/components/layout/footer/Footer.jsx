@@ -58,13 +58,17 @@ export const Footer = () => {
           <nav>
             <ul>
               <li>
-                <StyledLink to="/">Aviso Legal</StyledLink>
+                <StyledLink to="/aviso-legal">Aviso Legal</StyledLink>
               </li>
               <li>
-                <StyledLink to="/">Política de Cookies</StyledLink>
+                <StyledLink to="/politica-cookies">
+                  Política de Cookies
+                </StyledLink>
               </li>
               <li>
-                <StyledLink to="/">Política de Privacidad</StyledLink>
+                <StyledLink to="/politica-privacidad">
+                  Política de Privacidad
+                </StyledLink>
               </li>
             </ul>
           </nav>

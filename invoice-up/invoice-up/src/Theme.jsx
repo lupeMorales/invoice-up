@@ -9,7 +9,7 @@ const theme = {
     accent: "#F78B38",
     dark_accent: "#F2791D",
     light_text: "#fff",
-    dark_text: "#000",
+    dark_text: "#0a0707ce",
     grey: "#F4F4F4",
   },
   fontSizes: {

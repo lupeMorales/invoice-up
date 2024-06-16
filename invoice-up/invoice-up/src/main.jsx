@@ -14,17 +14,8 @@ import { MyInvoices } from "./pages/myInvoices/MyInvoices";
 import axios from "axios";
 import { UserProvider } from "./context/UserContext";
 
-/* export const main = () => {
-  const [user, setUser] = useState([]);
-  const handleFormSubmit = (ev) => {
-    setUser([...user, ev]);
-  };
-  return (
-    <>
-      <Form onSubmit={handleFormSubmit} />
-    </>
-  );
-}; */
+import { LegalPage } from "./pages/legal/LegalPage";
+import { AvisoLegal } from "./pages/legal/AvisoLegal";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +41,19 @@ const router = createBrowserRouter([
   {
     path: "calculadora-de-autonomos",
     element: <CalculatorPage />,
+  },
+
+  {
+    path: "aviso-legal",
+    element: <LegalPage page="aviso-legal" />,
+  },
+  {
+    path: "politica-cookies",
+    element: <LegalPage page="politica-cookies" />,
+  },
+  {
+    path: "politica-privacidad",
+    element: <LegalPage page="politica-privacidad" />,
   },
   {
     path: "/dashboard",
