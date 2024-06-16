@@ -79,20 +79,6 @@ export const DashboardForm = ({ onSubmit }) => {
         [name]: value,
       });
     }
-    // };
-
-    //send data to dashboard
-    /*   const handleSubmit = (ev) => {
-      ev.preventDefault();
-      //** OJO ** hay que hacer comprovación si falta algún input por rellenar
-      // validaciones
-      // call to backend
-      generateNumberInvoice();
-      onSubmit(form);
-
-      //volver al estado inicial del formurario
-      // resetForm();
-    }; */
   };
   const validateEmail = (email) => {
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

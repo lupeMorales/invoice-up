@@ -1,15 +1,17 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginStyled } from "./LoginStyled.js";
 import image from "../../assets/community.png";
 import { Button } from "../../components/atoms/buttons/Button";
 import { Header } from "../../components/layout/header/Header";
+import { UserContext } from "../../context/UserContext.jsx"; // Importa el contexto del usuario
 
 axios.defaults.headers.common["Content-Type"] = "application/json";
 axios.defaults.headers.common["Accept"] = "application/json";
 
 export const Login = () => {
+  const { setUser } = useContext(UserContext); // Usa el contexto del usuario
   const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
@@ -31,19 +33,19 @@ export const Login = () => {
       return;
     }
 
-    console.log("Hola de nuevo");
-    console.log("Data:", form);
     try {
-      console.log("ha entrado en el try");
       //envio datos al servidos
       const response = await axios.post(
         "http://127.0.0.1:8000/api/login",
         form
       );
-      console.log("he pasado la response");
+
       // verifica si existe el token
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
+        // Guardar el usuario en el contexto de autenticación
+        setUser(response.data.user);
+
         console.log("Token exists:", response.data.token);
         console.log("response:", response);
         return navigate("/dashboard");
@@ -51,20 +53,15 @@ export const Login = () => {
 
       // maneja respuesta del servidor
     } catch (error) {
-      console.error("Login failed:", error);
-      if (error.response) {
-        // El servidor respondió con un código de estado que no está en el rango de 2xx
-        console.error("Error response data:", error.response.data);
-        console.error("Error response status:", error.response.status);
-        console.error("Error response headers:", error.response.headers);
-      } else if (error.request) {
-        // La solicitud fue hecha pero no se recibió respuesta
-        console.error("Error request:", error.request);
+      if (error.response && error.response.status === 401) {
+        setErrors("Credenciales inválidas. Por favor, inténtalo de nuevo.");
       } else {
-        // Algo pasó al preparar la solicitud que desencadenó un error
-        console.error("Error message:", error.message);
+        setErrors(
+          "Ocurrió un error al iniciar sesión. Vuelve a intentarlo más tarde."
+        );
       }
     }
+
     setForm({
       email: "",
       password: "",

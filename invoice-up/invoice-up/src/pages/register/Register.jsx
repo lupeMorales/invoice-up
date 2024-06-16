@@ -45,9 +45,6 @@ export const Register = () => {
       return;
     }
 
-    console.log("Genial, tu cuenta ha sido creada");
-    console.log("Data:", form);
-
     try {
       // Realizar la llamada Axios para enviar datos al servidor
 
@@ -61,20 +58,27 @@ export const Register = () => {
         localStorage.setItem("token", response.data.token);
         setUser(form.name); // Actualiza el contexto con el nombre del usuario
         // Redirige al usuario a la página principal
-        console.log("Redirigiendo a dashboard...");
-        console.log("contexto", setUser);
         return navigate("/dashboard");
       }
-
-      console.log("Respuesta del servidor:", response.data);
     } catch (error) {
       // Manejar errores en la llamada Axios
       console.error("Error al enviar datos:", error);
+      if (error.response && error.response.data) {
+        // Verifica si el error es por un email ya registrado
+        if (error.response.data.email) {
+          setErrors({ email: error.response.data.email[0] });
+        } else {
+          // Muestra otros errores generales
+          setErrors({ general: "Ocurrió un error al registrar tu cuenta." });
+        }
+      } else {
+        setErrors({ general: "Ocurrió un error al registrar tu cuenta." });
+      }
     }
 
     //reset form
     setUser(form.name);
-    navigate("/dashboard");
+
     setForm({
       name: "",
       email: "",
