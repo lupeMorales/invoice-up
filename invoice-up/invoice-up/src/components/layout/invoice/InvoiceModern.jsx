@@ -1,17 +1,21 @@
 import { InvoiceClasicStyled } from "./InvoiceClasicStyled";
-import imageDeafult from "../../../assets/avatar.webp";
+import imageDefault from "../../../assets/avatar.webp";
 
 export const InvoiceModern = ({ dataForm }) => {
   const subtotal = dataForm.price * dataForm.quantity;
+  // Check if dataForm.logo is a File object and generate a URL if necessary
+
+  const logoUrl =
+    dataForm.logo instanceof File
+      ? URL.createObjectURL(dataForm.logo)
+      : dataForm.logo || imageDefault;
+
   return (
     <InvoiceClasicStyled>
       <h1>Soy la factura de estilo {dataForm.template}</h1>
       <div className="classic_companyDates">
         <div>
-          <img
-            src={dataForm.logo || imageDeafult}
-            alt="logo de ${dataForm.company_name}"
-          />
+          <img src={logoUrl} alt={`logo de ${dataForm.company_name}`} />
         </div>
         <div>
           <h2>Nº Factura:{dataForm.number_invoice}</h2>
