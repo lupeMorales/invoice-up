@@ -5,7 +5,7 @@ import { Header } from "../../components/layout/header/Header";
 import { Hero } from "../../components/layout/hero/Hero";
 import { Footer } from "../../components/layout/footer/Footer";
 import { Calculator } from "./Calculator";
-import { TableIva } from "../../components/tables/tableIVA/TableIva";
+
 import { CalculatorPageStyled } from "./CalculatorPageStyled";
 
 export const CalculatorPage = () => {
@@ -16,8 +16,8 @@ export const CalculatorPage = () => {
         title="Calculadora de los Autónomos"
         subtitle="Calcula tu IVA, IRPF y beneficio neto en segundos."
         image={image}
-        action="Calcular ahora"
-        path="/login"
+        action="Crear mi primera factura"
+        path="/register"
       ></Hero>
       <DiagonalSparator />
       <Heading
