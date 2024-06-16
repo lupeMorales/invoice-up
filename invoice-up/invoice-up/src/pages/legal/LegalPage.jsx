@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { HeroLegal } from "../../components/layout/hero/HeroLegal";
 import { TextoLegalStyled } from "./TextLegalStyled";
 import { Footer } from "../../components/layout/footer/Footer";
@@ -98,7 +97,7 @@ export const LegalPage = ({ page }) => {
               WEB, así como el acceso a su página propia, que impliquen la
               comunicación de sus datos personales al PROPIETARIO DE LA WEB. a)
               Identificación del responsable del tratamiento. El PROPIETARIO DE
-              LA WEB, provista de CIF J90375338, informa al usuario y cliente de
+              LA WEB, provista de CIF J9XX75338, informa al usuario y cliente de
               su página Web de la existencia de un registro de actividades
               automatizado de datos personales denominado CLIENTES, donde se
               recogen y almacenan los datos personales que el usuario y el
@@ -202,9 +201,8 @@ export const LegalPage = ({ page }) => {
               y supresión de sus datos así como el derecho a presentar una
               reclamación ante la Autoridad de Controla mediante escrito
               dirigido al PROPIETARIO DE LA WEB en la siguiente dirección: CALLE
-              MANUFACTURA 8, EDIFICIO BOUDERE 1, OFICINA 7-8,CP 41927, MAIRENA
-              DEL ALJARAFE, SEVILLA o mediante correo dirigido a
-              INFO@EN2NUBE.ES, adjuntando en ambos casos su DNI o tarjeta de
+              INVOICEEUP SEVILLA o mediante correo dirigido a
+              INFO@INVOICE-UP.ES, adjuntando en ambos casos su DNI o tarjeta de
               identidad. h) Uso de formularios para la recogida de datos
               personales. En los formularios de contacto existentes en la web,
               donde se recogen datos de carácter personal, el usuario deberá
@@ -307,11 +305,195 @@ export const LegalPage = ({ page }) => {
         break;
       case "politica-cookies":
         title = "Política de Cookies";
-        content = <p>comntenido politica cookies</p>;
+        content = (
+          <TextoLegalStyled>
+            <h2>¿Qué son las cookies?</h2>
+            <p>
+              Una cookie es un fichero que se descarga en su ordenador al
+              acceder a determinadas páginas web. Las cookies permiten a una
+              página web, entre otras cosas, almacenar y recuperar información
+              sobre hábitos de navegación de un usuario o de su equipo y,
+              dependiendo de la información que contengan y de la forma que
+              utilice su equipo, pueden utilizarse para reconocer al usuario
+              anónimo. Las Cookies se asocian únicamente a un Usuario anónimo y
+              su ordenador y no proporcionan referencias que permitan deducir
+              datos personales del Usuario. En el caso de Usuarios registrados
+              que se registren o que hayan iniciado sesión, podrán beneficiarse
+              de unos servicios más personalizados y orientados a su perfil,
+              gracias a la combinación de los datos almacenados en las cookies
+              con los datos personales utilizados en el momento de su registro.
+              Dichos Usuarios autorizan expresamente el uso de esta información
+              con la finalidad indicada, sin perjuicio de su derecho a rechazar
+              o deshabilitar el uso de cookies.
+            </p>
+            <h2>
+              Tipología, finalidad y funcionamiento de las Cookies en General.
+            </h2>
+            <p>
+              Según el plazo de tiempo que permanecen activadas en el equipo
+              terminal podemos distinguir: ● Cookies de sesión: Son un tipo de
+              cookies diseñadas para recabar y almacenar datos mientras el
+              usuario accede a una página web. Se suelen emplear para almacenar
+              información que solo interesa conservar para la prestación del
+              servicio solicitado por el usuario en una sola ocasión (p.e. una
+              lista de productos adquiridos). ● Cookies persistentes: Son un
+              tipo de cookies en el que los datos siguen almacenados en el
+              terminal y pueden ser accedidos y tratados durante un periodo
+              definido por el responsable de la cookie, y que puede ir de unos
+              minutos a varios años.
+            </p>
+
+            <h2>Tipos de cookies según la entidad que las gestione.</h2>
+            <p>
+              Según quien sea la entidad que gestione el equipo o dominio desde
+              donde se envían las cookies y trate los datos que se obtengan,
+              podemos distinguir: ● Cookies propias: Son aquéllas que se envían
+              al equipo terminal del usuario desde un equipo o dominio
+              gestionado por el propio editor y desde el que se presta el
+              servicio solicitado por el usuario. ● Cookies de tercero: Son
+              aquéllas que se envían al equipo terminal del usuario desde un
+              equipo o dominio que no es gestionado por el editor, sino por otra
+              entidad que trata los datos obtenidos través de las cookies.
+            </p>
+
+            <h2>Consentimiento y Autorización para el uso de cookies</h2>
+            <p>
+              Al acceder a este sitio web por primera vez, verá un espacio o
+              banner donde se le informa de la utilización de las cookies y
+              donde puede consultar esta política de cookies mediante un link.
+              Si usted consiente la utilización de cookies, continúa navegando
+              haciendo uso de la barra de desplazamiento o scroll o hace clic en
+              algún link (aceptar) según proceda, se entenderá que usted ha
+              consentido nuestra política de cookies y, por tanto, la aceptación
+              para la instalación de las mismas en su equipo o dispositivo,
+              excepto en la medida que haya modificado la configuración de su
+              navegador para rechazar la utilización de las mismas.
+            </p>
+            <h2>
+              ¿Qué tipos de cookies utiliza esta página web en particular?
+            </h2>
+            <p>
+              Definición, Identificación y finalidad de las cookies de esta Web
+              no exceptuadas por la LSSI. Serían: ● Cookies de análisis: Son
+              aquéllas que bien tratadas por nosotros o por terceros, nos
+              permiten cuantificar el número de usuarios y así realizar la
+              medición y análisis estadístico de la utilización que hacen los
+              usuarios del servicio ofertado. Para ello se analiza su navegación
+              en nuestra página web con el fin de mejorar la oferta de productos
+              o servicios que le ofrecemos. ● Cookies publicitarias: Son
+              aquéllas que, bien tratadas por nosotros o por terceros, nos
+              permiten gestionar de la forma más eficaz posible la oferta de los
+              espacios publicitarios que hay en la página web, adecuando el
+              contenido del anuncio al contenido del servicio solicitado o al
+              uso que realice de nuestra página web. Para ello podemos analizar
+              sus hábitos de navegación en Internet y podemos mostrarle
+              publicidad relacionada con su perfil de navegación.
+            </p>
+            <h2>Cuadro de identificación de las cookies y finalidad.</h2>
+            <p>
+              Nombre del editor, nombre de la cookie, «tipo» y Propósito. Nota:
+              Las cookies de tipo “Propias” son utilizadas sólo por el
+              propietario de esta web y las cookies “De terceros” son
+              utilizadas, también, por el prestador del servicio que está
+              detallado en el cuadro anterior. Configuración del navegador para
+              la revocación y retirada del consentimiento para el uso de las
+              cookies. INVOICE-UP S.L. recuerda a sus usuarios de la web que el
+              uso de cookies podrá estar sujeto a su aceptación durante la
+              instalación o actualización del navegador utilizado por éstos.
+              Esta aceptación podrá ser revocada mediante las opciones de
+              configuración de contenidos y privacidad disponibles en el mismo.
+              INVOICE-UP S.L. recomienda a sus usuarios que consulten la ayuda
+              de su navegador o acceda a las páginas web de ayuda de los
+              principales navegadores: ● Firefox:
+              https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web
+              –rastrear-prefe rencias ● Chrome:
+              https://support.google.com/chrome/answ
+              r/95647co=GENIE.Platform%3DDesktop&hl=e s-419 ● Explorer:
+              https://support.microsoft.com/es
+              es/help/17442/windows-internet-explorer delete-manage-cookies ●
+              Safari: https://support.apple.com/es-es/guide/safari/sfri11471/mac
+              ● Opera: https://help.opera.com/en/latest/web-preferences/ ● Otros
+              navegadores: consulte la documentación del navegador que tenga
+              instalado. Si el usuario deseara más información sobre cómo
+              revocar el consentimiento prestado o sobre el procedimiento para
+              deshabilitar las cookies, así como realizar alguna pregunta sobre
+              la Política de Cookies de la web, se puede poner en contacto con
+              INVOICE-UP a través de la siguiente dirección INFO@INVOICE-UP.ES
+              indicando en el asunto “Política de Cookies”.
+            </p>
+          </TextoLegalStyled>
+        );
         break;
       case "politica-privacidad":
         title = "Política de Privacidad";
-        content = <p>comntenido politica privacidad</p>;
+        content = (
+          <TextoLegalStyled>
+            <p>
+              La privacidad es de gran importancia para Ninja TPV y queremos
+              mantener una actitud abierta y transparente al tratar sus datos
+              personales. Por lo tanto, disponemos de una política que establece
+              cómo se tratan y protegen sus datos personales.
+            </p>
+            <h2>¿Quién es el responsable del tratamiento de sus datos?</h2>
+            <p>
+              INVOICE-UP S.L. CIF: B02813202 Domicilio social: CALLE INVOICE-UP,
+              8 SEVILLA Correo electrónico de contacto: INFO@INVOICE-UP.ES
+            </p>
+            <h2>¿Con qué finalidad tratamos sus datos personales?</h2>
+            <p>
+              En INVOICE-UP S.L. tratamos la información que nos facilitan las
+              personas interesadas con el fin de realizar la gestión
+              administrativa, contable y fiscal de los servicios solicitados,
+              así como enviar comunicaciones comerciales sobre nuestros
+              productos y servicios, para cuyo consentimiento usted haya
+              prestado.
+            </p>
+            <h2>¿Por cuánto tiempo conservaremos sus datos?</h2>
+            <p>
+              Los datos se conservarán mientras se mantenga la relación
+              comercial, y en su caso, durante los años necesarios para cumplir
+              con las obligaciones legales que resulte de aplicación.
+            </p>
+            <h2>¿Cuál es la legitimación para el tratamiento de sus datos?</h2>
+            <p>
+              Le indicamos la base legal para el tratamiento de sus datos: ●
+              Ejecución de un contrato: Prestación de los servicios solicitados
+              ● Consentimiento del interesado: Envío de comunicaciones
+              comerciales.
+            </p>
+            <h2>¿Cuáles son sus derechos cuando nos facilita sus datos?</h2>
+            <p>
+              Cualquier persona tiene derecho a obtener confirmación sobre si en
+              INVOICE-UP S.L. estamos tratando datos personales que les
+              conciernan, o no. Las personas interesadas tienen derecho a
+              acceder a sus datos personales, así como a solicitar la
+              rectificación de los datos inexactos o, en su caso, solicitar su
+              supresión cuando, entre otros motivos, los datos ya no sea
+              necesarios para los fines que fueron recogidos. En determinadas
+              circunstancias, los interesados podrán solicitar la limitación del
+              tratamiento de sus datos, en cuyo caso únicamente los
+              conservaremos para el ejercicio o la defensa de reclamaciones. En
+              determinadas circunstancias y por motivos relacionados con su
+              situación particular, los interesados podrán oponerse al
+              tratamiento de sus datos. En este caso, INVOICE-UP S.L. dejará de
+              tratar los datos, salvo por motivos legítimos imperiosos, o el
+              ejercicio o la defensa de posibles reclamaciones. Podrá ejercitar
+              materialmente sus derechos de la siguiente forma: dirigiéndose a
+              la dirección de correo electrónico del responsable del tratamiento
+              reseñado anteriormente adjuntando copia de su DNI o documento de
+              identidad. Si ha otorgado su consentimiento para alguna finalidad
+              concreta, tiene derecho a retirar el consentimiento otorgado en
+              cualquier momento, sin que ello afecte a la licitud del
+              tratamiento basado en el consentimiento previo a su retirada. En
+              caso de que sienta vulnerados sus derechos en lo concerniente a la
+              protección de sus datos personales, especialmente cuando no haya
+              obtenido satisfacción en el ejercicio de sus derechos, puede
+              presentar una reclamación ante la Autoridad de Control en materia
+              de Protección de Datos competente a través de su sitio web:
+              www.aepd.es.
+            </p>
+          </TextoLegalStyled>
+        );
         break;
       default:
         return <Page404 />;

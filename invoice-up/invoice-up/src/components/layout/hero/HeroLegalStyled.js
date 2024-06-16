@@ -6,8 +6,8 @@ export const HeroLegalStyled = styled.section`
   height: 10vh;
   background: ${(props) => props.theme.color.primary};
   background-image: linear-gradient(
-    207deg,
-    ${(props) => props.theme.color.primary} 5%,
+    155deg,
+    ${(props) => props.theme.color.primary} 55%,
     ${(props) => props.theme.color.grey} 100%
   );
 
@@ -15,6 +15,6 @@ export const HeroLegalStyled = styled.section`
     font-family: ${(props) => props.theme.fonts.titleFont};
     font-size: ${(props) => props.theme.fontSizes.xlarge};
     padding-bottom: 20px;
-    color: ${(props) => props.theme.color.primary};
+    color: ${(props) => props.theme.color.light_text};
   }
 `;
