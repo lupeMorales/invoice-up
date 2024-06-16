@@ -1,4 +1,4 @@
-import { InvoiceClasicStyled } from "./InvoiceClasicStyled";
+import { InvoiceModernStyled } from "./InvoiceModernStyled";
 import imageDefault from "../../../assets/avatar.webp";
 
 export const InvoiceModern = ({ dataForm }) => {
@@ -11,30 +11,35 @@ export const InvoiceModern = ({ dataForm }) => {
       : dataForm.logo || imageDefault;
 
   return (
-    <InvoiceClasicStyled>
+    <InvoiceModernStyled>
       <h1>Soy la factura de estilo {dataForm.template}</h1>
-      <div className="classic_companyDates">
+      <div className="modern_heading">
         <div>
           <img src={logoUrl} alt={`logo de ${dataForm.company_name}`} />
         </div>
         <div>
           <h2>Nº Factura:{dataForm.number_invoice}</h2>
-          <h2>{dataForm.company_name || ""} </h2>
+          <h2>Fecha: {dataForm.issue_date}</h2>
+        </div>
+      </div>
+      <div className="modern_dates">
+        <div>
+          <h2>Cliente:</h2>
+          <p>{dataForm.client_name || ""}</p>
+          <p>{dataForm.client_address}</p>
+          <p>TELÉFONO:{dataForm.client_phone}</p>
+          <p>CIF:{dataForm.client_cif}</p>
+          <p>EMAIL:{dataForm.client_mail}</p>
+        </div>
+        <div>
+          <h2>{dataForm.company_name || "Company"} </h2>
           <p>{dataForm.company_address}</p>
           <p>TELÉFONO:{dataForm.company_phone}</p>
           <p>CIF:{dataForm.company_cif}</p>
           <p>EMAIL:{dataForm.company_mail}</p>
         </div>
       </div>
-      <div className="classic_clientDates">
-        <h2>Cliente:</h2>
-        <p>{dataForm.client_name || ""}</p>
-        <p>{dataForm.client_address}</p>
-        <p>TELÉFONO:{dataForm.client_phone}</p>
-        <p>CIF:{dataForm.client_cif}</p>
-        <p>EMAIL:{dataForm.client_mail}</p>
-      </div>
-      <div className="classic_services">
+      <div className="modern_services">
         <table>
           <tr>
             <th>Concepto</th>
@@ -49,7 +54,7 @@ export const InvoiceModern = ({ dataForm }) => {
             <td>{subtotal}€</td>
           </tr>
         </table>
-        <div className="classic_totals">
+        <div className="modern_totals">
           <p>TOTAL:{subtotal}€</p>
           <p>
             Retenciones({dataForm.irpf}%):{subtotal}€
@@ -60,6 +65,6 @@ export const InvoiceModern = ({ dataForm }) => {
           <p>TOTAL DEVENGADO:€</p>
         </div>
       </div>
-    </InvoiceClasicStyled>
+    </InvoiceModernStyled>
   );
 };

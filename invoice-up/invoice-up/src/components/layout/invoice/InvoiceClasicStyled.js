@@ -4,35 +4,49 @@ export const InvoiceClasicStyled = styled.main`
   position: relative;
   height: 100%;
   padding: 10%;
-  background-color: peachpuff;
+
   .classic_companyDates {
-    border: solid 2px black;
+    padding: 10px;
+    border: solid 1px black;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   .classic_clientDates {
+    padding: 10px;
     margin-top: 20px;
-    border: solid 2px black;
+    border: solid 1px black;
   }
   .classic_services {
     margin-top: 20px;
-    border: solid 2px black;
-    height: 350px;
+    border: solid 1px black;
+    height: 320px;
     table {
       width: 100%;
     }
     th {
-      background-color: blue;
+      height: 22px;
+      padding: 10px;
+      background-color: ${(props) => props.theme.color.light_primary};
+      font-size: 1.4rem;
+    }
+    td {
+      height: 22px;
+      padding: 10px;
+      text-align: end;
+      font-size: 1.4rem;
     }
   }
   .classic_totals {
+    text-align: end;
+    padding: 10px;
+    font-size: 1.2rem;
     position: absolute;
     right: 10%;
-    bottom: 8%;
+    bottom: 10%;
     width: 200px;
-    margin-top: 20px;
-    border: solid 2px black;
+    margin-top: 10px;
+    border: solid 1px black;
   }
 `;
