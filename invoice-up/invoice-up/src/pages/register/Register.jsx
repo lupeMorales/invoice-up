@@ -78,7 +78,7 @@ export const Register = () => {
 
     //reset form
     setUser(form.name);
-
+    navigate("/dashboard");
     setForm({
       name: "",
       email: "",

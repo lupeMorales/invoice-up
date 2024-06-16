@@ -1,17 +1,17 @@
 import axios from "axios";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginStyled } from "./LoginStyled.js";
 import image from "../../assets/community.png";
 import { Button } from "../../components/atoms/buttons/Button";
 import { Header } from "../../components/layout/header/Header";
-import { UserContext } from "../../context/UserContext.jsx"; // Importa el contexto del usuario
+/* import { UserContext } from "../../context/UserContext.jsx"; */ // Importa el contexto del usuario
 
 axios.defaults.headers.common["Content-Type"] = "application/json";
 axios.defaults.headers.common["Accept"] = "application/json";
 
 export const Login = () => {
-  const { setUser } = useContext(UserContext); // Usa el contexto del usuario
+  /*  const { setUser } = useContext(UserContext); */ // Usa el contexto del usuario
   const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
