@@ -30,7 +30,9 @@ export const InvoiceInfoItem = () => {
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/invoices");
+        const response = await axios.get(
+          "http://127.0.0.1:8000/api/invoices-by-user"
+        );
         setInvoices(response.data);
         setLoading(false);
 

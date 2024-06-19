@@ -1,5 +1,4 @@
 // Mostrar el modal
-import React from "react";
 import { ModalStyled } from "./ModalStyled";
 
 const Modal = ({ children, onClose }) => {
