@@ -150,6 +150,7 @@ export const DashboardForm = ({ onSubmit }) => {
 
     if (validateForm()) {
       try {
+        const token = localStorage.getItem("token");
         const formData = new FormData();
         Object.entries(form).forEach(([key, value]) => {
           formData.append(key, value);
@@ -158,12 +159,13 @@ export const DashboardForm = ({ onSubmit }) => {
         await axios.post("http://127.0.0.1:8000/api/invoices", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`, // Envía el token de autenticación en la cabecera a la api
           },
         });
         onSubmit(form);
         // Mostrar el modal
         setShowModal(true);
-        console.log(showModal);
+
         // volver al estado inicial del formurario
         resetForm();
       } catch (error) {

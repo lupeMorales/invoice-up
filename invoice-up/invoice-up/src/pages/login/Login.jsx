@@ -38,14 +38,17 @@ export const Login = () => {
       //envio datos al servidos
       const response = await axios.post(
         "http://127.0.0.1:8000/api/login",
+
         form
       );
-      console.log("he pasado la response");
+      console.log("response login", response);
+      console.log("token", response.data.token);
+
       // verifica si existe el token
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
         // Guardar el usuario en el contexto de autenticación
-        setUser(response.data.user);
+        setUser(response.data.name);
 
         console.log("Token exists:", response.data.token);
         console.log("response:", response);
