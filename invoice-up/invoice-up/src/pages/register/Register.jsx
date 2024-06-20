@@ -9,6 +9,7 @@ import { UserContext } from "../../context/UserContext"; // Importa el contexto 
 
 export const Register = () => {
   const navigate = useNavigate();
+
   const { setUser } = useContext(UserContext); // Usa el contexto del usuario
   const [form, setForm] = useState({
     name: "",
@@ -57,6 +58,7 @@ export const Register = () => {
         // Si hay un token, almacénalo en el localStorage del navegador
         localStorage.setItem("token", response.data.token);
         setUser(form.name); // Actualiza el contexto con el nombre del usuario
+
         // Redirige al usuario a la página principal
         return navigate("/dashboard");
       }

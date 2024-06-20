@@ -34,4 +34,13 @@ export const ModalStyled = styled.div`
     text-decoration: none;
     cursor: pointer;
   }
+  h2 {
+    padding-bottom: 20px;
+    font-size: ${(props) => props.theme.fontSizes.normal};
+  }
+  p {
+    font-size: ${(props) => props.theme.fontSizes.xsmall};
+    line-height: 1.5;
+    width: 90%;
+  }
 `;

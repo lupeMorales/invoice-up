@@ -5,9 +5,11 @@ import { InvoiceInfoItemStyled } from "./InvoiceInfoItemStyled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { ModalInvoiceStyled } from "../../atoms/modal/ModalInvoiceStyled";
+import { ModalStyled } from "../../atoms/modal/ModalStyled";
 import { Previewer } from "../../layout/previewer/Previewer";
 
 export const InvoiceInfoItem = () => {
+  const [showEditModal, setShowEditModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
   const [invoices, setInvoices] = useState([]);
@@ -30,9 +32,7 @@ export const InvoiceInfoItem = () => {
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        const response = await axios.get(
-          "http://127.0.0.1:8000/api/invoices-by-user"
-        );
+        const response = await axios.get("http://127.0.0.1:8000/api/invoices");
         setInvoices(response.data);
         setLoading(false);
 
@@ -97,6 +97,12 @@ export const InvoiceInfoItem = () => {
     } catch (error) {
       console.error("Error al marcar la factura como cobrado:", error);
     }
+  };
+
+  // editar factura
+  const handleEditInvoice = (invoice) => {
+    setSelectedInvoice(invoice);
+    setShowEditModal(true);
   };
 
   // elimina la factura
@@ -206,7 +212,11 @@ export const InvoiceInfoItem = () => {
                   >
                     <FontAwesomeIcon icon={faEye} />
                   </button>
-                  <button className="button-info" title="editar">
+                  <button
+                    className="button-info"
+                    title="editar"
+                    onClick={() => handleEditInvoice(invoice)}
+                  >
                     <FontAwesomeIcon icon={faEdit} />
                   </button>
                   <button
@@ -231,6 +241,23 @@ export const InvoiceInfoItem = () => {
             <Previewer dataForm={selectedInvoice} />
           </div>
         </ModalInvoiceStyled>
+      )}
+      {showEditModal && selectedInvoice && (
+        <ModalStyled show={showEditModal}>
+          <div className="modal-content">
+            <span
+              className="close-button"
+              onClick={() => setShowEditModal(false)}
+            >
+              &times;
+            </span>
+            <h2>Lo sentimos mucho :(</h2>
+            <p>
+              La función de editar facturas se encuentra temporalmente fuera de
+              servicio.
+            </p>
+          </div>
+        </ModalStyled>
       )}
     </div>
   );
