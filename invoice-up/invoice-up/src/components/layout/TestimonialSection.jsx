@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     padding: 0 20px;
     @media only screen and (max-width: 798px) {
       aspect-ratio: 2/3;
-      width: 90vw;
+      width: 350px;
     }
   }
   /* Define the scrollbar style */

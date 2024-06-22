@@ -14,6 +14,9 @@ export const TestimonialCardStyled = styled.div`
   box-shadow: -1px 2px 29px -1px rgba(79, 73, 204, 0.75);
   -webkit-box-shadow: -1px 2px 29px -1px rgba(79, 73, 204, 0.75);
   -moz-box-shadow: -1px 2px 29px -1px rgba(79, 73, 204, 0.75);
+  @media only screen and (max-width: 798px) {
+    height: 350px;
+  }
 
   div {
     position: absolute;
