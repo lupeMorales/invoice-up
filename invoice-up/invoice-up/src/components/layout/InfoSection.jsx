@@ -31,13 +31,6 @@ const InfoWrapper = styled.section`
     width: 100%;
     max-width: 550px;
     object-fit: fill;
-
-    /* animation to scroll. Nt supported by safari */
-    view-timeline-name: --image;
-    view-timeline-axis: block;
-    animation-timeline: --image;
-    animation-name: show;
-    animation-range: entry 25% cover 50%;
   }
   @keyframes show {
     from {
