@@ -24,6 +24,7 @@ const InfoWrapper = styled.section`
     padding-bottom: 40px;
     @media only screen and (max-width: 798px) {
       font-weight: 300;
+      padding-left: 20px;
     }
   }
 
@@ -54,6 +55,11 @@ const InfoWrapper = styled.section`
       100% {
         transform: scale(1);
       }
+    }
+  }
+  a {
+    @media only screen and (max-width: 798px) {
+      padding-left: 20px;
     }
   }
 `;

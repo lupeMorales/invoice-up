@@ -9,6 +9,9 @@ const HeadingWrapper = styled.div`
   align-items: ${(props) => (props.align === "start" ? `start` : `center`)};
 
   padding: 100px 0 20px 0;
+  @media only screen and (max-width: 798px) {
+    padding-left: 20px;
+  }
 
   h2 {
     max-width: 500px;
@@ -34,6 +37,7 @@ const HeadingWrapper = styled.div`
     @media only screen and (max-width: 798px) {
       max-width: 300px;
       font-weight: 300;
+      padding-left: 0;
     }
   }
   hr {
