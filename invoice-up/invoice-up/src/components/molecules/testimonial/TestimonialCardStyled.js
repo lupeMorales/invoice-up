@@ -5,6 +5,7 @@ export const TestimonialCardStyled = styled.div`
   position: relative;
   width: 320px;
   min-width: 320px;
+  height: 350px;
   padding: 80px 30px;
   margin: 50px 20px;
   aspect-ratio: 1/1;

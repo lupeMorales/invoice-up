@@ -155,11 +155,15 @@ export const DashboardForm = ({ onSubmit }) => {
           formData.append(key, value);
         });
 
-        await axios.post("http://127.0.0.1:8000/api/invoices", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        await axios.post(
+          "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/invoices",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
         onSubmit(form);
         // Mostrar el modal
         setShowModal(true);

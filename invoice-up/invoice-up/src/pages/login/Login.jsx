@@ -27,6 +27,17 @@ export const Login = () => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     setErrors("");
+
+    // Verificar si es el usuario administrador
+    if (
+      form.email === "admin@admin.com" &&
+      form.password === "administracion"
+    ) {
+      localStorage.setItem("token", "admin-token");
+      setUser({ name: "Admin", role: "admin" });
+      navigate("/admin");
+      return;
+    }
     // Validar formulario
     if (form.password.length < 8) {
       setErrors("La contraseña debe tener al menos 8 caracteres.");
@@ -37,7 +48,7 @@ export const Login = () => {
       console.log("ha entrado en el try");
       //envio datos al servidos
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/login",
+        "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/login",
 
         form
       );

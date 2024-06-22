@@ -12,6 +12,7 @@ import { Register } from "./pages/register/Register";
 import { CalculatorPage } from "./pages/calculator/CalculatorPage";
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import { About } from "./pages/about/About";
+import { Admin } from "./pages/admin/Admin";
 import { MyInvoices } from "./pages/myInvoices/MyInvoices";
 import { LegalPage } from "./pages/legal/LegalPage";
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "about",
     element: <About />,
+  },
+  {
+    path: "admin",
+    element: <Admin />,
   },
   {
     path: "login",
