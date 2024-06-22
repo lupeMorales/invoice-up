@@ -10,4 +10,8 @@ export const DashboardFormWrapper = styled.div`
   box-shadow: 10px 10px 116px -2px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 10px 10px 116px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 116px -2px rgba(0, 0, 0, 0.75);
+
+  @media (max-width: 780px) {
+    width: 350px;
+  }
 `;

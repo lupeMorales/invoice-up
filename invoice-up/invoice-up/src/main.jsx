@@ -95,7 +95,7 @@ const router = createBrowserRouter([
     element: <Page404 />,
   },
 ]);
-
+axios.defaults.withCredentials = true;
 // Intercepta las solicitudes antes de ser enviadas y modifica la configuración de la solicitud
 axios.interceptors.request.use((config) => {
   // Obtiene el token de autenticación almacenado en el localStorage del navegador

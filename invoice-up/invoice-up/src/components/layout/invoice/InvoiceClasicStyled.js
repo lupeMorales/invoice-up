@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const InvoiceClasicStyled = styled.main`
   position: relative;
   height: 100%;
+  min-height: 680px;
   padding: 10%;
-
   .classic_companyDates {
     padding: 10px;
     border: solid 1px black;
@@ -21,7 +21,7 @@ export const InvoiceClasicStyled = styled.main`
   .classic_services {
     margin-top: 20px;
     border: solid 1px black;
-    height: 320px;
+    height: 250px;
     table {
       width: 100%;
     }
@@ -44,7 +44,7 @@ export const InvoiceClasicStyled = styled.main`
     font-size: 1.2rem;
     position: absolute;
     right: 10%;
-    bottom: 10%;
+    bottom: 5%;
     width: 200px;
     margin-top: 10px;
     border: solid 1px black;

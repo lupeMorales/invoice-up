@@ -17,4 +17,7 @@ export const PreviewerStyled = styled.div`
     object-fit: fill;
     margin-bottom: 20px;
   }
+  @media (max-width: 780px) {
+    width: 350px;
+  }
 `;

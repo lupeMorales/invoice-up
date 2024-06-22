@@ -5,6 +5,7 @@ export const DashboardFormStyled = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center; */
+
   input {
     display: block;
     width: calc(100% - 20px);
@@ -82,5 +83,10 @@ export const DashboardFormStyled = styled.form`
   }
   .collapsed {
     display: none;
+  }
+  @media (max-width: 780px) {
+    form {
+      width: 250px;
+    }
   }
 `;
