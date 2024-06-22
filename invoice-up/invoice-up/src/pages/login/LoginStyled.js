@@ -10,7 +10,10 @@ export const LoginStyled = styled.main`
     ${(props) => props.theme.color.primary},
     ${(props) => props.theme.color.secondary} 100%
   );
-
+  @media only screen and (max-width: 798px) {
+    height: auto;
+    padding: 0 20px 50px;
+  }
   div {
     display: flex;
     flex-wrap: wrap;
