@@ -48,6 +48,7 @@ export const Nav = styled.nav`
     list-style: none;
     display: inline-block;
     padding: 0 20px;
+    text-align: center;
     font-family: ${(props) => props.theme.fonts.titleFont};
     font-size: ${(props) => props.theme.fontSizes.xsmall};
     color: ${(props) => props.theme.color.light_text};
@@ -79,6 +80,7 @@ export const Nav = styled.nav`
       align-items: center;
       gap: 20px;
       padding-top: 40px;
+      margin-left: 0;
     }
   }
 `;
