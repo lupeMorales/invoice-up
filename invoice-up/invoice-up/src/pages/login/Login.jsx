@@ -19,6 +19,11 @@ export const Login = () => {
   });
   const [errors, setErrors] = useState("");
 
+  const validateEmail = (email) => {
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return emailRegex.test(email);
+  };
+
   const handleInputChange = (ev) => {
     const { name, value } = ev.target;
     setForm({ ...form, [name]: value });
@@ -27,6 +32,11 @@ export const Login = () => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     setErrors("");
+    // Validar email
+    if (!validateEmail(form.email)) {
+      setErrors("* El formato del email no es válido.");
+      return;
+    }
 
     // Verificar si es el usuario administrador
     if (
@@ -38,22 +48,19 @@ export const Login = () => {
       navigate("/admin");
       return;
     }
-    // Validar formulario
+    // Validar contraseña
     if (form.password.length < 8) {
-      setErrors("La contraseña debe tener al menos 8 caracteres.");
+      setErrors("* La contraseña debe tener al menos 8 caracteres.");
       return;
     }
 
     try {
-      console.log("ha entrado en el try");
       //envio datos al servidos
       const response = await axios.post(
-        "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/login",
+        "http://127.0.0.1:8000/api/login",
 
         form
       );
-      console.log("response login", response);
-      console.log("token", response.data.token);
 
       // verifica si existe el token
       if (response.data.token) {
@@ -61,8 +68,6 @@ export const Login = () => {
         // Guardar el usuario en el contexto de autenticación
         setUser(response.data.name);
 
-        console.log("Token exists:", response.data.token);
-        console.log("response:", response);
         return navigate("/dashboard");
       }
 
@@ -122,7 +127,7 @@ export const Login = () => {
               ></input>
             </label>
             {errors && (
-              <p style={{ color: "red", fontSize: "16px" }}>{errors}</p>
+              <p style={{ color: "white", fontSize: "16px" }}>{errors}</p>
             )}
             <Button action="Iniciar sesión"></Button>
             <Link to="/register">

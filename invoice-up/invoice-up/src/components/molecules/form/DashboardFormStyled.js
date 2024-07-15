@@ -81,9 +81,16 @@ export const DashboardFormStyled = styled.form`
     color: ${(props) => props.theme.color.light_text};
     font-weight: 300;
   }
+
+  .error {
+    color: ${(props) => props.theme.color.light_text};
+    font-size: 1.6rem;
+    padding-bottom: 1.5rem;
+  }
   .collapsed {
     display: none;
   }
+
   @media (max-width: 780px) {
     form {
       width: 250px;

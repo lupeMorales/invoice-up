@@ -19,4 +19,14 @@ export const UserInfoItemStyled = styled.article`
   &:hover {
     background-color: ${(props) => props.theme.color.secondary};
   }
+  th {
+    font-size: ${(props) => props.theme.fontSizes.small};
+    font-family: ${(props) => props.theme.fonts.titleFont};
+    width: 300px;
+  }
+  @media (max-width: 768px) {
+    th {
+      font-size: ${(props) => props.theme.fontSizes.xsmall};
+    }
+  }
 `;

@@ -48,13 +48,11 @@ export const DashboardForm = ({ onSubmit }) => {
     for (let i = 0; i < 6; i++) {
       code += characters.charAt(Math.floor(Math.random() * characters.length));
     }
-    console.log(`code para number_invoice -${code}-`);
 
     setForm({
       ...form,
       number_invoice: code,
     });
-    console.log(form);
   };
 
   const updateAvatar = (avatar) => {
@@ -63,7 +61,6 @@ export const DashboardForm = ({ onSubmit }) => {
       ...form,
       logo: avatar,
     });
-    console.log(avatar);
   };
   const handleChange = (ev) => {
     // Actualiza el estado de 'form' con el valor del campo de entrada
@@ -85,21 +82,36 @@ export const DashboardForm = ({ onSubmit }) => {
     return emailRegex.test(email);
   };
 
+  const validateCIFoDNI = (cifOrDni) => {
+    const cifRegex = /^[ABCDEFGHJNPQRSUVW][0-9]{7}[0-9A-J]$/;
+    const dniRegex = /^\d{8}[A-Z]$/;
+    return cifRegex.test(cifOrDni) || dniRegex.test(cifOrDni);
+  };
+
   const validateForm = () => {
     let formErrors = {};
 
     if (!form.client_mail || !form.company_mail) {
-      formErrors.email = "El campo 'Email' es requerido.";
+      formErrors.email = "* El campo 'Email' es requerido.";
     } else if (
       !validateEmail(form.client_mail) ||
       !validateEmail(form.company_mail)
     ) {
-      formErrors.email = "El formato del email no es válido.";
+      formErrors.email = "* El formato del email no es válido.";
     }
 
     if (!form.client_address) {
-      formErrors.number_invoice = "El campo 'Número de Factura' es requerido.";
-      console.log(formErrors);
+      formErrors.number_invoice =
+        "* El campo 'Número de Factura' es requerido.";
+    }
+    if (!validateCIFoDNI(form.company_cif)) {
+      formErrors.company_cif =
+        "* El formato del CIF o DNI del emisor no es válido.";
+    }
+
+    if (!validateCIFoDNI(form.client_cif)) {
+      formErrors.client_cif =
+        "* El formato del CIF o DNI del cliente no es válido.";
     }
 
     // Agrega más validaciones para los demás campos
@@ -155,15 +167,11 @@ export const DashboardForm = ({ onSubmit }) => {
           formData.append(key, value);
         });
 
-        await axios.post(
-          "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/invoices",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        await axios.post("http://127.0.0.1:8000/api/invoices", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
         onSubmit(form);
         // Mostrar el modal
         setShowModal(true);
@@ -360,7 +368,7 @@ export const DashboardForm = ({ onSubmit }) => {
           value={form.service}
           onChange={handleChange}
         />
-        git push
+
         <div className="input-group">
           <input
             type="number"

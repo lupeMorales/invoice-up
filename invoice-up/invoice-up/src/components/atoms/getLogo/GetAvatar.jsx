@@ -16,7 +16,6 @@ function GetAvatar({ avatar, updateAvatar }) {
   //  myFileField = document.querySelecto('input')
 
   const uploadImage = (event) => {
-    console.log("GetAvatar handlefileChage: ");
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       const fr = new FileReader();
@@ -27,7 +26,6 @@ function GetAvatar({ avatar, updateAvatar }) {
 
       fr.readAsDataURL(file);
 
-      console.log(file);
       updateAvatar(file); // Enviar directamente el archivo
     }
   };

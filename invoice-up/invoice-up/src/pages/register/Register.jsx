@@ -26,10 +26,19 @@ export const Register = () => {
     });
   };
 
+  const validateEmail = (email) => {
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return emailRegex.test(email);
+  };
+
   const validateForm = () => {
     const newErrors = {};
     if (!form.name) newErrors.name = "El nombre de usuario es obligatorio.";
-    if (!form.email) newErrors.email = "El correo electrónico es obligatorio.";
+    if (!form.email) {
+      newErrors.email = "El correo electrónico es obligatorio.";
+    } else if (!validateEmail(form.email)) {
+      newErrors.email = "El formato del correo electrónico no es válido.";
+    }
     if (!form.password) {
       newErrors.password = "La contraseña es obligatoria.";
     } else if (form.password.length < 8) {
@@ -50,7 +59,7 @@ export const Register = () => {
       // Realizar la llamada Axios para enviar datos al servidor
 
       const response = await axios.post(
-        "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/register",
+        "http://127.0.0.1:8000/api/register",
         form
       );
       // Verifica si existe un token en la respuesta de la API
@@ -142,6 +151,7 @@ export const Register = () => {
               {" "}
               <Button action="Log in" variant="outline"></Button>
             </Link>
+            {errors.general && <p style={{ color: "red" }}>{errors.general}</p>}
           </form>
         </div>
       </RegisterStyled>

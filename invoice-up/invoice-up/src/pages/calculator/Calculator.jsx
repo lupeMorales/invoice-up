@@ -49,11 +49,10 @@ export const Calculator = () => {
 
   const calculateResult = () => {
     const ivaAmount = calculate(parseInt(formData.iva));
-    console.log("ivaAmount", formData.iva, ivaAmount);
+
     const irpfAmount = calculate(parseInt(formData.irpf));
-    console.log("irpf", formData.irpf, irpfAmount);
+
     const baseAmount = parseInt(formData.taxBase);
-    console.log("base", baseAmount);
 
     setPrice((baseAmount + ivaAmount).toFixed(2));
     setTotalInvoice((baseAmount + ivaAmount - irpfAmount).toFixed(2));

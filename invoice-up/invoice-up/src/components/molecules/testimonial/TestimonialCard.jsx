@@ -22,7 +22,6 @@ export const TestimonialCard = () => {
       for (let index = 0; index < dataTestimonial.length; index++) {
         const element = dataTestimonial[index];
         const image = useAssets("../../../assets/" + element.img);
-        console.log("image", image);
 
         result.push({
           ...element,
@@ -31,7 +30,6 @@ export const TestimonialCard = () => {
       }
 
       setInfoTestimonial(result);
-      console.log(infoTestimonial);
     };
 
     get();
@@ -44,7 +42,7 @@ export const TestimonialCard = () => {
         /*       la línea está construyendo una URL completa para la imagen, teniendo en cuenta tanto la ruta relativa de la imagen como la ubicación del componente actual. */
 
         /*    const imgURL = new URL(`../../${testimonial.img}`, import.meta.url);
-        console.log("imgURL:", imgURL); */
+         */
         return (
           <TestimonialCardStyled key={testimonial.id}>
             <div></div>

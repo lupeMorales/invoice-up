@@ -10,14 +10,11 @@ export const UserInfoItem = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(
-          "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/users",
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`, // Utiliza el token de autenticación
-            },
-          }
-        );
+        const response = await axios.get("http://127.0.0.1:8000/api/users", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // Utiliza el token de autenticación
+          },
+        });
         setUsers(response.data);
       } catch (error) {
         setError("Error al obtener la lista de usuarios");
@@ -28,14 +25,11 @@ export const UserInfoItem = () => {
   }, []);
   return (
     <UserInfoItemStyled>
-      <h2>Usuarios</h2>
-      {error && <div className="error">{error}</div>}
       <table>
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Email</th>
-            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -43,15 +37,15 @@ export const UserInfoItem = () => {
             <tr key={user.id}>
               <td>{user.name}</td>
               <td>{user.email}</td>
-              <td>
-                <div className="container-edit">
-                  <Button action="Eliminar usuario"></Button>
-                </div>
-              </td>
+              <td></td>
             </tr>
           ))}
         </tbody>
       </table>
+      <div className="container-edit">
+        <Button action="Borrar"></Button>
+      </div>
+      {error && <div className="error">{error}</div>}
     </UserInfoItemStyled>
   );
 };

@@ -24,6 +24,8 @@ const AccordionFieldsetStyled = styled.div`
     svg {
       border: none;
       margin-right: -165px;
+      @media only screen and (max-width: 798px) {
+        margin-right: -85px;
     }
   }
 

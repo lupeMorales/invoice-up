@@ -32,9 +32,7 @@ export const InvoiceInfoItem = () => {
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        const response = await axios.get(
-          "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/invoices"
-        );
+        const response = await axios.get("http://127.0.0.1:8000/api/invoices");
         setInvoices(response.data);
         setLoading(false);
 
@@ -80,7 +78,7 @@ export const InvoiceInfoItem = () => {
     try {
       // Actualizar el estado de la factura en el backend
       await axios.put(
-        `https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/invoices/${numberInvoice}/mark-as-paid`
+        `http://127.0.0.1:8000/api/invoices/${numberInvoice}/mark-as-paid`
       );
 
       // Actualizar el estado local del componente
@@ -101,6 +99,12 @@ export const InvoiceInfoItem = () => {
     }
   };
 
+  // imprime  factura a PDF
+  const handlePrintPdf = (invoice) => {
+    const element = document.querySelector(".invoice-container");
+    html2pdf().from(element).save(`factura-${invoice.number_invoice}.pdf`);
+  };
+
   // editar factura
   const handleEditInvoice = (invoice) => {
     setSelectedInvoice(invoice);
@@ -111,7 +115,7 @@ export const InvoiceInfoItem = () => {
   const handleDelete = async (number_invoice) => {
     try {
       await axios.delete(
-        `https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/invoices/${number_invoice}`
+        `http://127.0.0.1:8000/api/invoices/${number_invoice}`
       );
       // Eliminar la factura del estado
       setInvoices((prevInvoices) =>
@@ -119,148 +123,159 @@ export const InvoiceInfoItem = () => {
           (invoice) => invoice.number_invoice !== number_invoice
         )
       );
-    } catch (error) {
-      console.error("Error al eliminar la factura:", error);
-    }
-  };
+    } catch (error) {}
 
-  // Maneja el evento de mostrar el modal con la factura seleccionada
-  const handleShowModal = (invoice) => {
-    setSelectedInvoice(invoice);
-    setShowModal(true);
-  };
+    // Maneja el evento de mostrar el modal con la factura seleccionada
+    const handleShowModal = (invoice) => {
+      setSelectedInvoice(invoice);
+      setShowModal(true);
+    };
 
-  return (
-    <div>
-      <div style={{ display: "flex", gap: "7px" }}>
-        <Button
-          variant="outline"
-          action="Todas"
-          onClick={() => handleFilterStatus("all")}
-        ></Button>
-        <Button
-          action="Pendientes de cobro"
-          onClick={() => handleFilterStatus("pending")}
-        ></Button>
-        <Button
-          action="Cobradas"
-          onClick={() => handleFilterStatus("paid")}
-        ></Button>
+    return (
+      <div>
+        <div style={{ display: "flex", gap: "7px", padding: "2px" }}>
+          <Button
+            variant="outline"
+            action="Todas"
+            onClick={() => handleFilterStatus("all")}
+          ></Button>
+          <Button
+            style={{ padding: "8px" }}
+            action="Pendientes de cobro"
+            onClick={() => handleFilterStatus("pending")}
+          ></Button>
+          <Button
+            style={{ padding: "8px" }}
+            action="Cobradas"
+            onClick={() => handleFilterStatus("paid")}
+          ></Button>
+        </div>
+
+        {filterStatus === "pending" && !hasPendingInvoices && (
+          <p style={{ fontSize: "1.9em", padding: "40px 20px" }}>
+            No hay facturas pendientes
+          </p>
+        )}
+        {filterStatus === "paid" && !hasPaidInvoices && (
+          <p style={{ fontSize: "1.9em", padding: "40px 20px" }}>
+            No hay facturas cobradas
+          </p>
+        )}
+
+        <ul style={{ listStyle: "none", marginTop: "55px" }}>
+          {invoices
+            .filter((invoice) => {
+              if (filterStatus === "all") {
+                return true;
+              } else if (filterStatus === "pending") {
+                return invoiceStates[invoice.id].text === "pendiente";
+              } else if (filterStatus === "paid") {
+                return invoiceStates[invoice.id].text === "cobrada";
+              }
+              return false;
+            })
+            .map((invoice) => (
+              <li key={invoice.id}>
+                <InvoiceInfoItemStyled>
+                  <div className="container-info">
+                    <h2 className="invoice-number">{invoice.number_invoice}</h2>
+                    <h2>{invoice.client_name}</h2>
+                    <h2 className="invoice-date">{invoice.issue_date}</h2>
+                    <h2>{calculateTotalAmount(invoice)}€</h2>
+
+                    <h2
+                      className="button-info"
+                      title="Marcar como cobrada"
+                      onClick={() => {
+                        handleMarkAsPaid(invoice.number_invoice);
+                        setInvoiceStates((prevStates) => {
+                          const updatedStates = { ...prevStates };
+                          updatedStates[invoice.id] = {
+                            text: "cobrada",
+                            color: "green",
+                          };
+                          return updatedStates;
+                        });
+                      }}
+                      style={{
+                        padding: "5px 10px",
+                        borderRadius: "20px",
+                        cursor: "pointer",
+                        backgroundColor: invoiceStates[invoice.id].color,
+                        color: "white",
+                      }}
+                    >
+                      {invoiceStates[invoice.id].text}
+                    </h2>
+                  </div>
+
+                  <div className="container-edit">
+                    <button
+                      className="button-info"
+                      title="ver detalle"
+                      onClick={() => handleShowModal(invoice)}
+                    >
+                      <FontAwesomeIcon icon={faEye} />
+                    </button>
+                    <button
+                      className="button-info"
+                      title="editar"
+                      onClick={() => handleEditInvoice(invoice)}
+                    >
+                      <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                    <button
+                      className="button-info"
+                      title="Imprimir PDF"
+                      onClick={() => handlePrintPdf(invoice)}
+                    >
+                      <FontAwesomeIcon icon={faPrint} />
+                    </button>
+
+                    <button
+                      className="button-danger"
+                      title="eliminar factura"
+                      onClick={() => handleDelete(invoice.number_invoice)}
+                    >
+                      <FontAwesomeIcon icon={faTrashAlt} />
+                    </button>
+                  </div>
+                </InvoiceInfoItemStyled>
+              </li>
+            ))}
+        </ul>
+
+        {showModal && selectedInvoice && (
+          <ModalInvoiceStyled show={showModal}>
+            <div className="modal-content">
+              <span
+                className="close-button"
+                onClick={() => setShowModal(false)}
+              >
+                &times;
+              </span>
+              <Previewer dataForm={selectedInvoice} />
+            </div>
+          </ModalInvoiceStyled>
+        )}
+        {showEditModal && selectedInvoice && (
+          <ModalStyled show={showEditModal}>
+            <div className="modal-content">
+              <span
+                className="close-button"
+                onClick={() => setShowEditModal(false)}
+              >
+                &times;
+              </span>
+              <h2>Lo sentimos mucho :(</h2>
+              <p>
+                La función de editar facturas se encuentra temporalmente fuera
+                de servicio.
+              </p>
+            </div>
+          </ModalStyled>
+        )}
       </div>
-
-      {filterStatus === "pending" && !hasPendingInvoices && (
-        <p style={{ fontSize: "1.9em", padding: "40px 20px" }}>
-          No hay facturas pendientes
-        </p>
-      )}
-      {filterStatus === "paid" && !hasPaidInvoices && (
-        <p style={{ fontSize: "1.9em", padding: "40px 20px" }}>
-          No hay facturas cobradas
-        </p>
-      )}
-
-      <ul style={{ listStyle: "none", marginTop: "55px" }}>
-        {invoices
-          .filter((invoice) => {
-            if (filterStatus === "all") {
-              return true;
-            } else if (filterStatus === "pending") {
-              return invoiceStates[invoice.id].text === "pendiente";
-            } else if (filterStatus === "paid") {
-              return invoiceStates[invoice.id].text === "cobrada";
-            }
-            return false;
-          })
-          .map((invoice) => (
-            <li key={invoice.id}>
-              <InvoiceInfoItemStyled>
-                <div className="container-info">
-                  <h2 className="invoice-number">{invoice.number_invoice}</h2>
-                  <h2>{invoice.client_name}</h2>
-                  <h2 className="invoice-date">{invoice.issue_date}</h2>
-                  <h2>{calculateTotalAmount(invoice)}€</h2>
-
-                  <h2
-                    className="button-info"
-                    title="Marcar como cobrada"
-                    onClick={() => {
-                      handleMarkAsPaid(invoice.number_invoice);
-                      setInvoiceStates((prevStates) => {
-                        const updatedStates = { ...prevStates };
-                        updatedStates[invoice.id] = {
-                          text: "cobrada",
-                          color: "green",
-                        };
-                        return updatedStates;
-                      });
-                    }}
-                    style={{
-                      padding: "5px 10px",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                      backgroundColor: invoiceStates[invoice.id].color,
-                      color: "white",
-                    }}
-                  >
-                    {invoiceStates[invoice.id].text}
-                  </h2>
-                </div>
-
-                <div className="container-edit">
-                  <button
-                    className="button-info"
-                    title="ver detalle"
-                    onClick={() => handleShowModal(invoice)}
-                  >
-                    <FontAwesomeIcon icon={faEye} />
-                  </button>
-                  <button
-                    className="button-info"
-                    title="editar"
-                    onClick={() => handleEditInvoice(invoice)}
-                  >
-                    <FontAwesomeIcon icon={faEdit} />
-                  </button>
-                  <button
-                    className="button-danger"
-                    title="eliminar factura"
-                    onClick={() => handleDelete(invoice.number_invoice)}
-                  >
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                  </button>
-                </div>
-              </InvoiceInfoItemStyled>
-            </li>
-          ))}
-      </ul>
-
-      {showModal && selectedInvoice && (
-        <ModalInvoiceStyled show={showModal}>
-          <div className="modal-content">
-            <span className="close-button" onClick={() => setShowModal(false)}>
-              &times;
-            </span>
-            <Previewer dataForm={selectedInvoice} />
-          </div>
-        </ModalInvoiceStyled>
-      )}
-      {showEditModal && selectedInvoice && (
-        <ModalStyled show={showEditModal}>
-          <div className="modal-content">
-            <span
-              className="close-button"
-              onClick={() => setShowEditModal(false)}
-            >
-              &times;
-            </span>
-            <h2>Lo sentimos mucho :(</h2>
-            <p>
-              La función de editar facturas se encuentra temporalmente fuera de
-              servicio.
-            </p>
-          </div>
-        </ModalStyled>
-      )}
-    </div>
-  );
+    );
+  };
 };

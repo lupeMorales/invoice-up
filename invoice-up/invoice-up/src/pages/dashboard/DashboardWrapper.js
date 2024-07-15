@@ -13,6 +13,7 @@ export const DashboardWrapper = styled.main`
     ${(props) => props.theme.color.primary},
     ${(props) => props.theme.color.secondary} 100%
   );
+  overflow: hidden;
   @media (max-width: 780px) {
     flex-direction: column;
     justify-content: center;

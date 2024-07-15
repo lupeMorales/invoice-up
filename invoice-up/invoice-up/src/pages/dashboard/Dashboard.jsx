@@ -11,7 +11,6 @@ export const Dashboard = () => {
   //Info is recived by FormMyData
   //keep info in dataForm to send info by Form props
   const handleSubmit = (ev) => {
-    console.log({ ev });
     setDataForm({ ...dataForm, ...ev });
   };
   return (

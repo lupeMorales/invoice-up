@@ -29,9 +29,17 @@ const router = createBrowserRouter([
     path: "about",
     element: <About />,
   },
+
   {
-    path: "admin",
-    element: <Admin />,
+    path: "/admin", // Ruta para el área de administración
+    element: <Admin />, // Renderiza la "plantilla" de la página de administración
+    children: [
+      // Rutas secundarias dentro del área de administración
+      {
+        path: "/admin", // Ruta base de administración
+        element: <Admin></Admin>, // Elemento/componente para mostrar cuando se accede a /admin
+      },
+    ],
   },
   {
     path: "login",
