@@ -59,7 +59,7 @@ export const Register = () => {
       // Realizar la llamada Axios para enviar datos al servidor
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/register",
+        "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/register",
         form
       );
       // Verifica si existe un token en la respuesta de la API

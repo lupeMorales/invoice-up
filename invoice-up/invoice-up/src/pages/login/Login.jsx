@@ -57,7 +57,7 @@ export const Login = () => {
     try {
       //envio datos al servidos
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/login",
+        "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/login",
 
         form
       );

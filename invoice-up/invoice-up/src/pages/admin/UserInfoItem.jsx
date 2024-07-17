@@ -10,11 +10,14 @@ export const UserInfoItem = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/users", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // Utiliza el token de autenticación
-          },
-        });
+        const response = await axios.get(
+          "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/users",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`, // Utiliza el token de autenticación
+            },
+          }
+        );
         setUsers(response.data);
       } catch (error) {
         setError("Error al obtener la lista de usuarios");

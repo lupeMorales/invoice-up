@@ -32,7 +32,9 @@ export const InvoiceInfoItem = () => {
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/invoices");
+        const response = await axios.get(
+          "https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/invoices"
+        );
         setInvoices(response.data);
         setLoading(false);
 
@@ -78,7 +80,7 @@ export const InvoiceInfoItem = () => {
     try {
       // Actualizar el estado de la factura en el backend
       await axios.put(
-        `http://127.0.0.1:8000/api/invoices/${numberInvoice}/mark-as-paid`
+        `https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/invoices/${numberInvoice}/mark-as-paid`
       );
 
       // Actualizar el estado local del componente
@@ -115,7 +117,7 @@ export const InvoiceInfoItem = () => {
   const handleDelete = async (number_invoice) => {
     try {
       await axios.delete(
-        `http://127.0.0.1:8000/api/invoices/${number_invoice}`
+        `https://guadalupe.v1-22.proyectosdwa.es/api2/public/api/invoices/${number_invoice}`
       );
       // Eliminar la factura del estado
       setInvoices((prevInvoices) =>
